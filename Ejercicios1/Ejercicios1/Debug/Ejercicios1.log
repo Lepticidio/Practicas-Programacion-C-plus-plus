@@ -1,0 +1,3 @@
+﻿  Ejercicios1.cpp
+D:\Microsoft Visual Studio\repos\Ejercicios1\Ejercicios1\Ejercicios1.cpp(68,21): warning C4244: 'return': conversión de 'int' a 'float'; posible pérdida de datos
+  Ejercicios1.vcxproj -> D:\Microsoft Visual Studio\repos\Ejercicios1\Debug\Ejercicios1.exe
