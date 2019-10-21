@@ -1,7 +1,9 @@
 ﻿  FileUtils.cpp
-D:\Microsoft Visual Studio\repos\Practica5\Practica5\FileUtils.cpp(9,20): warning C4018: '<': no coinciden signed/unsigned
-D:\Microsoft Visual Studio\repos\Practica5\Practica5\FileUtils.cpp(12,21): warning C4018: '<': no coinciden signed/unsigned
-D:\Microsoft Visual Studio\repos\Practica5\Practica5\FileUtils.cpp(14,16): warning C4018: '<': no coinciden signed/unsigned
-D:\Microsoft Visual Studio\repos\Practica5\Practica5\FileUtils.cpp(68,21): warning C4018: '<': no coinciden signed/unsigned
-D:\Microsoft Visual Studio\repos\Practica5\Practica5\FileUtils.cpp(90,20): warning C4018: '<': no coinciden signed/unsigned
+D:\Microsoft Visual Studio\repos\Practica5\Practica5\FileUtils.cpp(12,22): warning C4018: '<': no coinciden signed/unsigned
+D:\Microsoft Visual Studio\repos\Practica5\Practica5\FileUtils.cpp(15,23): warning C4018: '<': no coinciden signed/unsigned
+D:\Microsoft Visual Studio\repos\Practica5\Practica5\FileUtils.cpp(17,18): warning C4018: '<': no coinciden signed/unsigned
+  Practica5.cpp
+D:\Microsoft Visual Studio\repos\Practica5\Practica5\FileUtils.cpp(93,22): warning C4018: '<': no coinciden signed/unsigned
+  Generando código...
+D:\Microsoft Visual Studio\repos\Practica5\Practica5\Practica5.cpp(35,7): warning C4101: 'sBuffer2': variable local sin referencia
   Practica5.vcxproj -> D:\Microsoft Visual Studio\repos\Practica5\Debug\Practica5.exe

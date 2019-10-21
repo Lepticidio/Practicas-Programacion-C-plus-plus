@@ -1,9 +1,11 @@
-// Practica5.cpp
+// Practicas 5, 6 y 7 de Miguel Andújar
 
 #include <iostream>
 #include "file.h"
 #include "FileUtils.h"
 
+using namespace file;
+using namespace utils;
 
 int main()
 {	

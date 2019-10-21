@@ -2,52 +2,55 @@
 #include "file.h"
 #include "stdio.h"
 #include "assert.h"
-
-void* OpenFile(const char* _sFileName, const char* _sMode)
+namespace file
 {
-	assert(_sFileName != nullptr);
-	if (_sFileName != nullptr)
+	void* OpenFile(const char* _sFileName, const char* _sMode)
 	{
-		FILE* pFile(nullptr);
-		fopen_s(&pFile, _sFileName, _sMode);
-		return pFile;
+		assert(_sFileName != nullptr);
+		if (_sFileName != nullptr)
+		{
+			FILE* pFile(nullptr);
+			fopen_s(&pFile, _sFileName, _sMode);
+			return pFile;
+		}
+		return nullptr;
 	}
-	return nullptr;
-}
-int CloseFile(void* _pFile)
-{
-	assert(_pFile != nullptr);
-	if (_pFile != nullptr)
+	int CloseFile(void* _pFile)
 	{
-		return fclose(static_cast<FILE*>(_pFile));
+		assert(_pFile != nullptr);
+		if (_pFile != nullptr)
+		{
+			return fclose(static_cast<FILE*>(_pFile));
+		}
+		return EOF;
+
 	}
-	return EOF;
 
-}
-
-unsigned int ReadFile(void* _pFile, char* _pBuffer, unsigned int _uBufferSize)
-{
-	assert(_pFile != nullptr);
-	assert(_pBuffer != nullptr);
-	if (_pFile != nullptr && _pBuffer != nullptr)
+	unsigned int ReadFile(void* _pFile, char* _pBuffer, unsigned int _uBufferSize)
 	{
-		return fread(_pBuffer, sizeof(char), _uBufferSize, static_cast<FILE*>(_pFile));
+		assert(_pFile != nullptr);
+		assert(_pBuffer != nullptr);
+		if (_pFile != nullptr && _pBuffer != nullptr)
+		{
+			return fread(_pBuffer, sizeof(char), _uBufferSize, static_cast<FILE*>(_pFile));
+		}
+		return 0;
 	}
-	return 0;
-}
 
-unsigned int WriteFile(void* _pFile, const char* _pBuffer, unsigned int _uBufferSize)
-{
-	assert(_pFile != nullptr);
-	assert(_pBuffer != nullptr);
-	if (_pFile != nullptr && _pBuffer != nullptr)
+	unsigned int WriteFile(void* _pFile, const char* _pBuffer, unsigned int _uBufferSize)
 	{
-		return fwrite(_pBuffer, sizeof(char), _uBufferSize, static_cast<FILE*>(_pFile));
+		assert(_pFile != nullptr);
+		assert(_pBuffer != nullptr);
+		if (_pFile != nullptr && _pBuffer != nullptr)
+		{
+			return fwrite(_pBuffer, sizeof(char), _uBufferSize, static_cast<FILE*>(_pFile));
+		}
+		return 0;
 	}
-	return 0;
+
+
+
+
+
 }
-
-
-
-
 
