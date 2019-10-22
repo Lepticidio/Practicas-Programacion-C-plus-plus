@@ -1,5 +1,8 @@
 #include "lineshapes.h"
 
+float fAsrrowPointSize = 0.2f;
+
+
 void Lines::add(GLfloat* vertex_data,  GLfloat* color_data, size_t vertexCount, GLuint* indices_data, size_t indexCount)
 {
 	size_t point_size = points.size();
@@ -13,14 +16,17 @@ void Lines::add(GLfloat* vertex_data,  GLfloat* color_data, size_t vertexCount, 
 		points[point_size + i].v[0] = vertex_data[i*3];
 		points[point_size + i].v[1] = vertex_data[i*3 + 1];
 		points[point_size + i].v[2] = vertex_data[i*3 + 2];
+		printf("The vertex index is: %d\n", i);
 	}
 	for (size_t i = 0; i < vertexCount; ++i) {
 		colors[point_size + i].v[0] = color_data[i*3];
 		colors[point_size + i].v[1] = color_data[i*3 + 1];
 		colors[point_size + i].v[2] = color_data[i*3 + 2];
+		printf("The color index is: %d\n", i);
 	}
 	for (size_t i = 0; i < indexCount; ++i) {
 		indices[index_size + i] = point_size + indices_data[i];
+		printf("The index index is: %d\n", i);
 	}
 }
 
@@ -94,21 +100,72 @@ void Shapes::addArrow(Lines & lines, const vec3 & from, const vec3 & to, const v
 	// add your new positions to arrow_vertices, then the corresponding arrow_colors
 	// finally draw lines with indices arrow_indices
 
-	vec3 arrow_vertices[] = {
+	vec3 crossVector1 = cross(to - from, vec3(1,1,1));
+	vec3 resizedVector1 = normalise(crossVector1);
+	resizedVector1 *= fAsrrowPointSize;
+	vec3 point1 = normalise(to - from)*(length(to-from)-fAsrrowPointSize) + resizedVector1;
+
+	vec3 crossVector2 = cross(to - from, crossVector1);
+	vec3 resizedVector2 = normalise(crossVector2);
+	resizedVector2 *= fAsrrowPointSize;
+	vec3 point2 = normalise(to - from) * (length(to - from) - fAsrrowPointSize) + resizedVector2;
+
+	vec3 crossVector3 = cross(to - from, crossVector2);
+	vec3 resizedVector3 = normalise(crossVector3);
+	resizedVector3 *= fAsrrowPointSize;
+	vec3 point3 = normalise(to - from) * (length(to - from) - fAsrrowPointSize) + resizedVector3;
+
+	vec3 crossVector4 = cross(to - from, crossVector3);
+	vec3 resizedVector4 = normalise(crossVector4);
+	resizedVector4 *= fAsrrowPointSize;
+	vec3 point4 = normalise(to - from) * (length(to - from) - fAsrrowPointSize) + resizedVector4;
+
+	vec3 endPoint = (to - from);
+	
+
+
+	vec3 arrow_vertices[] = 
+	{
 		from,
-		to,
+		endPoint,
+		point1,
+		point2,
+		point3,
+		point4
 	};
 	
-	vec3 arrow_colors[] = {
+	vec3 arrow_colors[] = 
+	{
 		color,
 		color,
+		color,
+		color,
+		color,
+		color
 	};
 
-	unsigned int arrow_indices[] = {
+	unsigned int arrow_indices[] = 
+	{
 		0,1, // draw line from arrow_vertices[0] to arrow_vertices[1]
+		2,3,
+		3,4,
+		4,5,
+		5,2,
+		2,1,
+		3,1,
+		4,1,
+		5,1,
 	};
 
-	lines.add(&arrow_vertices[0].v[0], &arrow_colors[0].v[0], 2, &arrow_indices[0], 2);
+	//lines.add(&arrow_vertices[0].v[0], &arrow_colors[0].v[0], 2, &arrow_indices[0], 2);
+
+	lines.add(&arrow_vertices[0].v[0], &arrow_colors[0].v[0], 6, &arrow_indices[0], 18);
+
+	//for (int i = 0; i < sizeof(arrow_indices) / sizeof(int); i++)
+	//{
+	//	lines.add(&arrow_vertices[arrow_indices[i]].v[0], &arrow_colors[arrow_indices[i]].v[0], 2, &arrow_indices[0], 2);
+	//}
+
 }
 
 void Shapes::addGrid(Lines& lines, const vec3& from, const vec3& to, const vec3& color, int divs) {

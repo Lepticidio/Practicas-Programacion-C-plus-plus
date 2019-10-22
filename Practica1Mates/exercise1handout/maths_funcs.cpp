@@ -4,26 +4,30 @@
 /*--------------------------------CONSTRUCTORS--------------------------------*/
 vec2::vec2() {}
 
-vec2::vec2( float x, float y ) {
+vec2::vec2( float x, float y ) 
+{
 	v[0] = x;
 	v[1] = y;
 }
 
 vec3::vec3() {}
 
-vec3::vec3( float x, float y, float z ) {
+vec3::vec3( float x, float y, float z ) 
+{
 	v[0] = x;
 	v[1] = y;
 	v[2] = z;
 }
 
-vec3::vec3( const vec2 &vv, float z ) {
+vec3::vec3( const vec2 &vv, float z ) 
+{
 	v[0] = vv.v[0];
 	v[1] = vv.v[1];
 	v[2] = z;
 }
 
-vec3::vec3( const vec4 &vv ) {
+vec3::vec3( const vec4 &vv ) 
+{
 	v[0] = vv.v[0];
 	v[1] = vv.v[1];
 	v[2] = vv.v[2];
@@ -31,21 +35,24 @@ vec3::vec3( const vec4 &vv ) {
 
 vec4::vec4() {}
 
-vec4::vec4( float x, float y, float z, float w ) {
+vec4::vec4( float x, float y, float z, float w ) 
+{
 	v[0] = x;
 	v[1] = y;
 	v[2] = z;
 	v[3] = w;
 }
 
-vec4::vec4( const vec2 &vv, float z, float w ) {
+vec4::vec4( const vec2 &vv, float z, float w ) 
+{
 	v[0] = vv.v[0];
 	v[1] = vv.v[1];
 	v[2] = z;
 	v[3] = w;
 }
 
-vec4::vec4( const vec3 &vv, float w ) {
+vec4::vec4( const vec3 &vv, float w ) 
+{
 	v[0] = vv.v[0];
 	v[1] = vv.v[1];
 	v[2] = vv.v[2];
@@ -55,7 +62,8 @@ vec4::vec4( const vec3 &vv, float w ) {
 mat3::mat3() {}
 
 /* note: entered in COLUMNS */
-mat3::mat3( float a, float b, float c, float d, float e, float f, float g, float h, float i ) {
+mat3::mat3( float a, float b, float c, float d, float e, float f, float g, float h, float i ) 
+{
 	m[0] = a;
 	m[1] = b;
 	m[2] = c;
@@ -91,7 +99,8 @@ mat4::mat4( float a, float b, float c, float d, float e, float f, float g, float
 	m[14] = o;
 	m[15] = p;
 }
-mat3 mat4::getRotation() const{
+mat3 mat4::getRotation() const
+{
 	mat3 ret;
 	ret.m[0] = m[0];
 	ret.m[1] = m[1];
@@ -108,12 +117,14 @@ mat3 mat4::getRotation() const{
 	return ret;
 }
 
-vec4 mat4::getColumn(int i) const {
+vec4 mat4::getColumn(int i) const 
+{
 	vec4 ret =col[i];
 	return ret;
 }
 
-vec4 mat4::getRow(int i) const {
+vec4 mat4::getRow(int i) const 
+{
 	vec4 ret;
 	ret.v[0] = m[i+0];
 	ret.v[1] = m[i+4];

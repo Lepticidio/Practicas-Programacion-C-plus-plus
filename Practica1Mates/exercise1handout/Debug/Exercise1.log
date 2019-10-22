@@ -1,5 +1,2 @@
-﻿  exercise1.cpp
-  main.cpp
-  Generando código...
-D:\Descargas\Practica1Mates\exercise1handout\main.cpp(1,10): warning C4067: símbolos (token) inesperados después de la directiva del preprocesador; se esperaba una nueva línea
-  Exercise1.vcxproj -> D:\Descargas\Practica1Mates\exercise1handout\Debug\Exercise1.exe
+﻿  lineshapes.cpp
+  Exercise1.vcxproj -> D:\Microsoft Visual Studio\repos\Practica1Mates\exercise1handout\Debug\Exercise1.exe

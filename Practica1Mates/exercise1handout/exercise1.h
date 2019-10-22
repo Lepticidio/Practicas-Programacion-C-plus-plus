@@ -152,6 +152,18 @@ struct Exercise1 {
 
 		}
 
+		if (glfwGetKey(window, GLFW_KEY_RIGHT))
+		{
+			cameraPosition.x = cameraPosition.x + elapsed_seconds * camera.speed;
+
+		}
+
+		if (glfwGetKey(window, GLFW_KEY_LEFT))
+		{
+			cameraPosition.x = cameraPosition.x + elapsed_seconds * -camera.speed;
+
+		}
+
 		if (glfwGetKey(window, GLFW_KEY_D))
 		{
 			cubePosition.x += cubeSpeed * elapsed_seconds;
