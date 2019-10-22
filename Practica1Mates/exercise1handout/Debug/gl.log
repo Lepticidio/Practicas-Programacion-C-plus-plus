@@ -1,0 +1,76 @@
+starting GLFW 3.0.4 Win32 WGL VisualC LoadLibrary(winmm)
+renderer: Intel(R) HD Graphics 530
+version: 4.4.0 - Build 21.20.16.4542
+creating shader from lines_vs.glsl...
+ERROR: opening file for reading: lines_vs.glsl
+ERROR: GL shader index 1 did not compile
+shader info log for GL index 1:
+
+
+creating shader from lines_fs.glsl...
+ERROR: opening file for reading: lines_fs.glsl
+ERROR: GL shader index 2 did not compile
+shader info log for GL index 2:
+
+
+created programme 3. attaching shaders 1 and 2...
+ERROR: could not link shader programme GL index 3
+program info log for GL index 3:
+Attached vertex shader is not compiled.
+starting GLFW 3.0.4 Win32 WGL VisualC LoadLibrary(winmm)
+renderer: Intel(R) HD Graphics 530
+version: 4.4.0 - Build 21.20.16.4542
+creating shader from lines_vs.glsl...
+ERROR: opening file for reading: lines_vs.glsl
+ERROR: GL shader index 1 did not compile
+shader info log for GL index 1:
+
+
+creating shader from lines_fs.glsl...
+ERROR: opening file for reading: lines_fs.glsl
+ERROR: GL shader index 2 did not compile
+shader info log for GL index 2:
+
+
+created programme 3. attaching shaders 1 and 2...
+ERROR: could not link shader programme GL index 3
+program info log for GL index 3:
+Attached vertex shader is not compiled.
+starting GLFW 3.0.4 Win32 WGL VisualC LoadLibrary(winmm)
+renderer: Intel(R) HD Graphics 530
+version: 4.4.0 - Build 21.20.16.4542
+creating shader from lines_vs.glsl...
+ERROR: opening file for reading: lines_vs.glsl
+ERROR: GL shader index 1 did not compile
+shader info log for GL index 1:
+
+
+creating shader from lines_fs.glsl...
+ERROR: opening file for reading: lines_fs.glsl
+ERROR: GL shader index 2 did not compile
+shader info log for GL index 2:
+
+
+created programme 3. attaching shaders 1 and 2...
+ERROR: could not link shader programme GL index 3
+program info log for GL index 3:
+Attached vertex shader is not compiled.
+starting GLFW 3.0.4 Win32 WGL VisualC LoadLibrary(winmm)
+renderer: Intel(R) HD Graphics 530
+version: 4.4.0 - Build 21.20.16.4542
+creating shader from lines_vs.glsl...
+ERROR: opening file for reading: lines_vs.glsl
+ERROR: GL shader index 1 did not compile
+shader info log for GL index 1:
+
+
+creating shader from lines_fs.glsl...
+ERROR: opening file for reading: lines_fs.glsl
+ERROR: GL shader index 2 did not compile
+shader info log for GL index 2:
+
+
+created programme 3. attaching shaders 1 and 2...
+ERROR: could not link shader programme GL index 3
+program info log for GL index 3:
+Attached fragment shader is not compiled.

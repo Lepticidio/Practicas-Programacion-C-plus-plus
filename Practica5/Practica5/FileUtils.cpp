@@ -41,7 +41,7 @@ namespace file
 		{
 		
 			//Tengo que hacer esto para cualquier tamaño de archivo 
-			const unsigned int uBUFFER_SIZE = 100;
+			const unsigned int uBUFFER_SIZE = 300;
 			char sBuffer[uBUFFER_SIZE];
 			void* pFile1 = OpenFile(_sFileName, "r");
 		
