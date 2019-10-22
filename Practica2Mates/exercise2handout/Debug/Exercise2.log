@@ -1,0 +1,59 @@
+﻿  camera.cpp
+  exercise2.cpp
+  gl_utils.cpp
+  lineshapes.cpp
+  main.cpp
+  maths_funcs.cpp
+  mesh.cpp
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(207,15): warning C4244: '=': conversión de 'double' a 'TReal'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(207,15): warning C4244:         with
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(207,15): warning C4244:         [
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(207,15): warning C4244:             TReal=float
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(207,15): warning C4244:         ]
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(186): message : al compilar la función del miembro clase plantilla "void aiQuaterniont<float>::Interpolate(aiQuaterniont<float> &,const aiQuaterniont<float> &,const aiQuaterniont<float> &,TReal)"
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(186): message :         with
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(186): message :         [
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(186): message :             TReal=float
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(186): message :         ]
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\anim.h(435): message : vea la referencia a la creación de instancias de plantilla de función "void aiQuaterniont<float>::Interpolate(aiQuaterniont<float> &,const aiQuaterniont<float> &,const aiQuaterniont<float> &,TReal)" que se está compilando
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\anim.h(435): message :         with
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\anim.h(435): message :         [
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\anim.h(435): message :             TReal=float
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\anim.h(435): message :         ]
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\anim.h(107): message : vea la referencia a la creación de instancias de clase plantilla "aiQuaterniont<float>" que se está compilando
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(208,14): warning C4244: '=': conversión de 'double' a 'TReal'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(208,14): warning C4244:         with
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(208,14): warning C4244:         [
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(208,14): warning C4244:             TReal=float
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(208,14): warning C4244:         ]
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(209,61): warning C4244: '=': conversión de 'double' a 'TReal'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(209,61): warning C4244:         with
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(209,61): warning C4244:         [
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(209,61): warning C4244:             TReal=float
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(209,61): warning C4244:         ]
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(210,33): warning C4244: '=': conversión de 'double' a 'TReal'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(210,33): warning C4244:         with
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(210,33): warning C4244:         [
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(210,33): warning C4244:             TReal=float
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\quaternion.inl(210,33): warning C4244:         ]
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\vector3.inl(93,13): warning C4244: 'return': conversión de 'double' a 'TReal'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\vector3.inl(93,13): warning C4244:         with
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\vector3.inl(93,13): warning C4244:         [
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\vector3.inl(93,13): warning C4244:             TReal=float
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\vector3.inl(93,13): warning C4244:         ]
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\vector3.inl(92): message : al compilar la función del miembro clase plantilla "TReal aiVector3t<TReal>::Length(void) const"
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\vector3.inl(92): message :         with
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\vector3.inl(92): message :         [
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\vector3.inl(92): message :             TReal=float
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\vector3.inl(92): message :         ]
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\vector3.inl(98): message : vea la referencia a la creación de instancias de plantilla de función "TReal aiVector3t<TReal>::Length(void) const" que se está compilando
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\vector3.inl(98): message :         with
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\vector3.inl(98): message :         [
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\vector3.inl(98): message :             TReal=float
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\vector3.inl(98): message :         ]
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\vector3.inl(142): message : al compilar la función del miembro clase plantilla "bool aiVector3t<float>::operator ==(const aiVector3t<float> &) const"
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\anim.h(82): message : vea la referencia a la creación de instancias de plantilla de función "bool aiVector3t<float>::operator ==(const aiVector3t<float> &) const" que se está compilando
+  node.cpp
+  Generando código...
+D:\Microsoft Visual Studio\repos\Practica2Mates\common\include\assimp\types.h(150): message : vea la referencia a la creación de instancias de clase plantilla "aiVector3t<float>" que se está compilando
+  Exercise2.vcxproj -> D:\Microsoft Visual Studio\repos\Practica2Mates\exercise2handout\Debug\Exercise2.exe
