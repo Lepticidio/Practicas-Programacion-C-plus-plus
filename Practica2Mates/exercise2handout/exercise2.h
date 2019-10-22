@@ -49,6 +49,7 @@ struct Exercise2
 
 	float camYaw = 0.0f;
 	float camPitch = 0.0f;
+	float cameraSpeed = 0.05f;
 
 	Camera camera;
 	Node camNode;
@@ -185,16 +186,20 @@ struct Exercise2
 		
 
 
-		if (glfwGetKey(window, GLFW_KEY_A)) {
+		if (glfwGetKey(window, GLFW_KEY_A)) 
+		{
 			camYaw += camera.yaw_speed * elapsed_seconds;
 		}
-		if (glfwGetKey(window, GLFW_KEY_D)) {
+		if (glfwGetKey(window, GLFW_KEY_D)) 
+		{
 			camYaw -= camera.yaw_speed * elapsed_seconds;
 		}
-		if (glfwGetKey(window, GLFW_KEY_W)) {
+		if (glfwGetKey(window, GLFW_KEY_W)) 
+		{
 			camPitch += camera.yaw_speed * elapsed_seconds;
 		}
-		if (glfwGetKey(window, GLFW_KEY_S)) {
+		if (glfwGetKey(window, GLFW_KEY_S)) 
+		{
 			camPitch -= camera.yaw_speed * elapsed_seconds;
 		}
 		const float PitchLimit = 80;
@@ -208,6 +213,15 @@ struct Exercise2
 		// TODO: use keys to modify cameraPosition here
 
 		camNode.position = cameraPosition;
+
+		if (glfwGetKey(window, GLFW_KEY_W))
+		{
+			cameraPosition += vec3(0, 0, -cameraSpeed);
+		}
+		if (glfwGetKey(window, GLFW_KEY_S))
+		{
+			cameraPosition += vec3(0,0, cameraSpeed);
+		}
 
 		mat4 cameraMatrix = translate( identity_mat4(), cameraPosition*-1.f);
 		mat4 gridMatrix = translate(identity_mat4(), vec3(0,0,0));

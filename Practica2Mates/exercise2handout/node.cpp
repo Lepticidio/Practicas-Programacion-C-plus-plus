@@ -32,7 +32,24 @@ void Node::removeChild(Node& node) {
 void  Node::updateLocal() 
 { 
 	//localMatrix = T*R*S;
+	mat4 R = quat_to_mat4(rotation);// rotate_x_deg(localMatrix, rotation.x);
+	//R = rotate_y_deg(R, rotation.y);
+	//R = rotate_z_deg(R, rotation.z);
+	mat4 T = translate(identity_mat4(), position);
+	mat4 S = scaler(identity_mat4(), scale);
+
+	localMatrix = T * R * S;
+
+	vec3 invScale = { 1.f / scale.x, 1.f / scale.y, 1.f / scale.z };
+	mat4 invS = scaler(identity_mat4(), invScale);
+
+	mat4 invT = translate(identity_mat4(), position*(-1.f));
+	mat4 invR = transpose(R);
+
+
+
 	//localInverseMatrix = Sinv*transpose(R)*Tinv;
+	localInverseMatrix = invS *invR * invT;
 }
 
 void  Node::updateHierarchy()
