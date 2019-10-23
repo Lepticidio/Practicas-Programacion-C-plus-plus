@@ -5,7 +5,7 @@
 
 #include "exercise2.h"
 
-// keep track of window size for things like the viewport and the mouse cursor
+// keep track of window size for things like the +port and the mouse cursor
 
 int g_gl_width = 1024;
 int g_gl_height = 786;

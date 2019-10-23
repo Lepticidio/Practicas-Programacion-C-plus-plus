@@ -185,7 +185,7 @@ struct Exercise2
 		}
 		
 
-
+		/*
 		if (glfwGetKey(window, GLFW_KEY_A)) 
 		{
 			camYaw += camera.yaw_speed * elapsed_seconds;
@@ -202,13 +202,16 @@ struct Exercise2
 		{
 			camPitch -= camera.yaw_speed * elapsed_seconds;
 		}
+		
+		
+		*/
 		const float PitchLimit = 80;
 		camPitch = camPitch > PitchLimit ? PitchLimit : camPitch;
 		camPitch = camPitch < -PitchLimit ? -PitchLimit : camPitch;
 		camYaw = fmodf(camYaw, 360);
 
 		// TODO: 
-		// camNode.rotation = quat_from_axis_deg(...)* ...;
+		 camNode.rotation = quat_from_axis_deg(camPitch, 1, camYaw/camPitch, 0);
 		
 		// TODO: use keys to modify cameraPosition here
 
@@ -234,23 +237,20 @@ struct Exercise2
 		glUseProgram(mesh_shader_index);
 
 		camera.get_shader_uniforms(mesh_shader_index);
-		camera.set_shader_uniforms(mesh_shader_index, cameraMatrix );
+		//camera.set_shader_uniforms(mesh_shader_index, cameraMatrix);
 		// TODO: camera.set_shader_uniforms(lines_shader_index, ...);
-		
+		camera.set_shader_uniforms(lines_shader_index, camNode.worldInverseMatrix);
 
-		meshGroup.set_shader_uniforms(mesh_shader_index,  ambientColor);
+		meshGroup.set_shader_uniforms(mesh_shader_index, ambientColor);
 		meshGroup.render(mesh_shader_index);
-	
+
 		glUseProgram(0);
 
 		glUseProgram(lines_shader_index);
 
 		camera.get_shader_uniforms(lines_shader_index);
-		camera.set_shader_uniforms(mesh_shader_index, cameraMatrix );
+		camera.set_shader_uniforms(mesh_shader_index, camNode.worldInverseMatrix);
 		// TODO: camera.set_shader_uniforms(lines_shader_index, ...);
-
-		grid.get_shader_uniforms(lines_shader_index);
-		//TODO: grid.set_shader_uniforms(lines_shader_index, ...);
 
 		grid.set_shader_uniforms(lines_shader_index, gridMatrix);
 		grid.render(lines_shader_index);

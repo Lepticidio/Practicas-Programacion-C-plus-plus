@@ -32,9 +32,7 @@ void Node::removeChild(Node& node) {
 void  Node::updateLocal() 
 { 
 	//localMatrix = T*R*S;
-	mat4 R = quat_to_mat4(rotation);// rotate_x_deg(localMatrix, rotation.x);
-	//R = rotate_y_deg(R, rotation.y);
-	//R = rotate_z_deg(R, rotation.z);
+	mat4 R = quat_to_mat4(rotation);
 	mat4 T = translate(identity_mat4(), position);
 	mat4 S = scaler(identity_mat4(), scale);
 
@@ -57,14 +55,16 @@ void  Node::updateHierarchy()
 	updateLocal();
 	mat4 parentMatrix = identity_mat4();
 	mat4 parentInverseMatrix = identity_mat4();
-	if (parent!= nullptr) {
+	if (parent!= nullptr) 
+	{
 		parentMatrix = (*parent).worldMatrix;
 		parentInverseMatrix = (*parent).worldInverseMatrix;
 	}
 	worldMatrix = parentMatrix*localMatrix;
 	worldInverseMatrix = parentInverseMatrix*localInverseMatrix;
 
-	for (size_t i = 0; i < children.size(); ++i) {
+	for (size_t i = 0; i < children.size(); ++i) 
+	{
 		Node* child = children[i];
 		if (child != nullptr) {
 			(*child).updateHierarchy();

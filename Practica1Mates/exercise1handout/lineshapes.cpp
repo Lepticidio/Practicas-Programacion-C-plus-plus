@@ -1,5 +1,4 @@
 #include "lineshapes.h"
-
 float fAsrrowPointSize = 0.2f;
 
 
@@ -100,7 +99,16 @@ void Shapes::addArrow(Lines & lines, const vec3 & from, const vec3 & to, const v
 	// add your new positions to arrow_vertices, then the corresponding arrow_colors
 	// finally draw lines with indices arrow_indices
 
-	vec3 crossVector1 = cross(to - from, vec3(1,1,1));
+	vec3 upVector = vec3(0, 1, 0);
+
+	vec3 crossVector1 = cross(to - from, upVector);
+	if (length(crossVector1) < 0.01f)
+	{
+		vec3 rightVector = vec3(1, 0, 0);
+		crossVector1 = cross(to - from, rightVector);
+	}
+
+	
 	vec3 resizedVector1 = normalise(crossVector1);
 	resizedVector1 *= fAsrrowPointSize;
 	vec3 point1 = normalise(to - from)*(length(to-from)-fAsrrowPointSize) + resizedVector1;

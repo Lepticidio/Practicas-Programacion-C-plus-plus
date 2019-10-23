@@ -3,7 +3,8 @@
 layout(location = 0) in vec3 vertex_position;
 layout(location = 1) in vec3 vertex_color;
 
-uniform mat4 model, view, proj;
+uniform mat4 model, 
+, proj;
 
 out vec3 lerp_color;
 
