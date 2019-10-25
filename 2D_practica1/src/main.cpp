@@ -64,8 +64,52 @@ int main() {
 	// Uncomment below line to check in console that all Vec2 methods work properly
 	//CheckVec2Methods();
 
+	//1) Iniciamos la librería GFWX
+	glfwInit();
 
+	//2) Creamos una ventana
+	GLFWwindow* pWindow = glfwCreateWindow(1000, 1000, "", nullptr, nullptr);
 
+	//3) Asociamos el contexto de OpenGL a la ventana
+	glfwMakeContextCurrent(pWindow);
+
+	//4) Iniciamos la librería LiteGFX
+	lgfx_setup2d(1000, 1000);
+
+	bool bOpen = true;
+	double previousTime = glfwGetTime();
+	double deltaTime = 0;
+
+	//5) Bucle principal
+	while (bOpen)
+	{
+		//5.1) Actualizamos delta de tiempo
+		deltaTime = glfwGetTime() - previousTime;
+		previousTime = glfwGetTime();
+
+		//5.2) Leemos input del usuario
+		if (glfwGetKey(pWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		{
+			bOpen = false;
+		}
+		//5.3) Actualizamos lógica de juego
+
+		//5.4) Limpiamos el backbuffer
+		lgfx_clearcolorbuffer(1, 1, 1);
+
+		//5.5) Renderizamos la escena.
+		glfwPollEvents();
+		lgfx_setcolor(0.5f, 1, 0.5f, 1);
+		lgfx_drawrect(450, 450, 100, 100);
+
+		//5.6) Cambiamos el backbuffer por el frontbuffer
+		glfwSwapBuffers(pWindow);
+
+		//5.7) Procesamos eventos
+
+	}
+	//6) Liberamos los recursos.
+	glfwTerminate();
 
     return 0;
 }

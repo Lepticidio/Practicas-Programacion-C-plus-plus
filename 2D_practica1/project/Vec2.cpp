@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <Vec2.h>
+
 float ToDegrees(float radians)
 {
 	return radians * 57.2958f;

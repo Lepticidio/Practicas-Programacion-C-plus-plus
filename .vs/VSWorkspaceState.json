@@ -3,9 +3,8 @@
     "",
     "\\2D_practica1",
     "\\2D_practica1\\lib",
-    "\\2D_practica1\\project",
-    "\\2D_practica1\\src"
+    "\\2D_practica1\\project"
   ],
-  "SelectedNode": "\\2D_practica1\\src\\main.cpp",
+  "SelectedNode": "\\2D_practica1\\project\\Vec2.cpp",
   "PreviewInSolutionExplorer": false
 }
