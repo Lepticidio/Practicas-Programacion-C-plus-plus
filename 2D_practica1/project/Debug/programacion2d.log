@@ -1,2 +1,4 @@
 ﻿  main.cpp
+D:\Microsoft Visual Studio\repos\2D_practica1\src\main.cpp(113,48): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica1\src\main.cpp(113,25): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
   programacion2d.vcxproj -> D:\Microsoft Visual Studio\repos\2D_practica1\project\Debug\programacion2d.exe

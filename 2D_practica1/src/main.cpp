@@ -79,9 +79,10 @@ int main() {
 	bool bOpen = true;
 	double previousTime = glfwGetTime();
 	double deltaTime = 0;
+	float fSquareSize = 100;
 
 	//5) Bucle principal
-	while (bOpen)
+	while (!glfwWindowShouldClose(pWindow) && bOpen)
 	{
 		//5.1) Actualizamos delta de tiempo
 		deltaTime = glfwGetTime() - previousTime;
@@ -92,15 +93,25 @@ int main() {
 		{
 			bOpen = false;
 		}
+		double dXMouse = 0;
+		double dYMouse = 0;
+		double* pXMouse = &dXMouse;
+		double* pYMouse = &dYMouse;
+		glfwGetCursorPos(pWindow, pXMouse,	pYMouse);
 		//5.3) Actualizamos lógica de juego
 
 		//5.4) Limpiamos el backbuffer
-		lgfx_clearcolorbuffer(1, 1, 1);
+		lgfx_clearcolorbuffer(0.75f, 0.75f, 0.75f);
 
 		//5.5) Renderizamos la escena.
 		glfwPollEvents();
+		lgfx_setcolor(1, 0.5f, 0.5f, 1);
+		lgfx_drawrect(450, 450, fSquareSize, fSquareSize);
 		lgfx_setcolor(0.5f, 1, 0.5f, 1);
-		lgfx_drawrect(450, 450, 100, 100);
+		if (pXMouse != nullptr && pYMouse != nullptr)
+		{
+			lgfx_drawrect(dXMouse-fSquareSize/2, dYMouse-fSquareSize/2, fSquareSize, fSquareSize);		
+		}
 
 		//5.6) Cambiamos el backbuffer por el frontbuffer
 		glfwSwapBuffers(pWindow);
