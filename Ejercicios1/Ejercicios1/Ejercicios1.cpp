@@ -73,6 +73,44 @@ typedef int (*funInt)(int, int);
 //Práctica 2
 int iPrueba = 1;
 
+
+class CMiSingleton
+{
+	private:
+		CMiSingleton() {}
+		~CMiSingleton()
+		{
+
+		}
+	public:
+		static CMiSingleton* GetInstance()
+		{
+			if (s_pPtr == nullptr)
+			{
+				delete s_pPtr;
+				s_pPtr = new CMiSingleton;
+			}
+			return s_pPtr;
+		}
+		static void Destroy()
+		{
+			if (s_pPtr == nullptr)
+			{
+				delete s_pPtr;
+			}
+		}
+		float GetValue() const { return m_fValue; }
+		void SetValue(float fValue) { m_fValue = fValue; }
+	private:
+		static CMiSingleton* s_pPtr;
+		float m_fValue = 0.0f;
+};
+
+CMiSingleton* MiSingleton = nullptr;
+
+
+
+
 int main()
 {
 	//Sumar dos números
@@ -257,11 +295,15 @@ for (int i = 0; i < sizeof(sText); i++)
 	*/
 	//Puntero a función
 	//int(*pResta)(int, int) = &Resta;
-
+	/*
 	//Typedef con función
 	funInt miFuncion = Multiplicacion;
 	int iResultado = (*miFuncion)(8, 2);
 	printf("%d\n", iResultado);
+	*/
+
+	CMiSingleton::GetInstance()->SetValue(1000.f);
+	//std::cout<<CMiSingleton::GetInstance()->GetValue();
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar

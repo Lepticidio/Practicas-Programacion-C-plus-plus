@@ -2,55 +2,59 @@
 #include "file.h"
 #include "stdio.h"
 #include "assert.h"
-namespace file
-{
-	void* OpenFile(const char* _sFileName, const char* _sMode)
+
+	namespace file
 	{
-		assert(_sFileName != nullptr);
-		if (_sFileName != nullptr)
+		int SFile::OpenFile(const char* _sFileName, const char* _sMode)
 		{
-			FILE* pFile(nullptr);
-			fopen_s(&pFile, _sFileName, _sMode);
-			return pFile;
+			assert(_sFileName != nullptr);
+			if (_sFileName != nullptr && m_pFile == nullptr)
+			{
+				FILE* pFile = static_cast<FILE*>(m_pFile);
+				fopen_s(&pFile, _sFileName, _sMode);
+				return 1;
+			}
+			return 0;
 		}
-		return nullptr;
-	}
-	int CloseFile(void* _pFile)
-	{
-		assert(_pFile != nullptr);
-		if (_pFile != nullptr)
+		int SFile::CloseFile()
 		{
-			return fclose(static_cast<FILE*>(_pFile));
+			assert(m_pFile != nullptr);
+			if (m_pFile != nullptr)
+			{
+				return fclose(static_cast<FILE*>(m_pFile));
+				m_pFile = nullptr;
+			}
+			return EOF;
+
 		}
-		return EOF;
 
-	}
-
-	unsigned int ReadFile(void* _pFile, char* _pBuffer, unsigned int _uBufferSize)
-	{
-		assert(_pFile != nullptr);
-		assert(_pBuffer != nullptr);
-		if (_pFile != nullptr && _pBuffer != nullptr)
+		unsigned int SFile::ReadFile(char* _pBuffer, unsigned int _uBufferSize)
 		{
-			return fread(_pBuffer, sizeof(char), _uBufferSize, static_cast<FILE*>(_pFile));
+			assert(m_pFile != nullptr);
+			assert(_pBuffer != nullptr);
+			if (m_pFile != nullptr && _pBuffer != nullptr)
+			{
+				return fread(_pBuffer, sizeof(char), _uBufferSize, static_cast<FILE*>(m_pFile));
+			}
+			return 0;
 		}
-		return 0;
-	}
 
-	unsigned int WriteFile(void* _pFile, const char* _pBuffer, unsigned int _uBufferSize)
-	{
-		assert(_pFile != nullptr);
-		assert(_pBuffer != nullptr);
-		if (_pFile != nullptr && _pBuffer != nullptr)
+		unsigned int SFile::WriteFile(const char* _pBuffer, unsigned int _uBufferSize)
 		{
-			return fwrite(_pBuffer, sizeof(char), _uBufferSize, static_cast<FILE*>(_pFile));
+			assert(m_pFile != nullptr);
+			assert(_pBuffer != nullptr);
+			if (m_pFile != nullptr && _pBuffer != nullptr)
+			{
+				return fwrite(_pBuffer, sizeof(char), _uBufferSize, static_cast<FILE*>(m_pFile));
+			}
+			return 0;
 		}
-		return 0;
-	}
 
 
 
 
 
-}
+	};
+
+
 

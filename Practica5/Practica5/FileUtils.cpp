@@ -5,6 +5,7 @@ namespace file
 {
 	namespace utils
 	{
+		SFile oFile;
 		unsigned int CountStringsInString(const char* _sSearchedString, const char* _sReadedString)
 		{
 			unsigned int uResult = 0;
@@ -43,13 +44,13 @@ namespace file
 			//Tengo que hacer esto para cualquier tamaño de archivo 
 			const unsigned int uBUFFER_SIZE = 300;
 			char sBuffer[uBUFFER_SIZE];
-			void* pFile1 = OpenFile(_sFileName, "r");
+			oFile.OpenFile(_sFileName, "r");
 		
-			if (pFile1 != nullptr)
+			if (oFile.m_pFile != nullptr)
 			{
-				unsigned int uReadBytes = ReadFile(pFile1, sBuffer, uBUFFER_SIZE);
+				unsigned int uReadBytes = oFile.ReadFile(sBuffer, uBUFFER_SIZE);
 				printf("Bytes read: %d\n", uReadBytes);
-				int iClosefileResult = CloseFile(pFile1);
+				int iClosefileResult = oFile.CloseFile();
 				printf("El resultado de cerrar el fichero %s ha sido %d\n", _sFileName, iClosefileResult);
 		
 			}
@@ -126,12 +127,12 @@ namespace file
 			//Tengo que hacer esto para cualquier tamaño de archivo 
 			const unsigned int uBUFFER_SIZE = 100;
 			char sBuffer[uBUFFER_SIZE];
-			void* pFile1 = OpenFile(_sFileName, "r");
+			oFile.OpenFile(_sFileName, "r");
 
-			if (pFile1 != nullptr)
+			if (oFile.m_pFile != nullptr)
 			{
-				unsigned int uReadBytes = ReadFile(pFile1, sBuffer, uBUFFER_SIZE);
-				int iClosefileResult = CloseFile(pFile1);
+				unsigned int uReadBytes = oFile.ReadFile(sBuffer, uBUFFER_SIZE);
+				int iClosefileResult = oFile.CloseFile();
 				printf("El resultado de cerrar el fichero %s ha sido %d\n", _sFileName, iClosefileResult);
 			}
 			return AddIntsInString(sBuffer);

@@ -12,17 +12,18 @@ int main()
 	const unsigned int uBUFFER_SIZE = 100;
 	char sBuffer[uBUFFER_SIZE];
 	const char* sFile1Path = "test.txt";
-	void* pFile1 = OpenFile(sFile1Path, "r");
+	SFile oFile;
+	oFile.OpenFile(sFile1Path, "r");
 	
-	if (pFile1 != nullptr)
+	if (oFile.m_pFile != nullptr)
 	{
-		unsigned int uReadBytes = ReadFile(pFile1, sBuffer, uBUFFER_SIZE);
+		unsigned int uReadBytes = oFile.ReadFile( sBuffer, uBUFFER_SIZE);
 		printf("Se han leído %d bytes del fichero %s\n", uReadBytes, sFile1Path);
 		printf("Buffer:\n");
 		printf("--------------\n");
 		printf("%.*s\n", uReadBytes, sBuffer);
 		printf("--------------\n");
-		int iClosefileResult = CloseFile(pFile1);
+		int iClosefileResult = oFile.CloseFile();
 		printf("El resultado de cerrar el fichero %s ha sido %d\n", sFile1Path, iClosefileResult);
 		
 	}
@@ -34,10 +35,10 @@ int main()
 	const char* pCadena{"Los mejores mamiferos"};
 	char sBuffer2[uBUFFER_SIZE];
 	const char* sFile2Path = "test2.txt";
-	void* pFile2 = OpenFile(sFile2Path, "w");
-	if (pFile1 != nullptr)
+	oFile.OpenFile(sFile2Path, "w");
+	if (oFile.m_pFile != nullptr)
 	{
-		WriteFile(pFile2, pCadena, strlen(pCadena) + 1);
+		oFile.WriteFile(pCadena, strlen(pCadena) + 1);
 		//unsigned int uReadBytes2 = ReadFile(pFile2, sBuffer2, uBUFFER_SIZE);
 		//printf("SE REESCRIBE EL FICHERO\n");
 		//printf("Se han leído %d bytes del fichero %s\n", uReadBytes2, sFile2Path);
@@ -45,7 +46,7 @@ int main()
 		//printf("--------------\n");
 		//printf("%.*s\n", uReadBytes2, sBuffer2);
 		//printf("--------------\n");
-		int iClosefileResult = CloseFile(pFile2);
+		int iClosefileResult = oFile.CloseFile();
 		printf("El resultado de cerrar el fichero %s ha sido %d\n", sFile2Path, iClosefileResult);
 
 
