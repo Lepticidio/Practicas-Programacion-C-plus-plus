@@ -1,7 +1,7 @@
 // Practicas 5, 6 y 7 de Miguel Andújar
 
 #include <iostream>
-#include "file.h"
+#include "File.h"
 #include "FileUtils.h"
 
 using namespace file;
@@ -12,12 +12,12 @@ int main()
 	const unsigned int uBUFFER_SIZE = 100;
 	char sBuffer[uBUFFER_SIZE];
 	const char* sFile1Path = "test.txt";
-	SFile oFile;
-	oFile.OpenFile(sFile1Path, "r");
+	SFileUtils oFile;
+	void* pFile1 = oFile.OpenFile(sFile1Path, "r");
 	
-	if (oFile.m_pFile != nullptr)
+	if (pFile1 != nullptr)
 	{
-		unsigned int uReadBytes = oFile.ReadFile( sBuffer, uBUFFER_SIZE);
+		unsigned int uReadBytes = oFile.ReadFile(sBuffer, uBUFFER_SIZE);
 		printf("Se han leído %d bytes del fichero %s\n", uReadBytes, sFile1Path);
 		printf("Buffer:\n");
 		printf("--------------\n");
@@ -35,17 +35,10 @@ int main()
 	const char* pCadena{"Los mejores mamiferos"};
 	char sBuffer2[uBUFFER_SIZE];
 	const char* sFile2Path = "test2.txt";
-	oFile.OpenFile(sFile2Path, "w");
-	if (oFile.m_pFile != nullptr)
+	void* pFile2 = oFile.OpenFile(sFile2Path, "w");
+	if (pFile1 != nullptr)
 	{
-		oFile.WriteFile(pCadena, strlen(pCadena) + 1);
-		//unsigned int uReadBytes2 = ReadFile(pFile2, sBuffer2, uBUFFER_SIZE);
-		//printf("SE REESCRIBE EL FICHERO\n");
-		//printf("Se han leído %d bytes del fichero %s\n", uReadBytes2, sFile2Path);
-		//printf("Buffer:\n");
-		//printf("--------------\n");
-		//printf("%.*s\n", uReadBytes2, sBuffer2);
-		//printf("--------------\n");
+		oFile.WriteFile( pCadena, strlen(pCadena) + 1);
 		int iClosefileResult = oFile.CloseFile();
 		printf("El resultado de cerrar el fichero %s ha sido %d\n", sFile2Path, iClosefileResult);
 
@@ -57,14 +50,14 @@ int main()
 	}
 	const char* pCadenaABuscar{ "hoholaperritohoholahoholahohoholaperrito" };
 	const char* pCadenaBuscada{ "hohola" };
-	unsigned int uNumberStrings = CountStringsInString(pCadenaBuscada, pCadenaABuscar);
+	unsigned int uNumberStrings = oFile.CountStringsInString(pCadenaBuscada, pCadenaABuscar);
 	printf("Hay %d cadenas\n", uNumberStrings);
-	unsigned int uStringsInFile = CountStringsInFile("test3.txt", pCadenaBuscada);
+	unsigned int uStringsInFile = oFile.CountStringsInFile("test3.txt", pCadenaBuscada);
 	printf("Hay %d cadenas en el archivo\n", uStringsInFile);
 	const char* pCadenaABuscarInts{ "11hola 8 perrito1gatito 100" };
-	unsigned int uSumIntsInChain = AddIntsInString(pCadenaABuscarInts);
+	unsigned int uSumIntsInChain = oFile.AddIntsInString(pCadenaABuscarInts);
 	printf("La suma de ints en la cadena %s es %d\n", pCadenaABuscarInts, uSumIntsInChain);
-	unsigned int uSumIntsFile = SumIntsInFile("test4.txt");
+	unsigned int uSumIntsFile = oFile.SumIntsInFile("test4.txt");
 	printf("La suma de ints en el archivo %s es %d\n", "test4.txt", uSumIntsFile);
 	printf("\n\n\n\n");
 

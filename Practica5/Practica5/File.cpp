@@ -2,59 +2,55 @@
 #include "file.h"
 #include "stdio.h"
 #include "assert.h"
-
-	namespace file
+namespace file
+{
+	void* SFile::OpenFile(const char* _sFileName, const char* _sMode)
 	{
-		int SFile::OpenFile(const char* _sFileName, const char* _sMode)
+		assert(_sFileName != nullptr);
+		if (_sFileName != nullptr)
 		{
-			assert(_sFileName != nullptr);
-			if (_sFileName != nullptr && m_pFile == nullptr)
-			{
-				FILE* pFile = static_cast<FILE*>(m_pFile);
-				fopen_s(&pFile, _sFileName, _sMode);
-				return 1;
-			}
-			return 0;
+			
+			fopen_s(&pFile, _sFileName, _sMode);
+			return pFile;
 		}
-		int SFile::CloseFile()
+		return nullptr;
+	}
+	int SFile::CloseFile()
+	{
+		assert(pFile != nullptr);
+		if (pFile != nullptr)
 		{
-			assert(m_pFile != nullptr);
-			if (m_pFile != nullptr)
-			{
-				return fclose(static_cast<FILE*>(m_pFile));
-				m_pFile = nullptr;
-			}
-			return EOF;
-
+			return fclose(pFile);
 		}
+		return EOF;
 
-		unsigned int SFile::ReadFile(char* _pBuffer, unsigned int _uBufferSize)
+	}
+
+	unsigned int SFile::ReadFile(char* _pBuffer, unsigned int _uBufferSize)
+	{
+		assert(pFile != nullptr);
+		assert(_pBuffer != nullptr);
+		if (pFile != nullptr && _pBuffer != nullptr)
 		{
-			assert(m_pFile != nullptr);
-			assert(_pBuffer != nullptr);
-			if (m_pFile != nullptr && _pBuffer != nullptr)
-			{
-				return fread(_pBuffer, sizeof(char), _uBufferSize, static_cast<FILE*>(m_pFile));
-			}
-			return 0;
+			return fread(_pBuffer, sizeof(char), _uBufferSize, pFile);
 		}
+		return 0;
+	}
 
-		unsigned int SFile::WriteFile(const char* _pBuffer, unsigned int _uBufferSize)
+	unsigned int SFile::WriteFile(const char* _pBuffer, unsigned int _uBufferSize)
+	{
+		assert(pFile != nullptr);
+		assert(_pBuffer != nullptr);
+		if (pFile != nullptr && _pBuffer != nullptr)
 		{
-			assert(m_pFile != nullptr);
-			assert(_pBuffer != nullptr);
-			if (m_pFile != nullptr && _pBuffer != nullptr)
-			{
-				return fwrite(_pBuffer, sizeof(char), _uBufferSize, static_cast<FILE*>(m_pFile));
-			}
-			return 0;
+			return fwrite(_pBuffer, sizeof(char), _uBufferSize, pFile);
 		}
+		return 0;
+	}
 
 
 
 
 
-	};
-
-
+}
 

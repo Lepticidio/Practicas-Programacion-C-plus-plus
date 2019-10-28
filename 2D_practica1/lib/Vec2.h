@@ -32,5 +32,6 @@ public:
 	float Dot(Vec2 const& _v2);
 	float Angle(const Vec2& other) const;
 	float Distance(const Vec2& other) const;
+	Vec2 Rotate(const float& degrees) const;
 
 };

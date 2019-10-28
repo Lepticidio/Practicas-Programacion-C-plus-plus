@@ -55,6 +55,8 @@ void CheckVec2Methods()
 	std::cout << "Angle of " << v2 << " and " << v4 << " = " << v2.Angle(v4) << std::endl;
 	std::cout << "Angle of " << v2 << " and " << -v2 << " = " << v2.Angle(-v2) << std::endl;
 	std::cout << "Distance of " << v2 << " and " << v5 << " = " << v2.Distance(v5) << std::endl;
+	std::cout << "Rotate " << v2 << " " << 90 << " degrees = " << v2.Rotate(90) << std::endl;
+	std::cout << "Rotate " << v2 << " " << 180 << " degrees = " << v2.Rotate(180) << std::endl;
 }
 
 
@@ -62,7 +64,7 @@ void CheckVec2Methods()
 int main() {
 	
 	// Uncomment below line to check in console that all Vec2 methods work properly
-	//CheckVec2Methods();
+	CheckVec2Methods();
 
 	//1) Iniciamos la librería GFWX
 	glfwInit();
@@ -80,6 +82,15 @@ int main() {
 	double previousTime = glfwGetTime();
 	double deltaTime = 0;
 	float fSquareSize = 100;
+	float fCircleSize = 100;
+	float fDistance = 150;
+	double dXMouse = 0;
+	double dYMouse = 0;
+	double* pXMouse = &dXMouse;
+	double* pYMouse = &dYMouse;
+	Vec2 vPosCursor;
+	Vec2 vDirectionCircle (fDistance, 0);
+	Vec2 vPosCircle;
 
 	//5) Bucle principal
 	while (!glfwWindowShouldClose(pWindow) && bOpen)
@@ -93,30 +104,36 @@ int main() {
 		{
 			bOpen = false;
 		}
-		double dXMouse = 0;
-		double dYMouse = 0;
-		double* pXMouse = &dXMouse;
-		double* pYMouse = &dYMouse;
 		glfwGetCursorPos(pWindow, pXMouse,	pYMouse);
+
 		//5.3) Actualizamos lógica de juego
+		vPosCursor.x = (float)dXMouse;
+		vPosCursor.y = (float)dYMouse;
+
+		vDirectionCircle = vDirectionCircle.Rotate(32.f*(float)deltaTime);
+		vPosCircle = vPosCursor + vDirectionCircle;
+
+		std::cout <<" deltaTime " << deltaTime << " posCursor " << vPosCursor << " dirCircle " << vDirectionCircle << " poscircle " << vPosCircle << std::endl;
 
 		//5.4) Limpiamos el backbuffer
-		lgfx_clearcolorbuffer(0.75f, 0.75f, 0.75f);
+		lgfx_clearcolorbuffer(0.5f, 0.5f, 0.5f);
 
 		//5.5) Renderizamos la escena.
-		glfwPollEvents();
-		lgfx_setcolor(1, 0.5f, 0.5f, 1);
+		lgfx_setcolor(0.9f, 0.6f, 0.5f, 1);
 		lgfx_drawrect(450, 450, fSquareSize, fSquareSize);
-		lgfx_setcolor(0.5f, 1, 0.5f, 1);
 		if (pXMouse != nullptr && pYMouse != nullptr)
 		{
-			lgfx_drawrect(dXMouse-fSquareSize/2, dYMouse-fSquareSize/2, fSquareSize, fSquareSize);		
+			lgfx_setcolor(0.5f, 0.9f, 0.6f, 1);
+			lgfx_drawrect(dXMouse-fSquareSize/2, dYMouse-fSquareSize/2, fSquareSize, fSquareSize);
+			lgfx_setcolor(0.6f, 0.5f, 0.9f, 1);
+			lgfx_drawoval(vPosCircle.x - fCircleSize / 2, vPosCircle.y - fCircleSize / 2, fCircleSize, fCircleSize);
 		}
 
 		//5.6) Cambiamos el backbuffer por el frontbuffer
 		glfwSwapBuffers(pWindow);
 
 		//5.7) Procesamos eventos
+		glfwPollEvents();
 
 	}
 	//6) Liberamos los recursos.

@@ -5,7 +5,11 @@
 float ToDegrees(float radians)
 {
 	return radians * 57.2958f;
-}	
+}
+float ToRadians(float degrees)
+{
+	return degrees / 57.2958f;
+}
 Vec2::Vec2(float _x, float _y)
 	{
 		x = _x;
@@ -125,4 +129,12 @@ float Vec2::Angle(const Vec2& other) const
 float Vec2::Distance(const Vec2& other) const
 {
 	return Vec2(x - other.x, y - other.y).Length();
+}
+Vec2 Vec2::Rotate(const float& degrees) const
+{
+	Vec2 res;
+	float fRadians = ToRadians(degrees);
+	res.x = x * cos((double)fRadians) - y * sin((double)fRadians);
+	res.y = x * sin((double)fRadians) + y * cos((double)fRadians);
+	return res;
 }
