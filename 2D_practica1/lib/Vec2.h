@@ -10,9 +10,9 @@ public:
 	Vec2(float _x, float _y);
 	Vec2();
 	Vec2 operator-();
-	Vec2 operator = (float const& obj);
+	void operator = (float const& obj);
 
-	Vec2 operator = (Vec2 const& obj);
+	void operator = (Vec2 const& obj);
 	Vec2 operator + (float const& obj);
 
 	Vec2 operator + (Vec2 const& obj);
@@ -33,5 +33,6 @@ public:
 	float Angle(const Vec2& other) const;
 	float Distance(const Vec2& other) const;
 	Vec2 Rotate(const float& degrees) const;
+	Vec2 Rotate(const double& degrees) const;
 
 };

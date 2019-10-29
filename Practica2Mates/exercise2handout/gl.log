@@ -8781,3 +8781,45 @@ created programme 6. attaching shaders 4 and 5...
 ERROR: could not link shader programme GL index 6
 program info log for GL index 6:
 Attached vertex shader is not compiled.
+starting GLFW 3.0.4 Win32 WGL VisualC LoadLibrary(winmm)
+renderer: Intel(R) HD Graphics 530
+version: 4.4.0 - Build 21.20.16.4542
+creating shader from test_vs.glsl...
+shader compiled. index 1
+creating shader from test_fs.glsl...
+shader compiled. index 2
+created programme 3. attaching shaders 1 and 2...
+program 3 GL_VALIDATE_STATUS = GL_TRUE
+creating shader from lines_vs.glsl...
+ERROR: GL shader index 4 did not compile
+shader info log for GL index 4:
+ERROR: 0:7: ',' : syntax error syntax error
+
+
+creating shader from lines_fs.glsl...
+shader compiled. index 5
+created programme 6. attaching shaders 4 and 5...
+ERROR: could not link shader programme GL index 6
+program info log for GL index 6:
+Attached vertex shader is not compiled.
+starting GLFW 3.0.4 Win32 WGL VisualC LoadLibrary(winmm)
+renderer: Intel(R) HD Graphics 530
+version: 4.4.0 - Build 21.20.16.4542
+creating shader from test_vs.glsl...
+shader compiled. index 1
+creating shader from test_fs.glsl...
+shader compiled. index 2
+created programme 3. attaching shaders 1 and 2...
+program 3 GL_VALIDATE_STATUS = GL_TRUE
+creating shader from lines_vs.glsl...
+ERROR: GL shader index 4 did not compile
+shader info log for GL index 4:
+ERROR: 0:7: ',' : syntax error syntax error
+
+
+creating shader from lines_fs.glsl...
+shader compiled. index 5
+created programme 6. attaching shaders 4 and 5...
+ERROR: could not link shader programme GL index 6
+program info log for GL index 6:
+Attached vertex shader is not compiled.

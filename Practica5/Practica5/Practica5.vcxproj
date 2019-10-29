@@ -154,10 +154,12 @@
     <ClCompile Include="Practica5.cpp" />
     <ClCompile Include="File.cpp" />
     <ClCompile Include="FileUtils.cpp" />
+    <ClCompile Include="TList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="File.h" />
     <ClInclude Include="FileUtils.h" />
+    <ClInclude Include="TList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

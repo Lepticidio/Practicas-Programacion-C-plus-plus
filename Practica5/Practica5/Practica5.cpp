@@ -3,12 +3,13 @@
 #include <iostream>
 #include "File.h"
 #include "FileUtils.h"
+#include "TList.h"
 
 using namespace file;
 using namespace utils;
 
 int main()
-{	
+{	/*
 	const unsigned int uBUFFER_SIZE = 100;
 	char sBuffer[uBUFFER_SIZE];
 	const char* sFile1Path = "test.txt";
@@ -60,6 +61,20 @@ int main()
 	unsigned int uSumIntsFile = oFile.SumIntsInFile("test4.txt");
 	printf("La suma de ints en el archivo %s es %d\n", "test4.txt", uSumIntsFile);
 	printf("\n\n\n\n");
+	*/
+
+	TList tList;
+
+//	printf("TList: (%s) Size: %d", tList.Get(), tList.Size());
+	tList.Push("triasico");
+	printf("TList: (%s) Size: %d", tList.Get(), tList.Size());
+	tList.Push("jurasico");
+	printf("TList: (%s) Size: %d", tList.Get(), tList.Size());
+	tList.Push("cretacico");
+	printf("TList: (%s) Size: %d", tList.Get(), tList.Size());
+
+
+
 
 }
 

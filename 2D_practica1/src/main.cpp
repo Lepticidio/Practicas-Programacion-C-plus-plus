@@ -1,13 +1,10 @@
 
 #define LITE_GFX_IMPLEMENTATION
-
 #include <litegfx.h>
 #include <glfw3.h>
-#include <iostream>
 #include <Vec2.h>
 
 using namespace std;
-
 
 Vec2 abs(Vec2 const& obj)
 {
@@ -55,8 +52,8 @@ void CheckVec2Methods()
 	std::cout << "Angle of " << v2 << " and " << v4 << " = " << v2.Angle(v4) << std::endl;
 	std::cout << "Angle of " << v2 << " and " << -v2 << " = " << v2.Angle(-v2) << std::endl;
 	std::cout << "Distance of " << v2 << " and " << v5 << " = " << v2.Distance(v5) << std::endl;
-	std::cout << "Rotate " << v2 << " " << 90 << " degrees = " << v2.Rotate(90) << std::endl;
-	std::cout << "Rotate " << v2 << " " << 180 << " degrees = " << v2.Rotate(180) << std::endl;
+	std::cout << "Rotate " << v2 << " " << 90 << " degrees = " << v2.Rotate(90.f) << std::endl;
+	std::cout << "Rotate " << v2 << " " << 180 << " degrees = " << v2.Rotate(180.f) << std::endl;
 }
 
 
@@ -66,21 +63,12 @@ int main() {
 	// Uncomment below line to check in console that all Vec2 methods work properly
 	CheckVec2Methods();
 
-	//1) Iniciamos la librería GFWX
-	glfwInit();
-
-	//2) Creamos una ventana
-	GLFWwindow* pWindow = glfwCreateWindow(1000, 1000, "", nullptr, nullptr);
-
-	//3) Asociamos el contexto de OpenGL a la ventana
-	glfwMakeContextCurrent(pWindow);
-
-	//4) Iniciamos la librería LiteGFX
-	lgfx_setup2d(1000, 1000);
 
 	bool bOpen = true;
 	double previousTime = glfwGetTime();
 	double deltaTime = 0;
+	int iWidth = 1000;
+	int iHeight = 1000;
 	float fSquareSize = 100;
 	float fCircleSize = 100;
 	float fDistance = 150;
@@ -88,9 +76,23 @@ int main() {
 	double dYMouse = 0;
 	double* pXMouse = &dXMouse;
 	double* pYMouse = &dYMouse;
+	Vec2 vDown(0,-1);
 	Vec2 vPosCursor;
 	Vec2 vDirectionCircle (fDistance, 0);
 	Vec2 vPosCircle;
+	Vec2 vPosCenter(iWidth/2, iHeight/2);
+
+	//1) Iniciamos la librería GFWX
+	glfwInit();
+
+	//2) Creamos una ventana
+	GLFWwindow* pWindow = glfwCreateWindow(iWidth, iHeight, "", nullptr, nullptr);
+
+	//3) Asociamos el contexto de OpenGL a la ventana
+	glfwMakeContextCurrent(pWindow);
+
+	//4) Iniciamos la librería LiteGFX
+	lgfx_setup2d(1000, 1000);
 
 	//5) Bucle principal
 	while (!glfwWindowShouldClose(pWindow) && bOpen)
@@ -110,10 +112,27 @@ int main() {
 		vPosCursor.x = (float)dXMouse;
 		vPosCursor.y = (float)dYMouse;
 
-		vDirectionCircle = vDirectionCircle.Rotate(32.f*(float)deltaTime);
+		vDirectionCircle = vDirectionCircle.Rotate(32*deltaTime);
 		vPosCircle = vPosCursor + vDirectionCircle;
 
-		std::cout <<" deltaTime " << deltaTime << " posCursor " << vPosCursor << " dirCircle " << vDirectionCircle << " poscircle " << vPosCircle << std::endl;
+
+		char* sFirst = "Distance: ";
+		char* sSecond= " Angle: ";
+		char sDistance[64];
+		snprintf(sDistance, sizeof sDistance, "%f", vPosCenter.Distance(vPosCursor));
+		char sAngle[64];
+		snprintf(sAngle, sizeof sAngle, "%f", vDown.Angle(vDirectionCircle));
+		int iSizeString = strlen(sFirst) + strlen(sDistance) + strlen(sSecond) + strlen(sAngle) + 1;
+		char* sTitle = new char[iSizeString];
+		strcpy_s(sTitle, iSizeString, sFirst);
+		strcat_s(sTitle, iSizeString, sDistance);
+		strcat_s(sTitle, iSizeString, sSecond);
+		strcat_s(sTitle, iSizeString, sAngle);
+
+
+		glfwSetWindowTitle(pWindow, sTitle);
+
+		delete sTitle; //delete memory ocupied by three to avoid leak.
 
 		//5.4) Limpiamos el backbuffer
 		lgfx_clearcolorbuffer(0.5f, 0.5f, 0.5f);

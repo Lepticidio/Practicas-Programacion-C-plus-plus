@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include <Vec2.h>
-
 float ToDegrees(float radians)
 {
 	return radians * 57.2958f;
@@ -9,6 +8,10 @@ float ToDegrees(float radians)
 float ToRadians(float degrees)
 {
 	return degrees / 57.2958f;
+}
+double ToRadians(double degrees)
+{
+	return degrees / 57.2958;
 }
 Vec2::Vec2(float _x, float _y)
 	{
@@ -27,20 +30,17 @@ Vec2 Vec2:: operator-()
 		res.y = -y;
 		return res;
 	}
-Vec2 Vec2:: operator = (float const& obj)
+void Vec2:: operator = (float const& obj)
 	{
-		Vec2 res;
-		res.x = x;
-		res.y = y;
-		return res;
+		
+		x = obj;
+		y = obj;
 	}
 
-Vec2 Vec2:: operator = (Vec2 const& obj)
+void Vec2:: operator = (Vec2 const& obj)
 	{
-		Vec2 res;
-		res.x = obj.x;
-		res.y = obj.y;
-		return res;
+		x = obj.x;
+		y = obj.y;
 	}
 Vec2 Vec2:: operator + (float const& obj)
 	{
@@ -138,3 +138,13 @@ Vec2 Vec2::Rotate(const float& degrees) const
 	res.y = x * sin((double)fRadians) + y * cos((double)fRadians);
 	return res;
 }
+Vec2 Vec2::Rotate(const double& degrees) const
+{
+	Vec2 res;
+	double dRadians = ToRadians(degrees);
+	res.x = x * cos(dRadians) - y * sin(dRadians);
+	res.y = x * sin(dRadians) + y * cos(dRadians);
+	return res;
+}
+
+
