@@ -7,4 +7,20 @@ D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(150,44): warning C424
 D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(150,35): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
 D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(153,45): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
 D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(153,36): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(156,103): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(156,90): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(156,72): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(156,25): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(157,111): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(157,99): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(157,82): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(157,62): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(158,101): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(158,89): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(158,43): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(158,25): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(159,115): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(159,102): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(159,82): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica2\src\main.cpp(159,25): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
   programacion2d.vcxproj -> D:\Microsoft Visual Studio\repos\2D_practica2\project\Debug\programacion2d.exe

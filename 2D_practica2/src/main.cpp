@@ -138,7 +138,7 @@ int main()
 		}
 
 		//5.4) Limpiamos el backbuffer
-		lgfx_clearcolorbuffer(0.5f, 0.5f, 0.5f);
+		lgfx_clearcolorbuffer(1,1,1);
 
 		//5.5) Renderizamos la escena.
 
@@ -151,6 +151,13 @@ int main()
 		DrawTileable(pTextureGrille);
 		lgfx_setblend(BLEND_MUL);
 		ltex_drawrotsized(pTextureLight, dXMouse, dYMouse, 0, 0.5f, 0.5f, fFireScale*textureLight.width, fFireScale*textureLight.height, 0, 0, 1, 1);
+		lgfx_setblend(BLEND_SOLID);
+		lgfx_setcolor(0, 0, 0, 1);
+		lgfx_drawrect(dXMouse + fFireScale * textureLight.width / 2, dYMouse - iHeight, iWidth * 2, iHeight * 2);
+		lgfx_drawrect(dXMouse - fFireScale * textureLight.width / 2- iWidth*2, dYMouse - iHeight, iWidth*2, iHeight * 2);
+		lgfx_drawrect(dXMouse - iWidth, dYMouse + fFireScale * textureLight.height / 2, iWidth*2, iHeight * 2);
+		lgfx_drawrect(dXMouse - iWidth, dYMouse - fFireScale * textureLight.height / 2 - iHeight*2, iWidth * 2, iHeight * 2);
+		lgfx_setcolor(1, 1, 1, 1);
 
 		//5.6) Cambiamos el backbuffer por el frontbuffer
 		glfwSwapBuffers(pWindow);
