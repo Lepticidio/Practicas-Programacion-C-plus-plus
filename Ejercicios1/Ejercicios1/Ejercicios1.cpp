@@ -74,6 +74,13 @@ typedef int (*funInt)(int, int);
 int iPrueba = 1;
 
 
+
+class CParent
+{
+	CParent() { printf("Creando CParent \n"); }
+	CParent() { printf("Destruyendo CParent \n"); }
+};
+
 class CMiSingleton
 {
 	private:

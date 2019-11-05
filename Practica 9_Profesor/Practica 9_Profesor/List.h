@@ -1,0 +1,28 @@
+#pragma once
+
+class TListNode
+{
+public:
+	TListNode(const char* _sValue);
+	const char* m_sValue;
+	TListNode* m_pNext;
+};
+class TList
+{
+public:
+	TList();
+	~TList();
+
+	int Size();
+	int Push(const char* _sValue);
+	const char* First();
+	const char* Next();
+	const char* Pop();
+	void Reset();
+
+private:
+	TListNode* m_pFirst = nullptr;
+	TListNode* m_pCurrent = nullptr;
+	unsigned int m_uSize = 0;
+};
+
