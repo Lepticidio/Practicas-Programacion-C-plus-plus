@@ -260,12 +260,12 @@ struct Exercise2
 
 		grid.get_shader_uniforms(lines_shader_index);
 		grid.set_shader_uniforms(lines_shader_index, gridMatrix);
-		grid.render(lines_shader_index);
+		
 
 		axis.get_shader_uniforms(lines_shader_index);
 		axis.set_shader_uniforms(lines_shader_index, sceneRoot.worldMatrix);
 
-		axis.render(lines_shader_index);
+		
 
 		glUseProgram(0);
 

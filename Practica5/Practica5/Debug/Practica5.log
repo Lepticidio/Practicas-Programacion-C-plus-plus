@@ -1,1 +1,7 @@
-﻿  Practica5.vcxproj -> D:\Microsoft Visual Studio\repos\Practica5\Debug\Practica5.exe
+﻿  Practica5.cpp
+  TList.cpp
+D:\Microsoft Visual Studio\repos\Practica5\Practica5\TList.cpp(12,21): warning C4018: '<': no coinciden signed/unsigned
+D:\Microsoft Visual Studio\repos\Practica5\Practica5\TList.cpp(19,20): warning C4018: '<': no coinciden signed/unsigned
+  Generando código...
+D:\Microsoft Visual Studio\repos\Practica5\Practica5\TList.cpp(24,20): warning C4018: '<': no coinciden signed/unsigned
+  Practica5.vcxproj -> D:\Microsoft Visual Studio\repos\Practica5\Debug\Practica5.exe
