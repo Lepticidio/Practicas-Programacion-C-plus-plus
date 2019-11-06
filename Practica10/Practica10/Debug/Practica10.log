@@ -1,0 +1,9 @@
+﻿  FileUtils.cpp
+D:\Microsoft Visual Studio\repos\Practica10\Practica10\FileUtils.cpp(13,22): warning C4018: '<': no coinciden signed/unsigned
+D:\Microsoft Visual Studio\repos\Practica10\Practica10\FileUtils.cpp(16,23): warning C4018: '<': no coinciden signed/unsigned
+D:\Microsoft Visual Studio\repos\Practica10\Practica10\FileUtils.cpp(18,18): warning C4018: '<': no coinciden signed/unsigned
+D:\Microsoft Visual Studio\repos\Practica10\Practica10\FileUtils.cpp(94,22): warning C4018: '<': no coinciden signed/unsigned
+D:\Microsoft Visual Studio\repos\Practica10\Practica10\FileUtils.cpp(148,22): warning C4018: '<': no coinciden signed/unsigned
+D:\Microsoft Visual Studio\repos\Practica10\Practica10\FileUtils.cpp(169,25): warning C4018: '<': no coinciden signed/unsigned
+D:\Microsoft Visual Studio\repos\Practica10\Practica10\FileUtils.cpp(185,23): warning C4018: '<': no coinciden signed/unsigned
+  Practica10.vcxproj -> D:\Microsoft Visual Studio\repos\Practica10\Debug\Practica10.exe
