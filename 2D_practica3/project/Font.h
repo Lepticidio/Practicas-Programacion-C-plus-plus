@@ -1,7 +1,9 @@
 #pragma once
-#include <Vec2.h>
-#include <stb_truetype.h>
+#include <iostream>
+#include <glfw3.h>
 #include <litegfx.h>
+#include <stb_truetype.h>
+#include <Vec2.h>
 class Font
 {
 	const float height;

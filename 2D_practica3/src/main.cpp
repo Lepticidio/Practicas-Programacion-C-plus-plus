@@ -2,11 +2,6 @@
 #define LITE_GFX_IMPLEMENTATION
 #define STB_TRUETYPE_IMPLEMENTATION
 
-#include <litegfx.h>
-#include <glfw3.h>
-#include <stb_truetype.h>
-#include <iostream>
-#include "..\project\Font.h"
 #include "..\project\Text.h"
 
 using namespace std;

@@ -1,0 +1,38 @@
+﻿  main.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': redefinición de macro
+D:\Microsoft Visual Studio\repos\2D_practica3\lib\glfw3.h(98): message : vea la definición anterior de 'APIENTRY'
+D:\Microsoft Visual Studio\repos\2D_practica3\src\main.cpp(75,42): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica3\src\main.cpp(75,34): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica3\src\main.cpp(75,144): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica3\src\main.cpp(75,124): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica3\src\main.cpp(75,103): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica3\src\main.cpp(75,82): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Font.cpp
+D:\Microsoft Visual Studio\repos\2D_practica3\src\main.cpp(94,66): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica3\project\Font.cpp(14,64): warning C4244: 'inicializando': conversión de 'float' a 'size_t'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica3\project\Font.cpp(16,108): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica3\project\Font.cpp(16,92): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica3\project\Font.cpp(23,83): warning C4244: 'inicializando': conversión de 'float' a 'size_t'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica3\project\Font.cpp(25,10): warning C4477: 'printf' : la cadena de formato '%d' requiere un argumento de tipo 'int', pero el argumento variádico 1 tiene el tipo 'size_t'
+D:\Microsoft Visual Studio\repos\2D_practica3\project\Font.cpp(25,10): message : considere el uso de ' %zd' en la cadena de formato
+D:\Microsoft Visual Studio\repos\2D_practica3\project\Font.cpp(40,58): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica3\project\Font.cpp(40,42): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica3\project\Font.cpp(76,82): warning C4244: 'argumento': conversión de 'const int' a 'float'; posible pérdida de datos
+  Text.cpp
+  Generando código...
+D:\Microsoft Visual Studio\repos\2D_practica3\project\Font.cpp(76,67): warning C4244: 'argumento': conversión de 'const int' a 'float'; posible pérdida de datos
+D:\Microsoft Visual Studio\repos\2D_practica3\project\Font.cpp(45): warning C4172: devolución de dirección de la variable local o temporal: font
+main.obj : error LNK2019: símbolo externo glfwInit sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo glfwTerminate sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo glfwCreateWindow sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo glfwWindowShouldClose sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo glfwPollEvents sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo glfwGetKey sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo glfwGetCursorPos sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo glfwGetTime sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo glfwMakeContextCurrent sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo glfwSwapBuffers sin resolver al que se hace referencia en la función main
+main.obj : error LNK2019: símbolo externo "public: __cdecl Vec2::Vec2(float,float)" (??0Vec2@@QEAA@MM@Z) sin resolver al que se hace referencia en la función main
+Font.obj : error LNK2001: símbolo externo "public: __cdecl Vec2::Vec2(float,float)" (??0Vec2@@QEAA@MM@Z) sin resolver
+..\lib\glfw3.lib : warning LNK4272: el tipo de máquina de biblioteca 'x86' está en conflicto con el tipo de máquina de destino 'x64'
+D:\Microsoft Visual Studio\repos\2D_practica3\project\x64\Debug\programacion2d.exe : fatal error LNK1120: 11 externos sin resolver

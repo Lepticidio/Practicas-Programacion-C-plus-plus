@@ -1,0 +1,11 @@
+﻿  core.cpp
+  example.cpp
+  font.cpp
+  lodepng.cpp
+  stdafx.cpp
+  sys_win.cpp
+  Generando código
+  Previous IPDB not found, fall back to full compilation.
+  All 271 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Generación de código finalizada
+  swalib_example.vcxproj -> D:\Descargas\1_Skeleton\1_Skeleton\swalib-master\swalib_example\Release\swalib_example.exe

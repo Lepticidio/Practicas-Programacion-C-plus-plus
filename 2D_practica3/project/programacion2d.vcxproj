@@ -22,9 +22,11 @@
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="Text.cpp" />
+    <ClCompile Include="Vec2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\litegfx.h" />
+    <ClInclude Include="..\lib\Vec2.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="Text.h" />
   </ItemGroup>

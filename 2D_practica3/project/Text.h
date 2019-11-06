@@ -1,6 +1,5 @@
 #pragma once
-#include <Vec2.h>
-#include "..\project\Font.h"
+#include "Font.h"
 class Text
 {
 	public:

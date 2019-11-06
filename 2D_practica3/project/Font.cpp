@@ -1,7 +1,4 @@
 #include "Font.h"
-#include <vector>
-#include <stb_truetype.h>
-#include <litegfx.h>
 
 
 Font* Font::load(const char* filename, float height)
