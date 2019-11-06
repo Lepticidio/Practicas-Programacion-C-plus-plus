@@ -1,7 +1,11 @@
 ﻿  Practica5.cpp
-  TList.cpp
-D:\Microsoft Visual Studio\repos\Practica5\Practica5\TList.cpp(12,21): warning C4018: '<': no coinciden signed/unsigned
-D:\Microsoft Visual Studio\repos\Practica5\Practica5\TList.cpp(19,20): warning C4018: '<': no coinciden signed/unsigned
+  File.cpp
+  FileUtils.cpp
+D:\Descargas\Prac5\Practica5\Practica5.cpp(36,7): warning C4101: 'sBuffer2': variable local sin referencia
+D:\Descargas\Prac5\Practica5\FileUtils.cpp(12,23): warning C4018: '<': no coinciden signed/unsigned
+D:\Descargas\Prac5\Practica5\FileUtils.cpp(15,24): warning C4018: '<': no coinciden signed/unsigned
+D:\Descargas\Prac5\Practica5\FileUtils.cpp(17,19): warning C4018: '<': no coinciden signed/unsigned
   Generando código...
-D:\Microsoft Visual Studio\repos\Practica5\Practica5\TList.cpp(24,20): warning C4018: '<': no coinciden signed/unsigned
-  Practica5.vcxproj -> D:\Microsoft Visual Studio\repos\Practica5\Debug\Practica5.exe
+D:\Descargas\Prac5\Practica5\FileUtils.cpp(93,23): warning C4018: '<': no coinciden signed/unsigned
+  LINK : no se encontró D:\Descargas\Prac5\Debug\Practica5.exe o no lo generó el último vínculo incremental; ejecutando vínculo completo
+  Practica5.vcxproj -> D:\Descargas\Prac5\Debug\Practica5.exe
