@@ -27,18 +27,20 @@ TList::TList(const TList& _rOther)
 {
 	if (_rOther.m_pFirst)
 	{
-		TListNode firstNode(_rOther.m_pFirst->m_sValue);
-		m_pFirst = &firstNode;
-		m_pCurrent = &firstNode;
+		TListNode* firstNode = new TListNode(_rOther.m_pFirst->m_sValue);
+		m_pFirst = firstNode;
+		m_pCurrent = firstNode;
 		printf("Copied value: %s\n", m_pFirst->m_sValue);
 		TListNode* pTemp = _rOther.m_pFirst->m_pNext;
 		unsigned int uIndex(0);
+		m_uSize++;
 		while (pTemp != nullptr)
 		{
-			TListNode oNewNode(pTemp->m_sValue);
-			m_pCurrent->m_pNext = &oNewNode;
+			TListNode* oNewNode = new TListNode(pTemp->m_sValue);
+			m_pCurrent->m_pNext = oNewNode;
 			m_pCurrent = m_pCurrent->m_pNext;
 			pTemp = pTemp->m_pNext;
+			m_uSize++;
 			printf("Copied value: %s\n", m_pCurrent->m_sValue);
 		}
 	}

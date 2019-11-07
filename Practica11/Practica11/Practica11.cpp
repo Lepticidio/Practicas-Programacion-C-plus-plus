@@ -26,19 +26,20 @@ int main()
 	unsigned int uIndex(0);
 	while (sCurrentValue != nullptr)
 	{
-		printf("%d ->  %s \n", uIndex, sCurrentValue);
+		printf("original tList %d ->  %s \n", uIndex, sCurrentValue);
 		uIndex++;
 		sCurrentValue = tList.Next();
 	}
 	uIndex = 0;
+	sCurrentValue = tList2.First();
 	while (sCurrentValue != nullptr)
 	{
-		printf("%d ->  %s \n", uIndex, sCurrentValue);
+		printf("tList2 %d ->  %s \n", uIndex, sCurrentValue);
 		uIndex++;
 		sCurrentValue = tList2.Next();
 	}
 	printf("tList: Antes del reset size = %d (debería ser 4)\n", tList.Size());
-	printf("tList2: Antes del reset size = %d (debería ser 4)\n", tList2.Size());
+	printf("tList2: Antes del reset size = %d (debería ser 5)\n", tList2.Size());
 	tList.Reset();
 	printf("Tras reset size = %d (debería ser 0)\n", tList.Size());
 
