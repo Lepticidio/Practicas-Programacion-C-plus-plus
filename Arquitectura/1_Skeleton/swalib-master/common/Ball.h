@@ -1,5 +1,7 @@
 #pragma once
-#include "Render.h"
+#include "stdafx.h"
+#include "sys.h"
+#include "core.h"
 
 class Ball
 {
@@ -12,6 +14,5 @@ public:
 	GLuint gfx;	// OpenGL for id. for visualization purposes. 
 	float  radius;	// Radius.
 	void logic();
-	void render();
 };
 

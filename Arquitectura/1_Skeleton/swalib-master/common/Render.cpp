@@ -1,6 +1,5 @@
 #include "Render.h"
-
-void Render::Initialize()
+void Render::Initialize(const Logic& _logic)
 {
 	texbkg = new GLuint;
 	texsmallball = new GLuint;
@@ -20,6 +19,11 @@ void Render::Initialize()
 	// NOTA: Mirar diferencias comentando las 2 siguientes funciones.
 	glEnable(GL_BLEND);	// Blend the incoming RGBA color values with the values in the color buffers.
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);	// Blend func. for alpha color.
+	for (int i = 0; i < _logic.NUM_BALLS; i++)
+	{
+		_logic.balls[i].gfx = *texsmallball;
+	}
+
 
 }
 void Render::Update(const Logic &_logic)
@@ -39,7 +43,7 @@ void Render::Update(const Logic &_logic)
 	// Render balls
 	for (int i = 0; i < _logic.NUM_BALLS; i++)
 	{
-		_logic.balls[i].render();
+		CORE_RenderCenteredSprite(_logic.balls[i].pos, vmake(_logic.balls[i].radius * 2.f, _logic.balls[i].radius * 2.f), _logic.balls[i].gfx);
 	}
 
 	// Text

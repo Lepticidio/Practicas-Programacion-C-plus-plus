@@ -1,15 +1,15 @@
 ﻿  Ball.cpp
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.h(14,6): error C2143: error de sintaxis: falta ';' delante de '*'
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.h(14,6): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.h(14,13): error C2238: símbolos (token) inesperados delante de ';'
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.h(10,3): error C2065: 'balls': identificador no declarado
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.h(10,1): error C2061: error de sintaxis: identificador 'Ball'
-  example.cpp
   Logic.cpp
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Ball.cpp(11,20): warning C4018: '<': no coinciden signed/unsigned
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Render.h(13,25): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Render.h(13,25): error C2143: error de sintaxis: falta ',' delante de '&'
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.cpp(7,20): warning C4018: '<': no coinciden signed/unsigned
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Ball.cpp(11,20): warning C4018: '<': signed/unsigned mismatch
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.cpp(7,20): warning C4018: '<': signed/unsigned mismatch
   Render.cpp
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.cpp(23,20): warning C4018: '<': no coinciden signed/unsigned
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Render.cpp(40,20): warning C4018: '<': no coinciden signed/unsigned
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.cpp(22,20): warning C4018: '<': signed/unsigned mismatch
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Render.cpp(22,20): warning C4018: '<': signed/unsigned mismatch
+  example.cpp
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Render.cpp(44,20): warning C4018: '<': signed/unsigned mismatch
+  Generating code
+  0 of 282 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  swalib_example.vcxproj -> D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\swalib_example\Release\swalib_example.exe

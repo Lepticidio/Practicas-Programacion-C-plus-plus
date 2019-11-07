@@ -5,10 +5,11 @@ Logic logic;
 Render render;
 
 
+
 void Initialization()
 {
 	logic.Initialize();
-	render.Initialize();
+	render.Initialize(logic);
 }
 
 void Shutdown()

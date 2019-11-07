@@ -43,8 +43,3 @@ void Ball::logic()
 		vel.y *= -1.0;
 	}
 }
-void Ball::render()
-{
-
-//	CORE_RenderCenteredSprite(pos, vmake(radius * 2.f, radius * 2.f), gfx);
-}
