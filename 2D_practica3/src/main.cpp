@@ -9,6 +9,20 @@ using namespace std;
 int iWidth = 1000;
 int iHeight = 1000;
 
+bool SlotAvailable(bool* bBoolArray, int iArraySize)
+{
+	bool bResult = false;
+	for (int i = 0; i < iArraySize; i++)
+	{
+		if (!bBoolArray[i])
+		{
+			bResult = true;
+		}
+	}
+	return bResult;
+}
+
+
 int main() 
 {
 
@@ -34,10 +48,10 @@ int main()
 	double* pYMouse = &dYMouse;
 
 
-	 Font* pFont1 = Font::load("SFSlapstickComic.ttf", 16);
-	 Font* pFont2 = Font::load("Orange.ttf", 16);
+	 Font* pFont1 = Font::load("SFSlapstickComic.ttf", 96);
+	 Font* pFont2 = Font::load("Orange.ttf", 96);
 
-	 const int iMaxNumberMessages = 200;
+	 const int iMaxNumberMessages = 4;
 
 	 Text* oMessages [iMaxNumberMessages];
 	 bool bActivedMessages[iMaxNumberMessages]{ false };
@@ -75,15 +89,26 @@ int main()
 			char* sMessage = new char[12];
 			sMessage = "Hello world";
 			printf("sMessage is %s \n", sMessage);
-			Text text(sMessage, Vec2(iWidth, iHeightMessage), *pFont, (rand() % 255) / 255, (rand() % 255)/255, (rand() % 255) / 255, rand() % 180 + 20);
+			float fR = (float)(rand() % 255) / (float)255;
+			float fG = (float)(rand() % 255) / (float)255;
+			float fB = (float)(rand() % 255) / (float)255;
+
+			//Text text(sMessage, Vec2(iWidth, 500), *pFont, (rand() % 255) / 255, (rand() % 255)/255, (rand() % 255) / 255, rand() % 180 + 20);
+			
 			for (int i = 0; i < iMaxNumberMessages; i++)
 			{
+				printf("iteración %d  de %d\n", i, iMaxNumberMessages);
 				if (oMessages == nullptr || !bActivedMessages[i])
 				{
-					oMessages[i] = &text;
+					printf("%d es sobreescrito\n", i);
+					Text* pText = new Text(sMessage, Vec2(iWidth, 500), *pFont, fR, fG, fB, rand() % 180 + 20);
+					oMessages[i] = pText;
 					bActivedMessages[i] = true;
+					i = iMaxNumberMessages;
 				}
 			}
+
+			
 
 		}
 
@@ -99,6 +124,7 @@ int main()
 				printf("sText de oMessage es %s\n", oMessages[i]->sText);
 				printf("drawing text %d\n", i);
 				oMessages[i]->vPosition.x -= oMessages[i]->fSpeed * deltaTime;
+				printf("x del texto %d es %f", i, oMessages[i]->vPosition.x);
 				oMessages[i]->Draw();				
 			}
 		}

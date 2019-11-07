@@ -7,6 +7,7 @@ Text::Text(const char* _text, Vec2 _vPosition, Font _font, float _r, float _g, f
 }
 void Text::Draw()
 {
-	lgfx_setcolor(r, g, b, 1);
+	lgfx_setcolor(r, g, b, 0.5f);
 	font.draw(sText, vPosition);
+	lgfx_setcolor(1, 1, 1, 1);
 }

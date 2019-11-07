@@ -29,12 +29,9 @@ Font* Font::load(const char* filename, float height)
 
 			if (iCorrectlyLoaded > 0)
 			{
-
-				const unsigned char* pColorPixels;
-				unsigned char* sColorPixels = new unsigned char[vTextureSize.x * vTextureSize.y * 4];
-				pColorPixels = sColorPixels;
-				printf("%d \n", sizeof(pColorPixels));
-				for (int i = 0; i < sizeof(pColorPixels); i++)
+				int iSizeColorBuffer = vTextureSize.x * vTextureSize.y * 4;
+				unsigned char* sColorPixels = new unsigned char[iSizeColorBuffer];
+				for (int i = 0; i < iSizeColorBuffer; i++)
 				{
 					if (i % 4 == 3)
 					{
@@ -42,17 +39,16 @@ Font* Font::load(const char* filename, float height)
 					}
 					else
 					{
-						sColorPixels[i] = 255;
+						sColorPixels[i] = (unsigned char)255;
 					}
 				}
-				Font font = Font(height, *pCharData);
-				Font* pResult;
-				const ltex_t* pTexture;
-				font.texture = *ltex_alloc(vTextureSize.x, vTextureSize.y, 0);
-				pTexture = &font.texture;
-				ltex_setpixels(pTexture, pColorPixels);
+				Font* pResult = new Font(height, *pCharData);
+				const ltex_t* pTexture = new ltex_t;
+				pTexture = ltex_alloc(vTextureSize.x, vTextureSize.y, 0);
+				pResult->texture = *pTexture;
+				//const unsigned char* pColor = new unsigned char [iSizeColorBuffer];
+				ltex_setpixels(pTexture, sColorPixels);
 
-				pResult = &font;
 				printf("truly loaded\n");
 				printf("\n");
 				return pResult;
@@ -95,14 +91,16 @@ void Font::draw(const char* text, const Vec2& pos) const
 {
 	float xPos = pos.x;
 	float yPos = pos.y;
-	printf("text: %s\n", text);
+	printf("text: %s  has length %d\n", text, strlen(text));
 	for (int i = 0; i < std::strlen(text); i++)
 	{
-		printf("drawing %d character", i);
 		char c = text[i];
+		float fCharPos = xPos + i * height;
+		printf("fCharPos of %c is %f\n", c, fCharPos);
 		stbtt_aligned_quad* quad = new stbtt_aligned_quad;
-		stbtt_GetBakedQuad(&bakedChars, texture.width, texture.height, (int)c, &xPos, &yPos, quad, 1);
-		ltex_drawrotsized(&texture, quad->x0, quad->y0, 0, 0, 0, texture.width, texture.height, quad->s0, quad->t0, quad->s1, quad->t1);
+		//printf("Drawing character of index %d \n",(int)c);
+		stbtt_GetBakedQuad(&bakedChars, texture.width, texture.height, (int)c, &fCharPos, &yPos, quad, 1);
+		ltex_drawrotsized(&texture, quad->x0, quad->y0, 0, 0, 0, height, height, quad->s0, quad->t0, quad->s1, quad->t1);
 
 	}
 }
