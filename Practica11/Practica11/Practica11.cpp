@@ -19,6 +19,10 @@ int main()
 	TList tList2 (tList);
 
 	const char* sPop = tList.Pop();
+
+
+	TList tReverseList;
+	tList.GetReverseList(tList, tReverseList);
 	printf("Pop = %s (debería ser Cinco)\n", sPop);
 	printf("Size = %d (debería ser 4)\n", tList.Size());
 
@@ -37,6 +41,14 @@ int main()
 		printf("tList2 %d ->  %s \n", uIndex, sCurrentValue);
 		uIndex++;
 		sCurrentValue = tList2.Next();
+	}
+	uIndex = 0;
+	sCurrentValue = tReverseList.First();
+	while (sCurrentValue != nullptr)
+	{
+		printf("tReverseList %d ->  %s \n", uIndex, sCurrentValue);
+		uIndex++;
+		sCurrentValue = tReverseList.Next();
 	}
 	printf("tList: Antes del reset size = %d (debería ser 4)\n", tList.Size());
 	printf("tList2: Antes del reset size = %d (debería ser 5)\n", tList2.Size());

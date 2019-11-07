@@ -7,6 +7,7 @@ public:
 	TListNode(const TListNode& _rOther);
 	const char* m_sValue;
 	TListNode* m_pNext;
+	
 };
 class TList
 {
@@ -21,6 +22,7 @@ public:
 	const char* Next();
 	const char* Pop();
 	void Reset();
+	static void  GetReverseList(TList& lstSrc, TList &  tOut_);
 
 private:
 	TListNode* m_pFirst = nullptr;

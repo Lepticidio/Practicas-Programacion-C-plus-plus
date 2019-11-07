@@ -1,0 +1,6 @@
+﻿  Practica17.cpp
+D:\Microsoft Visual Studio\repos\Practica17\Practica17\Practica17.cpp(35,2): error C2059: syntax error: '{'
+D:\Microsoft Visual Studio\repos\Practica17\Practica17\Practica17.cpp(35,2): error C2334: unexpected token(s) preceding '{'; skipping apparent function body
+D:\Microsoft Visual Studio\repos\Practica17\Practica17\Practica17.cpp(38,2): error C2059: syntax error: 'if'
+D:\Microsoft Visual Studio\repos\Practica17\Practica17\Practica17.cpp(93,1): error C2143: syntax error: missing ';' before '}'
+D:\Microsoft Visual Studio\repos\Practica17\Practica17\Practica17.cpp(93,1): error C2238: unexpected token(s) preceding ';'

@@ -5,6 +5,8 @@ TListNode::TListNode(const char* _sValue)
 	, m_pNext(nullptr)
 {
 
+	printf("node constructor\n");
+	printf("%s\n", _sValue);
 }
 TListNode::TListNode(const TListNode& _rOther)
 	: m_sValue(_rOther.m_sValue)
@@ -21,10 +23,12 @@ TListNode::TListNode(const TListNode& _rOther)
 }
 TList::TList()
 {
+	printf("DEFAULT CONSTRUCTOR\n");
 
 }
 TList::TList(const TList& _rOther)
 {
+	printf("COPY CONSTRUCTOR\n");
 	if (_rOther.m_pFirst)
 	{
 		TListNode* firstNode = new TListNode(_rOther.m_pFirst->m_sValue);
@@ -108,4 +112,16 @@ void TList::Reset()
 {
 	m_pCurrent = nullptr;
 	while (Pop() != nullptr);
+}
+
+void TList::GetReverseList(TList& _tSrc, TList& tOut_)
+{
+	const char* pSrcNode = _tSrc.First();
+
+	while (pSrcNode)
+	{
+		tOut_.Push(pSrcNode);
+		pSrcNode = _tSrc.Next();
+		
+	}
 }
