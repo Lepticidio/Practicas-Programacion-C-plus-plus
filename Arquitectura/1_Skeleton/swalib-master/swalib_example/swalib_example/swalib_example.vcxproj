@@ -120,10 +120,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\common\Ball.cpp" />
     <ClCompile Include="..\..\common\core.cpp" />
     <ClCompile Include="..\..\common\example.cpp" />
     <ClCompile Include="..\..\common\font.cpp" />
     <ClCompile Include="..\..\common\lodepng.cpp" />
+    <ClCompile Include="..\..\common\Logic.cpp" />
+    <ClCompile Include="..\..\common\Render.cpp" />
     <ClCompile Include="..\..\common\stdafx.cpp" />
     <ClCompile Include="..\..\common\sys_win.cpp" />
   </ItemGroup>
@@ -133,6 +136,9 @@
     <ClInclude Include="..\..\common\lodepng.h" />
     <ClInclude Include="..\..\common\stdafx.h" />
     <ClInclude Include="..\..\common\sys.h" />
+    <ClInclude Include="Ball.h" />
+    <ClInclude Include="Logic.h" />
+    <ClInclude Include="Render.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

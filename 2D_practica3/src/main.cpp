@@ -34,12 +34,13 @@ int main()
 	double* pYMouse = &dYMouse;
 
 
-	 Font* pFont1 = Font::load("SFSlapstickComic.ttf", 1);
-	 Font* pFont2 = Font::load("Orange.ttf", 1);
+	 Font* pFont1 = Font::load("SFSlapstickComic.ttf", 16);
+	 Font* pFont2 = Font::load("Orange.ttf", 16);
 
 	 const int iMaxNumberMessages = 200;
 
 	 Text* oMessages [iMaxNumberMessages];
+	 bool bActivedMessages[iMaxNumberMessages]{ false };
 
 
 	//5) Bucle principal
@@ -71,28 +72,34 @@ int main()
 			}
 
 			int iHeightMessage = rand() % iHeight;
-
-			Text text("Hello World", Vec2(iWidth, iHeightMessage), *pFont, (rand() % 255) / 255, (rand() % 255)/255, (rand() % 255) / 255, rand() % 180 + 20);
+			char* sMessage = new char[12];
+			sMessage = "Hello world";
+			printf("sMessage is %s \n", sMessage);
+			Text text(sMessage, Vec2(iWidth, iHeightMessage), *pFont, (rand() % 255) / 255, (rand() % 255)/255, (rand() % 255) / 255, rand() % 180 + 20);
 			for (int i = 0; i < iMaxNumberMessages; i++)
 			{
-				if (oMessages == nullptr || !oMessages[i]->active)
+				if (oMessages == nullptr || !bActivedMessages[i])
 				{
 					oMessages[i] = &text;
+					bActivedMessages[i] = true;
 				}
 			}
 
 		}
 
 		//5.4) Limpiamos el backbuffer
-		lgfx_clearcolorbuffer(1, 1, 1);
+		lgfx_clearcolorbuffer(0.5f, 0.5f, 0.5f);
 
 		//5.5) Renderizamos la escena.
+		lgfx_setblend(BLEND_ALPHA);
 		for (int i = 0; i < iMaxNumberMessages; i++)
 		{
-			if (oMessages != nullptr && oMessages[i]->active)
+			if (oMessages != nullptr && bActivedMessages[i])
 			{
-				oMessages[i]->vPosition.x += oMessages[i]->fSpeed * deltaTime;
-				oMessages[i]->Draw();
+				printf("sText de oMessage es %s\n", oMessages[i]->sText);
+				printf("drawing text %d\n", i);
+				oMessages[i]->vPosition.x -= oMessages[i]->fSpeed * deltaTime;
+				oMessages[i]->Draw();				
 			}
 		}
 

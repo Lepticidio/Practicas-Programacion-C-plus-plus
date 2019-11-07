@@ -1,11 +1,15 @@
-﻿  core.cpp
+﻿  Ball.cpp
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.h(14,6): error C2143: error de sintaxis: falta ';' delante de '*'
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.h(14,6): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.h(14,13): error C2238: símbolos (token) inesperados delante de ';'
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.h(10,3): error C2065: 'balls': identificador no declarado
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.h(10,1): error C2061: error de sintaxis: identificador 'Ball'
   example.cpp
-  font.cpp
-  lodepng.cpp
-  stdafx.cpp
-  sys_win.cpp
-  Generando código
-  Previous IPDB not found, fall back to full compilation.
-  All 271 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  Generación de código finalizada
-  swalib_example.vcxproj -> D:\Descargas\1_Skeleton\1_Skeleton\swalib-master\swalib_example\Release\swalib_example.exe
+  Logic.cpp
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Ball.cpp(11,20): warning C4018: '<': no coinciden signed/unsigned
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Render.h(13,25): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Render.h(13,25): error C2143: error de sintaxis: falta ',' delante de '&'
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.cpp(7,20): warning C4018: '<': no coinciden signed/unsigned
+  Render.cpp
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.cpp(23,20): warning C4018: '<': no coinciden signed/unsigned
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Render.cpp(40,20): warning C4018: '<': no coinciden signed/unsigned

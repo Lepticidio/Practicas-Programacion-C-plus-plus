@@ -4,7 +4,6 @@ class Text
 {
 	public:
 		const char* sText;
-		bool active = false;
 		Vec2 vPosition;
 		Font font;
 		float r;
