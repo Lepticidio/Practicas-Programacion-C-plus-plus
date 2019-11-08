@@ -50,8 +50,9 @@ int main()
 		uIndex++;
 		sCurrentValue = tReverseList.Next();
 	}
-	printf("tList: Antes del reset size = %d (debería ser 4)\n", tList.Size());
-	printf("tList2: Antes del reset size = %d (debería ser 5)\n", tList2.Size());
+	printf("tList: size = %d (debería ser 4)\n", tList.Size());
+	printf("tList2:  size = %d (debería ser 5)\n", tList2.Size());
+	printf("tReverseList:  size = %d (debería ser 4)\n", tReverseList.Size());
 	tList.Reset();
 	printf("Tras reset size = %d (debería ser 0)\n", tList.Size());
 
