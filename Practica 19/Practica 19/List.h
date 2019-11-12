@@ -85,7 +85,7 @@ public:
 		m_pCurrent = m_pFirst;
 		return m_pFirst->m_Value;
 	}
-	const T Next()
+	T* Next()
 	{
 		if (m_pCurrent == nullptr)
 		{
@@ -96,7 +96,7 @@ public:
 		{
 			return nullptr;
 		}
-		return m_pCurrent->m_Value;
+		return &(m_pCurrent->m_Value);
 	}
 	T Pop()
 	{
@@ -123,12 +123,21 @@ public:
 	}
 	static void  GetReverseList(TList& _tSrc, TList& tOut_)
 	{
-		T pSrcNode = _tSrc.First();
-
-		while (pSrcNode)
+		T SrcNode = _tSrc.First();
+		bool bFinished = false;
+		while (!bFinished)
 		{
-			tOut_.Push(pSrcNode);
-			pSrcNode = _tSrc.Next();
+			tOut_.Push(SrcNode);
+			T* pNext = _tSrc.Next();
+			if (pNext != nullptr)
+			{
+				SrcNode = *pNext;
+
+			}
+			else
+			{
+				bFinished = true;
+			}
 
 		}
 	}

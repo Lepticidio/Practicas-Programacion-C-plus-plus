@@ -27,27 +27,54 @@ int main()
 
 	const char* sCurrentValue = tList.First();
 	unsigned int uIndex(0);
-	while (sCurrentValue != nullptr)
+	bool bFinished = false;
+	while (!bFinished)
 	{
-		printf("original tList %d ->  %s \n", uIndex, sCurrentValue);
+		printf("original list %d ->  %s \n", uIndex, sCurrentValue);
 		uIndex++;
-		sCurrentValue = tList.Next();
+		const char** pNext = tList.Next();
+		if (pNext == nullptr)
+		{
+			bFinished = true;
+		}
+		else
+		{
+			sCurrentValue = *pNext;
+		}
 	}
 	uIndex = 0;
 	sCurrentValue = tList2.First();
-	while (sCurrentValue != nullptr)
+	bFinished = false;
+	while (!bFinished)
 	{
-		printf("tList2 %d ->  %s \n", uIndex, sCurrentValue);
+		printf("copied list %d ->  %s \n", uIndex, sCurrentValue);
 		uIndex++;
-		sCurrentValue = tList2.Next();
+		const char** pNext = tList2.Next();
+		if (pNext == nullptr)
+		{
+			bFinished = true;
+		}
+		else
+		{
+			sCurrentValue = *pNext;
+		}
 	}
 	uIndex = 0;
 	sCurrentValue = tReverseList.First();
-	while (sCurrentValue != nullptr)
+	bFinished = false;
+	while (!bFinished)
 	{
-		printf("tReverseList %d ->  %s \n", uIndex, sCurrentValue);
+		printf("reverse list %d ->  %s \n", uIndex, sCurrentValue);
 		uIndex++;
-		sCurrentValue = tReverseList.Next();
+		const char** pNext = tReverseList.Next();
+		if (pNext == nullptr)
+		{
+			bFinished = true;
+		}
+		else
+		{
+			sCurrentValue = *pNext;
+		}
 	}
 	printf("tList: size = %d (debería ser 4)\n", tList.Size());
 	printf("tList2:  size = %d (debería ser 5)\n", tList2.Size());
@@ -55,6 +82,27 @@ int main()
 	tList.Reset();
 	printf("Tras reset size = %d (debería ser 0)\n", tList.Size());
 
+	TList<float> tFloatList;
+	tFloatList.Push(0.1f);
+	tFloatList.Push(0.2f);
+	tFloatList.Push(0.3f);
+	uIndex = 0;
+	float fCurrentValue = tFloatList.First();
+	bFinished = false;
+	while (!bFinished)
+	{
+		printf("float list %d ->  %f \n", uIndex, fCurrentValue);
+		uIndex++;
+		float* pNext = tFloatList.Next();
+		if (pNext == nullptr)
+		{
+			bFinished = true;
+		}
+		else
+		{
+			fCurrentValue = *pNext;
+		}
+	}
 
 
 }
