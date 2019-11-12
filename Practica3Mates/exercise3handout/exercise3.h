@@ -71,29 +71,42 @@ struct Exercise3 {
 	};
 
 	// as in http://viclw17.github.io/2018/07/16/raytracing-ray-sphere-intersection/
+
+
+	//--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+	//SOLUCIÓN GEOMÉTRICA
+
 	static bool raySphereIntersection(const Ray& ray, vec3 C, float r, float* intersection_distance) {
 
 		const vec3& A = ray.origin;
 		const vec3& B = ray.direction;
-		vec3 L = C - A;
+		vec3 L = C - A; //Vector que va desde el origen del rayo hasta el centro de la esfera
 		assert(fabsf(length(B) - 1) < 1e-03);
-		float tP = dot(L, B);
+		float tP = dot(L, B); //Con el dot product calculo la proyección de L sobre B
 		float fL = length(L);
-		float fS = sqrt(fL * fL- tP * tP);
+		float fS = sqrt(fL * fL- tP * tP); // Con la proyección de L sobre B y L hacemos pitágoras para hayar un vector perpendicular a la dirección del rayo que vaya del centro de la esfera hasta el rayo
 		if (fS > r)
 		{
+			//Si fS es mayor que el radio, significa que la intersección no se llega a producir, porque se haría furera de la esfera
 			return false;
 		}
 		else
 		{
-			float tQ = sqrt(r * r - fS * fS);
-			*intersection_distance = (tP - tQ);
+			float tQ = sqrt(r * r - fS * fS); //Haciendo otra vez pitágoras, pero esta vez con fS y el radio, podemos hayar la parte de la proyección de L sobre el rayo que se produce dentro de la esfera
+			*intersection_distance = (tP - tQ); // restando a la proyección el valor anterior, hayamos la parte de la proyección  que se encuentra fuera de la esfera, que es igual a la distancia de la intersección
 			return true;
 		}
 		
 
 
 	}
+
+	//-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 	//static bool raySphereIntersection(const Ray& ray, vec3 C, float r, float* intersection_distance) {
 
 	//	const vec3& A = ray.origin;
