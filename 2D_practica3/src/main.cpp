@@ -101,7 +101,8 @@ int main()
 				if (oMessages == nullptr || !bActivedMessages[i])
 				{
 					printf("%d es sobreescrito\n", i);
-					Text* pText = new Text(sMessage, Vec2(iWidth, 500), *pFont, fR, fG, fB, rand() % 180 + 20);
+					//Text* pText = new Text(sMessage, Vec2(iWidth, 500), *pFont, fR, fG, fB, rand() % 180 + 20);
+					Text* pText = new Text(sMessage, Vec2(iWidth, 500), *pFont, 1., 1., 1., rand() % 180 + 20);
 					oMessages[i] = pText;
 					bActivedMessages[i] = true;
 					i = iMaxNumberMessages;
@@ -113,7 +114,7 @@ int main()
 		}
 
 		//5.4) Limpiamos el backbuffer
-		lgfx_clearcolorbuffer(0.5f, 0.5f, 0.5f);
+		lgfx_clearcolorbuffer(0.f, 0.f, 0.f);
 
 		//5.5) Renderizamos la escena.
 		lgfx_setblend(BLEND_ALPHA);
