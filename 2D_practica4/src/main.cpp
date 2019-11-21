@@ -1,8 +1,9 @@
 
 #define LITE_GFX_IMPLEMENTATION
-
+#define STB_IMAGE_IMPLEMENTATION
 
 #include "Sprite.h"
+#include <stb_image.h>
 
 
 using namespace std;
@@ -26,6 +27,8 @@ int main()
 	lgfx_setup2d(iWidth, iHeight);
 
 	bool bOpen = true;
+	int iWidthWasp = 0;
+	int iHeightWasp = 0;
 	double deltaTime = 0;
 	double previousTime = glfwGetTime();
 	double dXMouse = 0;
@@ -33,7 +36,13 @@ int main()
 	double* pXMouse = &dXMouse;
 	double* pYMouse = &dYMouse;
 
+	unsigned char* sWaspBytes = stbi_load("data//wasp_anim.png", &iWidthWasp, &iHeightWasp, nullptr, 4);
+	ltex_t* pTextureWasp = nullptr;
+	pTextureWasp = ltex_alloc(iWidthWasp, iHeightWasp, 1);
+	ltex_setpixels(pTextureWasp, sWaspBytes);
+	stbi_image_free(sWaspBytes);
 
+	Sprite wasp(pTextureWasp, 8, 1);
 
 	//5) Bucle principal
 	while (!glfwWindowShouldClose(pWindow) && bOpen)

@@ -26,6 +26,7 @@
   <ItemGroup>
     <ClInclude Include="..\lib\litegfx.h" />
     <ClInclude Include="..\lib\Sprite.h" />
+    <ClInclude Include="..\lib\stb_image.h" />
     <ClInclude Include="..\lib\Vec2.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
