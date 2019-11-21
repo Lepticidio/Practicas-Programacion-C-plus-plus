@@ -34,5 +34,6 @@ public:
 	float Distance(const Vec2& other) const;
 	Vec2 Rotate(const float& degrees) const;
 	Vec2 Rotate(const double& degrees) const;
+	Vec2 Resize(const float& length);
 
 };

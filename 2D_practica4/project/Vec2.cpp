@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <Vec2.h>
+
 float ToDegrees(float radians)
 {
 	return radians * 57.2958f;
@@ -145,6 +146,11 @@ Vec2 Vec2::Rotate(const double& degrees) const
 	res.x = x * cos(dRadians) - y * sin(dRadians);
 	res.y = x * sin(dRadians) + y * cos(dRadians);
 	return res;
+}
+Vec2 Vec2::Resize(const float& length)
+{
+	Vec2 res(x, y);
+	return Normalize()*length;
 }
 
 

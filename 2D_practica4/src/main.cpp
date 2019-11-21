@@ -6,7 +6,29 @@
 #include <stb_image.h>
 
 
+
 using namespace std;
+
+Vec2 abs(Vec2 const& obj)
+{
+	Vec2 res;
+	res.x = abs(obj.x);
+	res.y = abs(obj.y);
+	return res;
+}
+
+
+ostream& operator<<(ostream& os, const Vec2& v)
+{
+	os << '(';
+	os << v.x;
+	os << ',';
+	os << v.y;
+	os << ')';
+
+
+	return os;
+}
 
 int iWidth = 1000;
 int iHeight = 1000;
@@ -61,8 +83,31 @@ int main()
 
 
 		//5.3) Actualizamos lógica de juego
+		Vec2 vCurrentPosition = wasp.getPosition();
+		Vec2 vDir = Vec2(dXMouse, dYMouse) - vCurrentPosition;
+		Vec2 vVelocity = vDir.Resize(128*deltaTime);
 
-		wasp.setPosition(Vec2(dXMouse, dYMouse));
+		float fRotationSpeed = 32 * deltaTime;
+
+		float fAngle = wasp.getAngle();
+		if (vDir.Length() > 10 && vDir.x > 0 && fAngle > -15)
+		{
+			wasp.setAngle(fAngle - fRotationSpeed);
+		}
+		else if (vDir.Length() > 10 && vDir.x < 0 && fAngle < 15)
+		{
+			wasp.setAngle(fAngle + fRotationSpeed);
+		}
+		else if (fAngle > 0)
+		{
+			wasp.setAngle(fAngle - fRotationSpeed);
+		}
+		else if (fAngle < 0)
+		{
+			wasp.setAngle(fAngle + fRotationSpeed);
+		}
+
+		wasp.setPosition(vCurrentPosition + vVelocity);
 		wasp.update(deltaTime);
 
 		//5.4) Limpiamos el backbuffer

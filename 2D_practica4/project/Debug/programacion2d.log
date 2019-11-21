@@ -1,9 +1,9 @@
-﻿  Sprite.cpp
-D:\Microsoft Visual Studio\repos\2D_practica4\project\Sprite.cpp(103,9): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica4\project\Sprite.cpp(112,28): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica4\project\Sprite.cpp(117,51): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica4\project\Sprite.cpp(122,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica4\project\Sprite.cpp(122,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica4\project\Sprite.cpp(126,172): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica4\project\Sprite.cpp(126,120): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+﻿  main.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Microsoft Visual Studio\repos\2D_practica4\lib\glfw3.h(98): message : see previous definition of 'APIENTRY'
+D:\Microsoft Visual Studio\repos\2D_practica4\src\main.cpp(87,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica4\src\main.cpp(87,20): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica4\src\main.cpp(88,35): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica4\src\main.cpp(90,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica4\src\main.cpp(111,15): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   programacion2d.vcxproj -> D:\Microsoft Visual Studio\repos\2D_practica4\project\Debug\programacion2d.exe
