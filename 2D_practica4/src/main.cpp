@@ -43,6 +43,7 @@ int main()
 	stbi_image_free(sWaspBytes);
 
 	Sprite wasp(pTextureWasp, 8, 1);
+	wasp.setFps(8);
 
 	//5) Bucle principal
 	while (!glfwWindowShouldClose(pWindow) && bOpen)
@@ -62,6 +63,7 @@ int main()
 		//5.3) Actualizamos lógica de juego
 
 		wasp.setPosition(Vec2(dXMouse, dYMouse));
+		wasp.update(deltaTime);
 
 		//5.4) Limpiamos el backbuffer
 		lgfx_clearcolorbuffer(0, 0, 0);
