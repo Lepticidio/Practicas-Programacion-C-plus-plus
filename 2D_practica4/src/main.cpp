@@ -67,7 +67,6 @@ int main()
 		lgfx_clearcolorbuffer(0, 0, 0);
 
 		//5.5) Renderizamos la escena.
-			   		
 		wasp.draw();
 
 		//5.6) Cambiamos el backbuffer por el frontbuffer

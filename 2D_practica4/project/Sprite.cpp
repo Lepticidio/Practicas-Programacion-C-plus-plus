@@ -1,5 +1,18 @@
 #include "Sprite.h"
+using namespace std;
 
+
+ostream& operator<<(ostream& os, const Vec2& v)
+{
+	os << '(';
+	os << v.x;
+	os << ',';
+	os << v.y;
+	os << ')';
+
+
+	return os;
+}
 Sprite::Sprite(const ltex_t* tex, int hframes, int vframes)
 	:texture(*tex), iHorizontalFrames(hframes), iVerticalFrames(vframes)
 {
@@ -70,7 +83,7 @@ void Sprite::setScale(const Vec2& scale)
 }
 Vec2 Sprite::getSize() const
 {
-	return Vec2(vScale.x * texture.width, vScale.y * texture.height);
+	return Vec2(vScale.x * texture.width / iHorizontalFrames, vScale.y * texture.height / iVerticalFrames);
 }
 const Vec2& Sprite::getPivot() const
 {
@@ -110,8 +123,15 @@ void Sprite::update(float deltaTime)
 }
 void Sprite::draw() const
 {
+	Vec2 vSize = getSize();
+	printf("%d\n", iCurrentFrame);
+	Vec2 vPositionInArray(iCurrentFrame % iHorizontalFrames, iCurrentFrame / iHorizontalFrames);
+	std::cout << vPositionInArray << std::endl;
+	printf("x: %f, y: %f\n", vPositionInArray.x /(float)iHorizontalFrames, vPositionInArray.y / (float)iVerticalFrames);
+	printf("x2: %f, y2: %f\n", (vPositionInArray.x + 1.) / (float)iHorizontalFrames, (vPositionInArray.y + 1.) / (float)iVerticalFrames);
 	lgfx_setblend(blend);
 	lgfx_setcolor(fRed, fGreen, fBlue, fAlpha);
-	ltex_drawrotsized(&texture, vPosition.x, vPosition.y, fAngle, vPivot.x, vPivot.y, vScale.x * texture.width, vScale.y * texture.height, 0, 0, 1, 1);
+	ltex_drawrotsized(&texture, vPosition.x, vPosition.y, fAngle, vPivot.x, vPivot.y, vSize.x, vSize.y, 
+		vPositionInArray.x /(float)iHorizontalFrames, vPositionInArray.y / (float) iVerticalFrames, (vPositionInArray.x + 1.)/(float)iHorizontalFrames, (vPositionInArray.y + 1.)/(float)iVerticalFrames);
 	lgfx_setcolor(1, 1, 1, 1);
 }
