@@ -1,9 +1,15 @@
 #include "Sprite.h"
+
+Sprite::Sprite(const ltex_t* tex, int hframes, int vframes)
+	:texture(*tex), iHorizontalFrames(hframes), iVerticalFrames(vframes)
+{
+
+}
 const ltex_t* Sprite::getTexture() const
 {
 	return &texture;
 }
-void Sprite::setTexture(const ltex_t* tex, int hframes = 1, int vframes = 1)
+void Sprite::setTexture(const ltex_t* tex, int hframes, int vframes)
 {
 
 }
@@ -62,6 +68,18 @@ void Sprite::setScale(const Vec2& scale)
 {
 	vScale = scale;
 }
+Vec2 Sprite::getSize() const
+{
+	return Vec2(vScale.x * texture.width, vScale.y * texture.height);
+}
+const Vec2& Sprite::getPivot() const
+{
+	return vPivot;
+}
+void Sprite::setPivot(const Vec2& pivot)
+{
+	vPivot = pivot;
+}
 int Sprite::getHframes() const
 {
 	return iHorizontalFrames;
@@ -69,6 +87,22 @@ int Sprite::getHframes() const
 int Sprite::getVframes() const
 {
 	return iVerticalFrames;
+}
+int Sprite::getFps() const
+{
+	return iFps;
+}
+void Sprite::setFps(int fps)
+{
+	iFps = fps;
+}
+float Sprite::getCurrentFrame() const
+{
+	return iCurrentFrame;
+}
+void Sprite::setCurrentFrame(int frame)
+{
+	iCurrentFrame = frame;
 }
 void Sprite::update(float deltaTime)
 {

@@ -94,13 +94,12 @@ void Font::draw(const char* text, const Vec2& pos) const
 	printf("text: %s  has length %d\n", text, strlen(text));
 	for (int i = 0; i < std::strlen(text); i++)
 	{
-		char c = text[i];
-		float fCharPos = xPos + i * height;
-		printf("fCharPos of %c is %f\n", c, fCharPos);
+		int c = (int)text[i];
+		printf("fCharPos of %c is %f\n", c, xPos);
 		stbtt_aligned_quad quad;// = new stbtt_aligned_quad;
 		//printf("Drawing character of index %d \n",(int)c);
-		stbtt_GetBakedQuad(&bakedChars, texture.width, texture.height, c, &fCharPos, &yPos, &quad, 1);
+		stbtt_GetBakedQuad(&bakedChars, texture.width, texture.height, c, &xPos, &yPos, &quad, 1);
 		//ltex_drawrotsized(&texture, fCharPos, yPos, 0, 0, 0, quad->x0 - quad->x1, quad->y0 - quad->y1, quad->s0, quad->t0, quad->s1, quad->t1);
-		ltex_drawrotsized(&texture, fCharPos, yPos, 0, 0, 0, quad.x1 - quad.x0, quad.y1 - quad.y0, quad.s0, quad.t0, quad.s1, quad.t1);
+		ltex_drawrotsized(&texture, quad.x0, quad.y0, 0, 0, 0, quad.x1 - quad.x0, quad.y1 - quad.y0, quad.s0, quad.t0, quad.s1, quad.t1);
 	}
 }

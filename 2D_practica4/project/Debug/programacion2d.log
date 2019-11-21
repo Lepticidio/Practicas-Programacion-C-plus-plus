@@ -1,6 +1,3 @@
-﻿  main.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-  Sprite.cpp
-  Generating Code...
-D:\Microsoft Visual Studio\repos\2D_practica4\lib\glfw3.h(98): message : see previous definition of 'APIENTRY'
+﻿  Sprite.cpp
+D:\Microsoft Visual Studio\repos\2D_practica4\project\Sprite.cpp(101,9): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
   programacion2d.vcxproj -> D:\Microsoft Visual Studio\repos\2D_practica4\project\Debug\programacion2d.exe
