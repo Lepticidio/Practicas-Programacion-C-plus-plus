@@ -61,16 +61,14 @@ int main()
 
 		//5.3) Actualizamos lógica de juego
 
+		wasp.setPosition(Vec2(dXMouse, dYMouse));
 
 		//5.4) Limpiamos el backbuffer
 		lgfx_clearcolorbuffer(0, 0, 0);
 
 		//5.5) Renderizamos la escena.
-
-
-		lgfx_setblend(BLEND_ALPHA);
-
-		lgfx_setcolor(1, 1, 1, 1);
+			   		
+		wasp.draw();
 
 		//5.6) Cambiamos el backbuffer por el frontbuffer
 		glfwSwapBuffers(pWindow);

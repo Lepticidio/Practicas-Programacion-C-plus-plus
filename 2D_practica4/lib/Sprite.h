@@ -61,18 +61,18 @@ public:
 
 private:
 	ltex_t texture;
-	lblend_t blend;
-	int iCurrentFrame;
-	int iFps;
+	lblend_t blend = BLEND_ALPHA;
+	int iCurrentFrame = 0;
+	int iFps = 1;
 	int iHorizontalFrames;
 	int iVerticalFrames;
-	float fRed;
-	float fGreen;
-	float fBlue;
-	float fAlpha;
-	float fAngle;
-	Vec2 vPosition;
-	Vec2 vScale;
-	Vec2 vPivot;
+	float fRed = 1;
+	float fGreen = 1;
+	float fBlue = 1;
+	float fAlpha = 1;
+	float fAngle = 0;
+	Vec2 vPosition = Vec2(0,0);
+	Vec2 vScale = Vec2(1,1);
+	Vec2 vPivot = Vec2(0.5f, 0.5f);
 };
 

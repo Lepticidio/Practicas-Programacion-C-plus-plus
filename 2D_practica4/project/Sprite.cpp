@@ -110,5 +110,8 @@ void Sprite::update(float deltaTime)
 }
 void Sprite::draw() const
 {
-
+	lgfx_setblend(blend);
+	lgfx_setcolor(fRed, fGreen, fBlue, fAlpha);
+	ltex_drawrotsized(&texture, vPosition.x, vPosition.y, fAngle, vPivot.x, vPivot.y, vScale.x * texture.width, vScale.y * texture.height, 0, 0, 1, 1);
+	lgfx_setcolor(1, 1, 1, 1);
 }
