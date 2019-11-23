@@ -26,7 +26,7 @@ void Render::Initialize(const Logic& _logic)
 
 
 }
-void Render::Update(const Logic &_logic)
+void Render::Update(const Logic &_logic, const std::string &_sMessageFrames)
 {
 	// Render
 	glClear(GL_COLOR_BUFFER_BIT);	// Clear color buffer to preset values.
@@ -49,11 +49,13 @@ void Render::Update(const Logic &_logic)
 	// Text
 	FONT_DrawString(vmake(SCR_WIDTH / 2 - 6 * 16, 16), "HELLO WORLD!");
 
+	FONT_DrawString(vmake(32, SCR_HEIGHT - 32), _sMessageFrames.c_str());
+
 	// Exchanges the front and back buffers
 	SYS_Show();
 
 	SYS_Pump();	// Process Windows messages.
-	SYS_Sleep(17);	// To force 60 fps
+	//SYS_Sleep(17);	// To force 60 fps
 
 }
 

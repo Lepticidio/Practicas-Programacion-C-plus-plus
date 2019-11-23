@@ -1,15 +1,9 @@
-﻿  Ball.cpp
-  Logic.cpp
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Ball.cpp(11,20): warning C4018: '<': signed/unsigned mismatch
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.cpp(7,20): warning C4018: '<': signed/unsigned mismatch
-  Render.cpp
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.cpp(22,20): warning C4018: '<': signed/unsigned mismatch
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Render.cpp(22,20): warning C4018: '<': signed/unsigned mismatch
-  example.cpp
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Render.cpp(44,20): warning C4018: '<': signed/unsigned mismatch
+﻿  example.cpp
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\example.cpp(32,29): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\example.cpp(57,43): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Generating code
-  0 of 282 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  2 of 312 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    2 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   swalib_example.vcxproj -> D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\swalib_example\Release\swalib_example.exe
