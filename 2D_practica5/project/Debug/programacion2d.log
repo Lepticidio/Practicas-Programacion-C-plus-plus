@@ -1,0 +1,29 @@
+﻿  main.cpp
+  CircleCollider.cpp
+  Collider.cpp
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(17,1): error C2511: 'bool Collider::collides(const Vec2 &,const Vec2 &,const uint8_t *)': overloaded member function not found in 'Collider'
+  PixelsCollider.cpp
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.h(3): message : see declaration of 'Collider'
+  RectCollider.cpp
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Sprite.cpp
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(103,9): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(112,28): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(117,51): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(122,73): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(122,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(126,172): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Vec2.cpp
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(126,120): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Vec2.cpp(138,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Vec2.cpp(139,36): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Vec2.cpp(146,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Vec2.cpp(147,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\RectCollider.cpp(10): error C4716: 'RectCollider::collides': must return a value
+D:\Microsoft Visual Studio\repos\2D_practica5\project\PixelsCollider.cpp(10): error C4716: 'PixelsCollider::collides': must return a value
+D:\Microsoft Visual Studio\repos\2D_practica5\project\CircleCollider.cpp(10): error C4716: 'CircleCollider::collides': must return a value
+D:\Microsoft Visual Studio\repos\2D_practica5\project\CircleCollider.cpp(23): error C4716: 'CircleCollider::collides': must return a value

@@ -5,6 +5,10 @@ Sprite::Sprite(const ltex_t* tex, int hframes, int vframes)
 {
 
 }
+void Sprite::setCallback(CallbackFunc func)
+{
+	callbackFunc = func;
+}
 const ltex_t* Sprite::getTexture() const
 {
 	return &texture;
@@ -108,6 +112,7 @@ void Sprite::setCurrentFrame(int frame)
 }
 void Sprite::update(float deltaTime)
 {
+	callbackFunc(*this, deltaTime);
 	fcurrentAnimationTime += deltaTime;
 	float fTotalAnimationTime = (iHorizontalFrames * iVerticalFrames) / iFps;
 	if (fcurrentAnimationTime > fTotalAnimationTime)

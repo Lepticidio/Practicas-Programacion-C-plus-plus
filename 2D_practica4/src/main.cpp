@@ -9,6 +9,9 @@
 
 using namespace std;
 
+Vec2 vMousePos;
+
+
 Vec2 abs(Vec2 const& obj)
 {
 	Vec2 res;
@@ -28,6 +31,37 @@ ostream& operator<<(ostream& os, const Vec2& v)
 
 
 	return os;
+}
+
+void SpriteCallback(Sprite& _sprite, float _deltaTime)
+{
+	
+	Vec2 vCurrentPosition = _sprite.getPosition();
+	Vec2 vDir = vMousePos - vCurrentPosition;
+	Vec2 vVelocity = vDir.Resize(128 * _deltaTime);
+
+	float fRotationSpeed = 32 * _deltaTime;
+
+	float fAngle = _sprite.getAngle();
+	if (vDir.Length() > 10 && vDir.x > 0 && fAngle > -15)
+	{
+		_sprite.setAngle(fAngle - fRotationSpeed);
+	}
+	else if (vDir.Length() > 10 && vDir.x < 0 && fAngle < 15)
+	{
+		_sprite.setAngle(fAngle + fRotationSpeed);
+	}
+	else if (fAngle > 0)
+	{
+		_sprite.setAngle(fAngle - fRotationSpeed);
+	}
+	else if (fAngle < 0)
+	{
+		_sprite.setAngle(fAngle + fRotationSpeed);
+	}
+
+	_sprite.setPosition(vCurrentPosition + vVelocity);
+
 }
 
 int iWidth = 1000;
@@ -53,10 +87,13 @@ int main()
 	int iHeightWasp = 0;
 	double deltaTime = 0;
 	double previousTime = glfwGetTime();
+
 	double dXMouse = 0;
 	double dYMouse = 0;
 	double* pXMouse = &dXMouse;
 	double* pYMouse = &dYMouse;
+
+
 
 	unsigned char* sWaspBytes = stbi_load("data//wasp_anim.png", &iWidthWasp, &iHeightWasp, nullptr, 4);
 	ltex_t* pTextureWasp = nullptr;
@@ -66,6 +103,7 @@ int main()
 
 	Sprite wasp(pTextureWasp, 8, 1);
 	wasp.setFps(8);
+	wasp.setCallback(SpriteCallback);
 
 	//5) Bucle principal
 	while (!glfwWindowShouldClose(pWindow) && bOpen)
@@ -73,41 +111,15 @@ int main()
 		//5.1) Actualizamos delta de tiempo
 		deltaTime = glfwGetTime() - previousTime;
 		previousTime = glfwGetTime();
-
 		//5.2) Leemos input del usuario
 		if (glfwGetKey(pWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		{
 			bOpen = false;
 		}
 		glfwGetCursorPos(pWindow, pXMouse, pYMouse);
-
+		vMousePos = Vec2(dXMouse, dYMouse);
 
 		//5.3) Actualizamos lógica de juego
-		Vec2 vCurrentPosition = wasp.getPosition();
-		Vec2 vDir = Vec2(dXMouse, dYMouse) - vCurrentPosition;
-		Vec2 vVelocity = vDir.Resize(128*deltaTime);
-
-		float fRotationSpeed = 32 * deltaTime;
-
-		float fAngle = wasp.getAngle();
-		if (vDir.Length() > 10 && vDir.x > 0 && fAngle > -15)
-		{
-			wasp.setAngle(fAngle - fRotationSpeed);
-		}
-		else if (vDir.Length() > 10 && vDir.x < 0 && fAngle < 15)
-		{
-			wasp.setAngle(fAngle + fRotationSpeed);
-		}
-		else if (fAngle > 0)
-		{
-			wasp.setAngle(fAngle - fRotationSpeed);
-		}
-		else if (fAngle < 0)
-		{
-			wasp.setAngle(fAngle + fRotationSpeed);
-		}
-
-		wasp.setPosition(vCurrentPosition + vVelocity);
 		wasp.update(deltaTime);
 
 		//5.4) Limpiamos el backbuffer
