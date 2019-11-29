@@ -42,12 +42,11 @@ Font* Font::load(const char* filename, float height)
 						sColorPixels[i] = (unsigned char)255;
 					}
 				}
-				Font* pResult = new Font(height, *pCharData);
-				const ltex_t* pTexture = new ltex_t;
-				pTexture = ltex_alloc(vTextureSize.x, vTextureSize.y, 0);
-				pResult->texture = *pTexture;
+				Font* pResult = new Font(height, pCharData);
+				pResult->pTexture = new ltex_t;
+				pResult->pTexture = ltex_alloc(vTextureSize.x, vTextureSize.y, 0);
 				//const unsigned char* pColor = new unsigned char [iSizeColorBuffer];
-				ltex_setpixels(pTexture, sColorPixels);
+				ltex_setpixels(pResult->pTexture, sColorPixels);
 
 				printf("truly loaded\n");
 				printf("\n");
@@ -73,8 +72,8 @@ Font* Font::load(const char* filename, float height)
 	}
 
 }
-Font::Font(const float _height, const stbtt_bakedchar _bakedChars) 
-		: height(_height), bakedChars(_bakedChars)
+Font::Font(const float _height, const stbtt_bakedchar* _pBakedChars) 
+		: height(_height), pBakedChars(_pBakedChars)
 {
 
 }
@@ -98,8 +97,8 @@ void Font::draw(const char* text, const Vec2& pos) const
 		printf("fCharPos of %c is %f\n", c, xPos);
 		stbtt_aligned_quad quad;// = new stbtt_aligned_quad;
 		//printf("Drawing character of index %d \n",(int)c);
-		stbtt_GetBakedQuad(&bakedChars, texture.width, texture.height, c, &xPos, &yPos, &quad, 1);
+		stbtt_GetBakedQuad(pBakedChars, pTexture->width, pTexture->height, c, &xPos, &yPos, &quad, 1);
 		//ltex_drawrotsized(&texture, fCharPos, yPos, 0, 0, 0, quad->x0 - quad->x1, quad->y0 - quad->y1, quad->s0, quad->t0, quad->s1, quad->t1);
-		ltex_drawrotsized(&texture, quad.x0, quad.y0, 0, 0, 0, quad.x1 - quad.x0, quad.y1 - quad.y0, quad.s0, quad.t0, quad.s1, quad.t1);
+		ltex_drawrotsized(pTexture, quad.x0, quad.y0, 0, 0, 0, quad.x1 - quad.x0, quad.y1 - quad.y0, quad.s0, quad.t0, quad.s1, quad.t1);
 	}
 }

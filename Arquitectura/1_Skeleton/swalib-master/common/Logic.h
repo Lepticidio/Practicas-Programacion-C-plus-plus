@@ -11,6 +11,6 @@ public:
 	Ball * balls = new Ball[NUM_BALLS];	// Array of balls.
 	const float MAX_BALL_SPEED = 8.f;	// Max vel. of ball. (pixels/?).
 	void Initialize();
-	void Update();
+	void Update(float _fDeltaTime);
 };
 

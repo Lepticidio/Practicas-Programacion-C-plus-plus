@@ -1,9 +1,8 @@
-﻿  Font.cpp
-D:\Microsoft Visual Studio\repos\2D_practica3\project\Font.cpp(22,67): warning C4244: 'initializing': conversion from 'float' to 'unsigned int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica3\project\Font.cpp(26,110): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica3\project\Font.cpp(26,94): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica3\project\Font.cpp(32,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica3\project\Font.cpp(47,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica3\project\Font.cpp(47,39): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica3\project\Font.cpp(95,20): warning C4018: '<': signed/unsigned mismatch
+﻿  main.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Microsoft Visual Studio\repos\2D_practica3\lib\glfw3.h(98): message : see previous definition of 'APIENTRY'
+D:\Microsoft Visual Studio\repos\2D_practica3\src\main.cpp(102,59): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica3\src\main.cpp(102,44): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica3\src\main.cpp(102,104): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica3\src\main.cpp(124,66): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
   programacion2d.vcxproj -> D:\Microsoft Visual Studio\repos\2D_practica3\project\Debug\programacion2d.exe

@@ -6,7 +6,7 @@ CircleCollider::CircleCollider(float _fRadius, Vec2 _vPosition) : fRadius(_fRadi
 }
 bool CircleCollider::collides(const Collider& other) 
 {
-	
+	return false;
 }
 bool CircleCollider::collides(const Vec2& circlePos, float circleRadius)
 {

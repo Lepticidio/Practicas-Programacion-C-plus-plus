@@ -13,6 +13,6 @@ public:
 	vec2   vel;	// Velocity.
 	GLuint gfx;	// OpenGL for id. for visualization purposes. 
 	float  radius;	// Radius.
-	void logic();
+	void logic(float _fDeltaTime);
 };
 

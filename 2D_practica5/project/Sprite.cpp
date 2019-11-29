@@ -5,6 +5,10 @@ Sprite::Sprite(const ltex_t* tex, int hframes, int vframes)
 {
 
 }
+void Sprite::setCallback(CallbackFunc func)
+{
+	callbackFunc = func;
+}
 const ltex_t* Sprite::getTexture() const
 {
 	return &texture;
@@ -108,6 +112,7 @@ void Sprite::setCurrentFrame(int frame)
 }
 void Sprite::update(float deltaTime)
 {
+	callbackFunc(*this, deltaTime);
 	fcurrentAnimationTime += deltaTime;
 	float fTotalAnimationTime = (iHorizontalFrames * iVerticalFrames) / iFps;
 	if (fcurrentAnimationTime > fTotalAnimationTime)
@@ -125,4 +130,36 @@ void Sprite::draw() const
 	ltex_drawrotsized(&texture, vPosition.x, vPosition.y, fAngle, vPivot.x, vPivot.y, vSize.x, vSize.y, 
 		vPositionInArray.x /(float)iHorizontalFrames, vPositionInArray.y / (float) iVerticalFrames, (vPositionInArray.x + 1.)/(float)iHorizontalFrames, (vPositionInArray.y + 1.)/(float)iVerticalFrames);
 	lgfx_setcolor(1, 1, 1, 1);
+}
+
+void Sprite::setCollisionType(CollisionType type)
+{
+	switch (type)
+	{
+	case COLLISION_CIRCLE:
+		Vec2 size = getSize();
+		float radius = size.x;
+		if (size.y > size.x)
+		{
+			radius = size.y;
+		}
+		pCollider = new CircleCollider(radius, vPosition);
+		break;
+	case COLLISION_RECT:
+		pCollider = new RectCollider(getSize(), vPosition);
+		break;
+	default:
+	}
+}
+CollisionType Sprite::getCollisionType() const
+{
+
+}
+const Collider* Sprite::getCollider() const
+{
+
+}
+bool Sprite::collides(const Sprite& other) const
+{
+
 }

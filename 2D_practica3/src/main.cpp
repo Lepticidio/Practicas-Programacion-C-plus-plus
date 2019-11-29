@@ -93,16 +93,13 @@ int main()
 			float fG = (float)(rand() % 255) / (float)255;
 			float fB = (float)(rand() % 255) / (float)255;
 
-			//Text text(sMessage, Vec2(iWidth, 500), *pFont, (rand() % 255) / 255, (rand() % 255)/255, (rand() % 255) / 255, rand() % 180 + 20);
 			
 			for (int i = 0; i < iMaxNumberMessages; i++)
 			{
 				printf("iteración %d  de %d\n", i, iMaxNumberMessages);
 				if (oMessages == nullptr || !bActivedMessages[i])
 				{
-					printf("%d es sobreescrito\n", i);
-					//Text* pText = new Text(sMessage, Vec2(iWidth, 500), *pFont, fR, fG, fB, rand() % 180 + 20);
-					Text* pText = new Text(sMessage, Vec2(iWidth, 500), *pFont, 1., 1., 1., rand() % 180 + 20);
+					Text* pText = new Text(sMessage, Vec2(iWidth, rand() % iHeight), *pFont, fR, fG, fB, rand() % 180 + 20);
 					oMessages[i] = pText;
 					bActivedMessages[i] = true;
 					i = iMaxNumberMessages;

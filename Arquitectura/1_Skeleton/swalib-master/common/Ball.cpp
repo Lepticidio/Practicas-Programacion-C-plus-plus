@@ -1,8 +1,9 @@
 #include "Ball.h"
-void Ball::logic()
+void Ball::logic(float _fDeltaTime)
 {
 
 	// New Pos.
+	vscale(vel, _fDeltaTime);
 	vec2 newpos = vadd(pos, vel);
 
 	// Collision detection.

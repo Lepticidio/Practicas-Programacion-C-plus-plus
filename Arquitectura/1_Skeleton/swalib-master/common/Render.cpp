@@ -1,4 +1,5 @@
 #include "Render.h"
+
 void Render::Initialize(const Logic& _logic)
 {
 	texbkg = new GLuint;
@@ -49,7 +50,7 @@ void Render::Update(const Logic &_logic, const std::string &_sMessageFrames)
 	// Text
 	FONT_DrawString(vmake(SCR_WIDTH / 2 - 6 * 16, 16), "HELLO WORLD!");
 
-	FONT_DrawString(vmake(32, SCR_HEIGHT - 32), _sMessageFrames.c_str());
+	FONT_DrawString(vmake(8, SCR_HEIGHT - 32), _sMessageFrames.c_str());
 
 	// Exchanges the front and back buffers
 	SYS_Show();

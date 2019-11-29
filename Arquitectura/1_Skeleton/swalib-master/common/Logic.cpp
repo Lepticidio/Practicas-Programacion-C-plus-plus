@@ -16,12 +16,13 @@ void Logic::Initialize()
 
 }
 
-void Logic::Update()
+void Logic::Update(float _fDeltaTime)
 {
 	// Run balls
 	for (int i = 0; i < NUM_BALLS; i++)
 	{
-		balls[i].logic();
+		balls[i].logic(_fDeltaTime);
 	}
+	//SYS_Sleep(17);
 
 }

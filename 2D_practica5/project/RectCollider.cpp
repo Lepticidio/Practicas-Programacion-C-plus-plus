@@ -6,7 +6,7 @@ RectCollider::RectCollider(Vec2 _vSize, Vec2 _vPosition) : vSize(_vSize), vPosit
 }
 bool RectCollider::collides(const Collider& other)
 {
-
+	return false;
 }
 bool RectCollider::collides(const Vec2& circlePos, float circleRadius)
 {

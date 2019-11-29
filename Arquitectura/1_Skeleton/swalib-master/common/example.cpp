@@ -29,11 +29,11 @@ int Main(void)
 	QueryPerformanceCounter(&iCounter);
 	long long int iPreviousCount = iCounter.QuadPart;
 	long long int iCurrentCount = iPreviousCount;
-	float fFixedTime = 1. / 60.;
 	float fDeltaTime = 0;
 	float fTotalTime = 0;
 	float fLogicTime = 0;
-	float fRoundedTime = 0;
+	float fVirtualTimeFactor = 1.;
+	float fFixedTime = 1. / 60. ;
 	Initialization();
 	while (!SYS_GottaQuit()) // Controlling a request to terminate an application.
 	{
@@ -46,23 +46,35 @@ int Main(void)
 		fTotalTime += fRealDeltaTime; 
 		
 
-		std::string sMessageFrames = "FPS: ";
-		sMessageFrames += std::to_string(1. / fDeltaTime);
-		sMessageFrames += " \nTOTAL TIME: ";
-		sMessageFrames += std::to_string(fTotalTime);
+		std::string sMessageFrames = "FPS:";
+		std::string sTemp = std::to_string(1. / fDeltaTime);
+		sTemp.resize(5);
+		sMessageFrames += sTemp;
+		sMessageFrames += " TIME:";
+		sTemp = std::to_string(fTotalTime);
+		sTemp.resize(5);
+		sMessageFrames += sTemp;
 
-		while (fDeltaTime > fFixedTime)
+		if (fDeltaTime > 1. / 15.)
 		{
-			
-			fRoundedTime = floor(fTotalTime * 100.)/100.;
-			logic.Update();
-			fLogicTime += fFixedTime;
-			fDeltaTime -= fFixedTime;
-
+			fDeltaTime = 1. / 15.;
 		}
-		sMessageFrames += " \nLOGIC TIME: ";
-		sMessageFrames += std::to_string(fLogicTime);
+
+		printf("%f", fVirtualTimeFactor);
+		float fVirtualTime = fVirtualTimeFactor * fDeltaTime;
+		while (fVirtualTime > fFixedTime)
+		{			
+			logic.Update(fFixedTime);
+			fLogicTime += fFixedTime;
+			fVirtualTime -= fFixedTime;
+			fDeltaTime = fVirtualTime / fVirtualTimeFactor;
+		}
+		sMessageFrames += " LOGIC TIME:";
+		sTemp = std::to_string(fLogicTime);
+		sTemp.resize(5);
+		sMessageFrames += sTemp;
 		render.Update(logic, sMessageFrames);
+		//SYS_Sleep(17);
 
 
 		

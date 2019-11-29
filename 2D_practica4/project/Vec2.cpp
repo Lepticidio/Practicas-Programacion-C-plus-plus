@@ -149,7 +149,6 @@ Vec2 Vec2::Rotate(const double& degrees) const
 }
 Vec2 Vec2::Resize(const float& length)
 {
-	Vec2 res(x, y);
 	return Normalize()*length;
 }
 

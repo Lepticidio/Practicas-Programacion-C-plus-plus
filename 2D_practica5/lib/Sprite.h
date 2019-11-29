@@ -1,10 +1,13 @@
 #pragma once
 
-
-#include <Vec2.h>
 #include <glfw3.h>
 #include <litegfx.h>
-enum CollisionType {
+#include "CircleCollider.h"
+#include "RectCollider.h"
+#include "PixelsCollider.h"
+
+enum CollisionType 
+{
 	COLLISION_NONE,
 	COLLISION_CIRCLE,
 	COLLISION_RECT,
@@ -64,6 +67,12 @@ public:
 	void update(float deltaTime); 
 	void draw() const;
 
+	void setCollisionType(CollisionType type);
+	CollisionType getCollisionType() const;
+	const Collider* getCollider() const;
+	bool collides(const Sprite& other) const;
+
+
 private:
 	ltex_t texture;
 	lblend_t blend = BLEND_ALPHA;
@@ -80,6 +89,7 @@ private:
 	Vec2 vPosition = Vec2(0,0);
 	Vec2 vScale = Vec2(1,1);
 	Vec2 vPivot = Vec2(0.5f, 0.5f);
-	CollisionType collision;
+	CallbackFunc callbackFunc;
+	Collider* pCollider;
 };
 

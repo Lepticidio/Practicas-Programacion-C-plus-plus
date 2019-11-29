@@ -7,11 +7,11 @@
 class Font
 {
 	const float height;
-	stbtt_bakedchar bakedChars;
-	ltex_t texture;
+	const stbtt_bakedchar* pBakedChars;
+	ltex_t* pTexture;
 	float getHeight() const;
 	Vec2 getTextSize(const char* text) const;
-	Font(const float _height, const stbtt_bakedchar _bakedChars);
+	Font(const float _height, const stbtt_bakedchar* _pBakedChars);
 	public:
 		static Font* load(const char* filename, float height);
 		void draw(const char* text, const Vec2& pos) const;

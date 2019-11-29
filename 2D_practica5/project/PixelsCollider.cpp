@@ -4,9 +4,10 @@ PixelsCollider::PixelsCollider(Vec2 _vSize, Vec2 _vPosition, uint8_t* _pixels) :
 {
 
 }
+
 bool PixelsCollider::collides(const Collider& other)
 {
-
+	return false;
 }
 bool PixelsCollider::collides(const Vec2& circlePos, float circleRadius)
 {

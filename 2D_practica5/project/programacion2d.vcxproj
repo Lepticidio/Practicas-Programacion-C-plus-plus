@@ -28,13 +28,14 @@
     <ClCompile Include="Vec2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\lib\CircleCollider.h" />
+    <ClInclude Include="..\lib\Collider.h" />
     <ClInclude Include="..\lib\litegfx.h" />
+    <ClInclude Include="..\lib\PixelsCollider.h" />
+    <ClInclude Include="..\lib\RectCollider.h" />
     <ClInclude Include="..\lib\Sprite.h" />
+    <ClInclude Include="..\lib\stb_image.h" />
     <ClInclude Include="..\lib\Vec2.h" />
-    <ClInclude Include="CircleCollider.h" />
-    <ClInclude Include="Collider.h" />
-    <ClInclude Include="PixelsCollider.h" />
-    <ClInclude Include="RectCollider.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
