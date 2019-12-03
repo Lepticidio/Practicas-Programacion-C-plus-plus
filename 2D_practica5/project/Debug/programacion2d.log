@@ -1,18 +1,4 @@
-﻿  main.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-D:\Microsoft Visual Studio\repos\2D_practica5\lib\glfw3.h(98): message : see previous definition of 'APIENTRY'
-D:\Microsoft Visual Studio\repos\2D_practica5\lib\Collider.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-D:\Microsoft Visual Studio\repos\2D_practica5\src\main.cpp(59,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  CircleCollider.cpp
-D:\Microsoft Visual Studio\repos\2D_practica5\src\main.cpp(59,20): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  Collider.cpp
-D:\Microsoft Visual Studio\repos\2D_practica5\lib\Collider.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  PixelsCollider.cpp
-D:\Microsoft Visual Studio\repos\2D_practica5\lib\Collider.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  RectCollider.cpp
-D:\Microsoft Visual Studio\repos\2D_practica5\lib\Collider.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Sprite.cpp
-D:\Microsoft Visual Studio\repos\2D_practica5\lib\Collider.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+﻿  Sprite.cpp
 D:\Microsoft Visual Studio\repos\2D_practica5\lib\Collider.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(107,9): warning C4244: 'return': conversion from 'const int' to 'float', possible loss of data
 D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(117,28): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
@@ -21,13 +7,5 @@ D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(127,73): warnin
 D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(127,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(131,172): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(131,120): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(152,2): error C2059: syntax error: '}'
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(148,2): error C2360: initialization of 'radius' is skipped by 'case' label
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(141): message : see declaration of 'radius'
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(148,2): error C2360: initialization of 'size' is skipped by 'case' label
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(140): message : see declaration of 'size'
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(151,2): error C2361: initialization of 'radius' is skipped by 'default' label
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(141): message : see declaration of 'radius'
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(151,2): error C2361: initialization of 'size' is skipped by 'default' label
-  Generating Code...
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Sprite.cpp(140): message : see declaration of 'size'
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  programacion2d.vcxproj -> D:\Microsoft Visual Studio\repos\2D_practica5\project\Debug\programacion2d.exe

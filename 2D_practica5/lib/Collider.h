@@ -1,5 +1,14 @@
 #pragma once
 #include "Vec2.h";
+
+
+enum CollisionType
+{
+	COLLISION_NONE,
+	COLLISION_CIRCLE,
+	COLLISION_RECT,
+	COLLISION_PIXELS
+};
 class Collider abstract
 {
 	virtual bool collides(const Collider& other);
@@ -22,7 +31,7 @@ public:
 	bool checkPixelsRect(
 		const Vec2& pixelsPos, const Vec2& pixelsSize, const uint8_t* pixels,
 		const Vec2& rectPos, const Vec2& rectSize);
-
+	CollisionType type;
 
 };
 

@@ -136,30 +136,37 @@ void Sprite::setCollisionType(CollisionType type)
 {
 	switch (type)
 	{
-	case COLLISION_CIRCLE:
-		Vec2 size = getSize();
-		float radius = size.x;
-		if (size.y > size.x)
+		case COLLISION_CIRCLE:
 		{
-			radius = size.y;
+			Vec2 size = getSize();
+			float radius = size.x;
+			if (size.y > size.x)
+			{
+				radius = size.y;
+			}
+			pCollider = new CircleCollider(radius, vPosition);
 		}
-		pCollider = new CircleCollider(radius, vPosition);
 		break;
-	case COLLISION_RECT:
-		pCollider = new RectCollider(getSize(), vPosition);
+		case COLLISION_RECT:
+		{
+			pCollider = new RectCollider(getSize(), vPosition);
+		}
 		break;
-	default:
+		default:
+		{
+
+		}
 	}
 }
 CollisionType Sprite::getCollisionType() const
 {
-
+	return pCollider->type;
 }
 const Collider* Sprite::getCollider() const
 {
-
+	return pCollider;
 }
 bool Sprite::collides(const Sprite& other) const
 {
-
+	return false;
 }

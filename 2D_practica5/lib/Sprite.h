@@ -6,13 +6,6 @@
 #include "RectCollider.h"
 #include "PixelsCollider.h"
 
-enum CollisionType 
-{
-	COLLISION_NONE,
-	COLLISION_CIRCLE,
-	COLLISION_RECT,
-	COLLISION_PIXELS
-};
 class Sprite
 {
 public:
