@@ -1,7 +1,8 @@
 #include "Collider.h"
 
-bool Collider::collides(const Collider& other)
+bool Collider::collides(Collider& other)
 {
+	printf("Collider generico prueba\n");
 	return false;
 }
 bool Collider::collides(const Vec2& circlePos, float circleRadius)
@@ -20,7 +21,15 @@ bool Collider::collides(const Vec2& pixelsPos, const Vec2& pixelsSize,
 bool Collider::checkCircleCircle(const Vec2& pos1, float radius1,
 	const Vec2& pos2, float radius2)
 {
-	return false;
+	Vec2 vDifference (pos1.x - pos2.x, pos1.y - pos2.y);
+	if (vDifference.Length() > radius1 + radius2)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
 }
 bool Collider::checkCircleRect(const Vec2& circlePos, float circleRadius,
 	const Vec2& rectPos, const Vec2& rectSize)

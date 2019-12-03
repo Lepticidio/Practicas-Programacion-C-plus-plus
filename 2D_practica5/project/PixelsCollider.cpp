@@ -4,7 +4,7 @@ PixelsCollider::PixelsCollider(Vec2 _vSize, Vec2 _vPosition, uint8_t* _pixels) :
 {
 	type = COLLISION_PIXELS;
 }
-bool PixelsCollider::collides(const Collider& other)
+bool PixelsCollider::collides(Collider& other)
 {
 	return false;
 }

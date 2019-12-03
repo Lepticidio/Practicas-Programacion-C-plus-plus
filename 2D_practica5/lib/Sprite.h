@@ -10,7 +10,7 @@ class Sprite
 {
 public:
 	// Tpo de la función callback 
-	typedef void (* CallbackFunc)(Sprite&, float); 
+	typedef void (* CallbackFunc)(Sprite&, float);
 
 	// Indicamos el número de frames en horizontal y vertical
 	// que tendrá la imagen del sprite 
@@ -57,13 +57,13 @@ public:
 	float getCurrentFrame() const; 
 	void setCurrentFrame(int frame); 
 
-	void update(float deltaTime); 
+	void update(float deltaTime);
 	void draw() const;
 
 	void setCollisionType(CollisionType type);
 	CollisionType getCollisionType() const;
 	const Collider* getCollider() const;
-	bool collides(const Sprite& other) const;
+	bool collides(Sprite& other);
 
 
 private:

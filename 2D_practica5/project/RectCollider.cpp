@@ -4,7 +4,7 @@ RectCollider::RectCollider(Vec2 _vSize, Vec2 _vPosition) : vSize(_vSize), vPosit
 {
 	type = COLLISION_RECT;
 }
-bool RectCollider::collides(const Collider& other)
+bool RectCollider::collides(Collider& other)
 {
 	return false;
 }

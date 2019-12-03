@@ -19,7 +19,6 @@ public:
 
 	Vec2 operator - (float const& obj);
 	Vec2 operator - (Vec2 const& obj);
-
 	Vec2 operator * (float const& obj);
 
 	Vec2 operator * (Vec2 const& obj);

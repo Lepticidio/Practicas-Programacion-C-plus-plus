@@ -110,10 +110,27 @@ void Sprite::setCurrentFrame(int frame)
 {
 	iCurrentFrame = frame;
 }
-void Sprite::update(float deltaTime)
+void Sprite::update(float _deltaTime)
 {
-	callbackFunc(*this, deltaTime);
-	fcurrentAnimationTime += deltaTime;
+	switch (getCollisionType())
+	{
+	case COLLISION_CIRCLE:
+	{
+		const Collider* pCollider = getCollider();
+		CircleCollider* pCircle = static_cast<CircleCollider*>( const_cast<Collider*>(pCollider));
+		pCircle->vPosition = vPosition;
+	}
+	break;
+	case COLLISION_RECT:
+	{
+	}
+	break;
+	default:
+	{
+	}
+	}
+	callbackFunc(*this, _deltaTime);
+	fcurrentAnimationTime += _deltaTime;
 	float fTotalAnimationTime = (iHorizontalFrames * iVerticalFrames) / iFps;
 	if (fcurrentAnimationTime > fTotalAnimationTime)
 	{
@@ -139,7 +156,7 @@ void Sprite::setCollisionType(CollisionType type)
 		case COLLISION_CIRCLE:
 		{
 			Vec2 size = getSize();
-			float radius = size.x;
+			float radius = size.x / 2;
 			if (size.y > size.x)
 			{
 				radius = size.y;
@@ -160,13 +177,33 @@ void Sprite::setCollisionType(CollisionType type)
 }
 CollisionType Sprite::getCollisionType() const
 {
-	return pCollider->type;
+	if (pCollider == nullptr)
+	{
+		return COLLISION_NONE;
+	}
+	else
+	{
+		return pCollider->type;
+	}
 }
 const Collider* Sprite::getCollider() const
 {
 	return pCollider;
 }
-bool Sprite::collides(const Sprite& other) const
+bool Sprite::collides(Sprite& other)
 {
-	return false;
+	if (pCollider != nullptr)
+	{
+		bool bResult = pCollider->collides(*(other.pCollider));
+		if (bResult)
+		{
+			setColor(1, 0, 0, 1);
+			other.setColor(1, 0, 0, 1);
+		}
+		return bResult;
+	}
+	else
+	{
+		return false;
+	}
 }

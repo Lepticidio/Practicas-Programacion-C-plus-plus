@@ -61,6 +61,7 @@ int main()
 
 	Sprite wasp(pTextureWasp, 1, 1);
 	wasp.setPosition(Vec2(500, 500));
+	wasp.setCollisionType(COLLISION_PIXELS);
 
 	unsigned char* sBallBytes = stbi_load("data//ball.png", &iWidthBall, &iHeightBall, nullptr, 4);
 	ltex_t* pTextureBall = nullptr;
@@ -70,6 +71,7 @@ int main()
 
 	Sprite ball(pTextureBall, 1, 1);
 	ball.setPosition(Vec2(250, 500));
+	ball.setCollisionType(COLLISION_CIRCLE);
 
 	unsigned char* sBoxBytes = stbi_load("data//box.png", &iWidthBox, &iHeightBox, nullptr, 4);
 	ltex_t* pTextureBox = nullptr;
@@ -79,6 +81,7 @@ int main()
 
 	Sprite box(pTextureBox, 1, 1);
 	box.setPosition(Vec2(750, 500));
+	box.setCollisionType(COLLISION_RECT);
 
 	unsigned char* sCircleBytes = stbi_load("data//circle.png", &iWidthCircle, &iHeightCircle, nullptr, 4);
 	ltex_t* pTextureCircle = nullptr;
@@ -88,12 +91,15 @@ int main()
 
 	Sprite mouseSprite(pTextureCircle, 1, 1);
 	mouseSprite.setCallback(MouseSpriteCallback);
+	mouseSprite.setCollisionType(COLLISION_CIRCLE);
 
 	unsigned char* sRectBytes = stbi_load("data//rect.png", &iWidthRect, &iHeightRect, nullptr, 4);
 	ltex_t* pTextureRect = nullptr;
 	pTextureRect = ltex_alloc(iWidthRect, iHeightRect, 1);
 	ltex_setpixels(pTextureRect, sRectBytes);
 	stbi_image_free(sRectBytes);
+	const int iNumberSprites = 4;
+	Sprite* allSprites [iNumberSprites] = {&wasp, &box, &ball, &mouseSprite};
 
 	//5) Bucle principal
 	while (!glfwWindowShouldClose(pWindow) && bOpen)
@@ -130,6 +136,14 @@ int main()
 		//5.3) Actualizamos lógica de juego
 		mouseSprite.update(deltaTime);
 
+		for (int i = 0; i < iNumberSprites - 1; i++)
+		{
+			bool bCollides = false;
+			for (int j = i + 1; j < iNumberSprites; j++)
+			{
+				(*allSprites[i]).collides((*allSprites[j]));				
+			}
+		}
 		//5.4) Limpiamos el backbuffer
 		lgfx_clearcolorbuffer(0, 0, 0);
 
@@ -138,6 +152,11 @@ int main()
 		ball.draw();
 		box.draw();
 		mouseSprite.draw();
+
+		wasp.setColor(1, 1, 1, 1);
+		ball.setColor(1, 1, 1, 1);
+		box.setColor(1, 1, 1, 1);
+		mouseSprite.setColor(1, 1, 1, 1);
 
 		//5.6) Cambiamos el backbuffer por el frontbuffer
 		glfwSwapBuffers(pWindow);
