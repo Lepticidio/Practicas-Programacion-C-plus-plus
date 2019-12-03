@@ -86,8 +86,8 @@ int main()
 	ltex_setpixels(pTextureCircle, sCircleBytes);
 	stbi_image_free(sCircleBytes);
 
-	Sprite circle(pTextureCircle, 1, 1);
-	circle.setCallback(MouseSpriteCallback);
+	Sprite mouseSprite(pTextureCircle, 1, 1);
+	mouseSprite.setCallback(MouseSpriteCallback);
 
 	unsigned char* sRectBytes = stbi_load("data//rect.png", &iWidthRect, &iHeightRect, nullptr, 4);
 	ltex_t* pTextureRect = nullptr;
@@ -106,11 +106,29 @@ int main()
 		{
 			bOpen = false;
 		}
+		int state = glfwGetMouseButton(pWindow, GLFW_MOUSE_BUTTON_LEFT);
+		if (state == GLFW_PRESS)
+		{
+			mouseSprite.setTexture(pTextureCircle, 1, 1);
+			mouseSprite.setCollisionType(COLLISION_CIRCLE);
+		}
+		state = glfwGetMouseButton(pWindow, GLFW_MOUSE_BUTTON_RIGHT);
+		if (state == GLFW_PRESS)
+		{
+			mouseSprite.setTexture(pTextureRect, 1, 1);
+			mouseSprite.setCollisionType(COLLISION_RECT);
+		}
+		state = glfwGetMouseButton(pWindow, GLFW_MOUSE_BUTTON_MIDDLE);
+		if (state == GLFW_PRESS)
+		{
+			mouseSprite.setTexture(pTextureWasp, 1, 1);
+			mouseSprite.setCollisionType(COLLISION_PIXELS);
+		}
 		glfwGetCursorPos(pWindow, pXMouse, pYMouse);
 		vMousePos = Vec2(dXMouse, dYMouse);
 
 		//5.3) Actualizamos lógica de juego
-		circle.update(deltaTime);
+		mouseSprite.update(deltaTime);
 
 		//5.4) Limpiamos el backbuffer
 		lgfx_clearcolorbuffer(0, 0, 0);
@@ -119,7 +137,7 @@ int main()
 		wasp.draw();
 		ball.draw();
 		box.draw();
-		circle.draw();
+		mouseSprite.draw();
 
 		//5.6) Cambiamos el backbuffer por el frontbuffer
 		glfwSwapBuffers(pWindow);
