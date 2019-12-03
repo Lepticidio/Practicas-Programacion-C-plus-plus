@@ -14,6 +14,11 @@ int iHeight = 1000;
 
 Vec2 vMousePos;
 
+void MouseSpriteCallback(Sprite& _sprite, float _deltaTime)
+{
+	_sprite.setPosition(vMousePos);
+}
+
 int main()
 {
 
@@ -32,6 +37,14 @@ int main()
 	bool bOpen = true;
 	int iWidthWasp = 0;
 	int iHeightWasp = 0;
+	int iWidthBall = 0;
+	int iHeightBall = 0;
+	int iWidthBox = 0;
+	int iHeightBox = 0;
+	int iWidthCircle = 0;
+	int iHeightCircle = 0;
+	int iWidthRect = 0;
+	int iHeightRect = 0;
 	double deltaTime = 0;
 	double previousTime = glfwGetTime();
 
@@ -40,9 +53,47 @@ int main()
 	double* pXMouse = &dXMouse;
 	double* pYMouse = &dYMouse;
 
+	unsigned char* sWaspBytes = stbi_load("data//wasp.png", &iWidthWasp, &iHeightWasp, nullptr, 4);
+	ltex_t* pTextureWasp = nullptr;
+	pTextureWasp = ltex_alloc(iWidthWasp, iHeightWasp, 1);
+	ltex_setpixels(pTextureWasp, sWaspBytes);
+	stbi_image_free(sWaspBytes);
 
+	Sprite wasp(pTextureWasp, 1, 1);
+	wasp.setPosition(Vec2(500, 500));
 
+	unsigned char* sBallBytes = stbi_load("data//ball.png", &iWidthBall, &iHeightBall, nullptr, 4);
+	ltex_t* pTextureBall = nullptr;
+	pTextureBall = ltex_alloc(iWidthBall, iHeightBall, 1);
+	ltex_setpixels(pTextureBall, sBallBytes);
+	stbi_image_free(sBallBytes);
 
+	Sprite ball(pTextureBall, 1, 1);
+	ball.setPosition(Vec2(250, 500));
+
+	unsigned char* sBoxBytes = stbi_load("data//box.png", &iWidthBox, &iHeightBox, nullptr, 4);
+	ltex_t* pTextureBox = nullptr;
+	pTextureBox = ltex_alloc(iWidthBox, iHeightBox, 1);
+	ltex_setpixels(pTextureBox, sBoxBytes);
+	stbi_image_free(sBoxBytes);
+
+	Sprite box(pTextureBox, 1, 1);
+	box.setPosition(Vec2(750, 500));
+
+	unsigned char* sCircleBytes = stbi_load("data//circle.png", &iWidthCircle, &iHeightCircle, nullptr, 4);
+	ltex_t* pTextureCircle = nullptr;
+	pTextureCircle = ltex_alloc(iWidthCircle, iHeightCircle, 1);
+	ltex_setpixels(pTextureCircle, sCircleBytes);
+	stbi_image_free(sCircleBytes);
+
+	Sprite circle(pTextureCircle, 1, 1);
+	circle.setCallback(MouseSpriteCallback);
+
+	unsigned char* sRectBytes = stbi_load("data//rect.png", &iWidthRect, &iHeightRect, nullptr, 4);
+	ltex_t* pTextureRect = nullptr;
+	pTextureRect = ltex_alloc(iWidthRect, iHeightRect, 1);
+	ltex_setpixels(pTextureRect, sRectBytes);
+	stbi_image_free(sRectBytes);
 
 	//5) Bucle principal
 	while (!glfwWindowShouldClose(pWindow) && bOpen)
@@ -59,13 +110,16 @@ int main()
 		vMousePos = Vec2(dXMouse, dYMouse);
 
 		//5.3) Actualizamos lógica de juego
-
+		circle.update(deltaTime);
 
 		//5.4) Limpiamos el backbuffer
 		lgfx_clearcolorbuffer(0, 0, 0);
 
 		//5.5) Renderizamos la escena.
-
+		wasp.draw();
+		ball.draw();
+		box.draw();
+		circle.draw();
 
 		//5.6) Cambiamos el backbuffer por el frontbuffer
 		glfwSwapBuffers(pWindow);
