@@ -6,33 +6,7 @@ CircleCollider::CircleCollider(float _fRadius, Vec2 _vPosition) : fRadius(_fRadi
 }
 bool CircleCollider::collides(Collider& other) 
 {
-	if (&other == nullptr)
-	{
-		return false;
-	}
-	else
-	{
-		switch (other.type)
-		{
-			case COLLISION_CIRCLE:
-			{
-				Collider* pCollider = &other;
-				CircleCollider* pCircle = static_cast<CircleCollider*>(pCollider);
-				return checkCircleCircle(vPosition, fRadius, pCircle->vPosition, pCircle->fRadius);
-			}
-			break;
-			case COLLISION_RECT:
-			{
-				return false;
-			}
-			break;
-			default:
-			{
-				return false;
-			}
-		}
-
-	}
+	return false;
 }
 bool CircleCollider::collides(const Vec2& circlePos, float circleRadius)
 {

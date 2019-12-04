@@ -119,10 +119,15 @@ void Sprite::update(float _deltaTime)
 		const Collider* pCollider = getCollider();
 		CircleCollider* pCircle = static_cast<CircleCollider*>( const_cast<Collider*>(pCollider));
 		pCircle->vPosition = vPosition;
+		pCircle->fRadius = getSize().x / 2;
 	}
 	break;
 	case COLLISION_RECT:
 	{
+		const Collider* pCollider = getCollider();
+		RectCollider* pRect = static_cast<RectCollider*>(const_cast<Collider*>(pCollider));
+		pRect->vPosition = vPosition;
+		pRect->vSize = getSize();
 	}
 	break;
 	default:
@@ -159,7 +164,7 @@ void Sprite::setCollisionType(CollisionType type)
 			float radius = size.x / 2;
 			if (size.y > size.x)
 			{
-				radius = size.y;
+				radius = size.y/2;
 			}
 			pCollider = new CircleCollider(radius, vPosition);
 		}
@@ -194,7 +199,30 @@ bool Sprite::collides(Sprite& other)
 {
 	if (pCollider != nullptr)
 	{
-		bool bResult = pCollider->collides(*(other.pCollider));
+		bool bResult = false;
+		switch (other.getCollisionType())
+		{
+			case COLLISION_CIRCLE:
+			{
+				Collider* pCollider = const_cast<Collider*>( other.getCollider());
+				CircleCollider* pCircle = static_cast<CircleCollider*>(pCollider);
+				bResult = const_cast<Collider*>(getCollider())->collides(pCircle->vPosition, pCircle->fRadius);
+			}
+			break;
+			case COLLISION_RECT:
+			{
+				Collider* pCollider = const_cast<Collider*>(other.getCollider());
+				RectCollider* pRect = static_cast<RectCollider*>(pCollider);
+				bResult = const_cast<Collider*>(getCollider())->collides(pRect->vPosition, pRect->vSize);
+			}
+			break;
+			default:
+			{
+				bResult = false;
+			}
+		}
+		
+		pCollider->collides(*(other.pCollider));
 		if (bResult)
 		{
 			setColor(1, 0, 0, 1);
