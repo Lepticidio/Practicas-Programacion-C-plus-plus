@@ -19,6 +19,37 @@ void MouseSpriteCallback(Sprite& _sprite, float _deltaTime)
 	_sprite.setPosition(vMousePos);
 }
 
+void GrowSpriteCallback(Sprite& _sprite, float _deltaTime);
+void ShrinkSpriteCallback(Sprite& _sprite, float _deltaTime);
+void GrowSpriteCallback(Sprite& _sprite, float _deltaTime)
+{
+	float fMaxSize = 1.1f;
+	float fOscillationSpeed = 0.25f * _deltaTime;
+	Vec2 vCurrentScale = _sprite.getScale();
+
+	_sprite.setScale(vCurrentScale + Vec2(fOscillationSpeed, fOscillationSpeed));
+
+	if (vCurrentScale.x > fMaxSize)
+	{
+		_sprite.setCallback(ShrinkSpriteCallback);
+		_sprite.setScale(Vec2(fMaxSize, fMaxSize));
+	}
+}
+void ShrinkSpriteCallback(Sprite& _sprite, float _deltaTime)
+{
+	float fMinSize= 0.9f;
+	float fOscillationSpeed = 0.25f * _deltaTime;
+	Vec2 vCurrentScale = _sprite.getScale();
+
+	_sprite.setScale(vCurrentScale - Vec2(fOscillationSpeed, fOscillationSpeed));
+
+	if (vCurrentScale.x < fMinSize)
+	{
+		_sprite.setCallback(GrowSpriteCallback);
+		_sprite.setScale(Vec2(fMinSize, fMinSize));
+	}
+}
+
 int main()
 {
 
@@ -72,6 +103,7 @@ int main()
 	Sprite ball(pTextureBall, 1, 1);
 	ball.setPosition(Vec2(250, 500));
 	ball.setCollisionType(COLLISION_CIRCLE);
+	ball.setCallback(GrowSpriteCallback);
 
 	unsigned char* sBoxBytes = stbi_load("data//box.png", &iWidthBox, &iHeightBox, nullptr, 4);
 	ltex_t* pTextureBox = nullptr;
@@ -82,6 +114,7 @@ int main()
 	Sprite box(pTextureBox, 1, 1);
 	box.setPosition(Vec2(750, 500));
 	box.setCollisionType(COLLISION_RECT);
+	box.setCallback(GrowSpriteCallback);
 
 	unsigned char* sCircleBytes = stbi_load("data//circle.png", &iWidthCircle, &iHeightCircle, nullptr, 4);
 	ltex_t* pTextureCircle = nullptr;
@@ -135,6 +168,8 @@ int main()
 
 		//5.3) Actualizamos lógica de juego
 		mouseSprite.update(deltaTime);
+		box.update(deltaTime);
+		ball.update(deltaTime);
 
 		for (int i = 0; i < iNumberSprites - 1; i++)
 		{
