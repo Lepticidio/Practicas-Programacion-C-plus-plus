@@ -130,6 +130,14 @@ void Sprite::update(float _deltaTime)
 		pRect->vSize = getSize();
 	}
 	break;
+	case COLLISION_PIXELS:
+	{
+		const Collider* pCollider = getCollider();
+		PixelsCollider* pPixels = static_cast<PixelsCollider*>(const_cast<Collider*>(pCollider));
+		pPixels->vPosition = vPosition;
+		pPixels->vSize = getSize();
+	}
+	break;
 	default:
 	{
 	}
@@ -174,6 +182,13 @@ void Sprite::setCollisionType(CollisionType type)
 			pCollider = new RectCollider(getSize(), vPosition);
 		}
 		break;
+		case COLLISION_PIXELS:
+		{
+			uint8_t* sTextureChars = nullptr;
+			ltex_getpixels(&texture, sTextureChars);
+			pCollider = new PixelsCollider(getSize(), vPosition, sTextureChars);
+		}
+		break;
 		default:
 		{
 
@@ -214,6 +229,13 @@ bool Sprite::collides(Sprite& other)
 				Collider* pCollider = const_cast<Collider*>(other.getCollider());
 				RectCollider* pRect = static_cast<RectCollider*>(pCollider);
 				bResult = const_cast<Collider*>(getCollider())->collides(pRect->vPosition, pRect->vSize);
+			}
+			break;
+			case COLLISION_PIXELS:
+			{
+				Collider* pCollider = const_cast<Collider*>(other.getCollider());
+				PixelsCollider* pPixels = static_cast<PixelsCollider*>(pCollider);
+				bResult = const_cast<Collider*>(getCollider())->collides(pPixels->vPosition, pPixels->vSize, pPixels->m_pixels);
 			}
 			break;
 			default:
