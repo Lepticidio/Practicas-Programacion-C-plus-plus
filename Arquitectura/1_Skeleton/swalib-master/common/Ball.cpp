@@ -1,5 +1,5 @@
 #include "Ball.h"
-void Ball::logic(float _fDeltaTime)
+void Ball::Slot(float _fDeltaTime)
 {
 
 	// New Pos.
@@ -43,4 +43,44 @@ void Ball::logic(float _fDeltaTime)
 	{
 		vel.y *= -1.0;
 	}
+}
+int Ball::GetIndex()
+{
+	return index;
+}
+GLuint Ball::GetGfx()
+{
+	return gfx;
+}
+float Ball::GetRadius()
+{
+	return radius;
+}
+vec2 Ball::GetPos()
+{
+	return pos;
+}
+vec2 Ball::GetVel()
+{
+	return vel;
+}
+void Ball::SetIndex(int _index)
+{
+	index = _index;
+}
+void Ball::SetGfx(GLuint _gfx)
+{
+	gfx = _gfx;
+}
+void Ball::SetRadius(float _radius)
+{
+	radius = _radius;
+}
+void Ball::SetPos(vec2 _pos)
+{
+	pos = _pos;
+}
+void Ball::SetVel(vec2 _vel)
+{
+	vel = _vel;
 }

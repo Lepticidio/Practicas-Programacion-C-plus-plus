@@ -22,7 +22,7 @@ void Render::Initialize(const Logic& _logic)
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);	// Blend func. for alpha color.
 	for (int i = 0; i < _logic.NUM_BALLS; i++)
 	{
-		_logic.balls[i].gfx = *texsmallball;
+		_logic.balls[i].SetGfx( *texsmallball);
 	}
 
 
@@ -44,7 +44,7 @@ void Render::Update(const Logic &_logic, const std::string &_sMessageFrames)
 	// Render balls
 	for (int i = 0; i < _logic.NUM_BALLS; i++)
 	{
-		CORE_RenderCenteredSprite(_logic.balls[i].pos, vmake(_logic.balls[i].radius * 2.f, _logic.balls[i].radius * 2.f), _logic.balls[i].gfx);
+		CORE_RenderCenteredSprite(_logic.balls[i].GetPos(), vmake(_logic.balls[i].GetRadius() * 2.f, _logic.balls[i].GetRadius() * 2.f), _logic.balls[i].GetGfx());
 	}
 
 	// Text

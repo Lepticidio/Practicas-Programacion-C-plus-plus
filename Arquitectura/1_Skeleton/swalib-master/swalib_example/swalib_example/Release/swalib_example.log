@@ -1,9 +1,12 @@
-﻿  example.cpp
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\example.cpp(36,30): warning C4305: 'initializing': truncation from 'double' to 'float'
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\example.cpp(60,25): warning C4305: '=': truncation from 'double' to 'float'
+﻿  Logic.cpp
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.cpp(7,20): warning C4018: '<': signed/unsigned mismatch
+  Render.cpp
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Logic.cpp(22,20): warning C4018: '<': signed/unsigned mismatch
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Render.cpp(23,20): warning C4018: '<': signed/unsigned mismatch
+D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Render.cpp(45,20): warning C4018: '<': signed/unsigned mismatch
   Generating code
-  2 of 324 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    2 functions had inline decision re-evaluated but remain unchanged
+  15 of 332 functions ( 4.5%) were compiled, the rest were copied from previous compilation.
+    9 functions were new in current compilation
+    3 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   swalib_example.vcxproj -> D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\swalib_example\Release\swalib_example.exe

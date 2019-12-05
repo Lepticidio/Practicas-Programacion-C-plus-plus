@@ -121,10 +121,11 @@ bool Collider::checkPixelsPixels(
 		{
 			maxOverlapY1 = maxY1 / maxY2;
 		}
-		int iWidthOverlap1 = (int)((maxOverlapX1 - minOverlapX1) * pixelsSize1.x);
-		int iHeightOverlap1 = (int)((maxOverlapY1 - minOverlapY1) * pixelsSize1.y);
-		int iWidthOverlap2 = (int)((maxOverlapX2 - minOverlapX2) * pixelsSize2.x);
-		int iHeightOverlap2 = (int)((maxOverlapY2 - minOverlapY2) * pixelsSize2.y);
+		int iWidthOverlap = (int)((maxOverlapX1 - minOverlapX1) * pixelsSize1.x);
+		int iHeightOverlap = (int)((maxOverlapY1 - minOverlapY1) * pixelsSize1.y);
+
+		for(int i = 0; i < i iWidthOver)
+		Vec2 vPositionInArray(iCurrentFrame % iHorizontalFrames, iCurrentFrame / iHorizontalFrames);
 
 		return true;
 	}
