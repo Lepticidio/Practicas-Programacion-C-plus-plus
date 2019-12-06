@@ -1,15 +1,21 @@
 ﻿  Collider.cpp
 D:\Microsoft Visual Studio\repos\2D_practica5\lib\Collider.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(84,21): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
 D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(86,21): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
 D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(88,21): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
 D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(90,21): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(92,21): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(96,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(100,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(104,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(108,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(113,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(117,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(121,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(125,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(94,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(98,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(102,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(106,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(111,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(115,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(119,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(123,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(179,20): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(181,20): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(185,27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(190,27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(195,27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(199,27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   programacion2d.vcxproj -> D:\Microsoft Visual Studio\repos\2D_practica5\project\Debug\programacion2d.exe

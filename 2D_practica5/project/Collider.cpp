@@ -64,9 +64,7 @@ bool Collider::checkCirclePixels(const Vec2& circlePos, float circleRadius,
 bool Collider::checkPixelsPixels(
 	const Vec2& pixelsPos1, const Vec2& pixelsSize1, const uint8_t* pixels1,
 	const Vec2& pixelsPos2, const Vec2& pixelsSize2, const uint8_t* pixels2)
-{
-	
-	
+{	
 	if (pixels1 != nullptr && pixels2 != nullptr)
 	{
 
@@ -162,5 +160,74 @@ bool Collider::checkPixelsRect(
 	const Vec2& pixelsPos, const Vec2& pixelsSize, const uint8_t* pixels,
 	const Vec2& rectPos, const Vec2& rectSize)
 {
-	return false;
+	if (pixels != nullptr)
+	{
+
+		float minXPix = pixelsPos.x - pixelsSize.x / 2.f;
+		float maxXPix = pixelsPos.x + pixelsSize.x / 2.f;
+		float minYPix = pixelsPos.y - pixelsSize.y / 2.f;
+		float maxYPix = pixelsPos.y + pixelsSize.y / 2.f;
+		float minXRec = rectPos.x - rectSize.x / 2.f;
+		float maxXRec = rectPos.x + rectSize.x / 2.f;
+		float minYRec = rectPos.y - rectSize.y / 2.f;
+		float maxYRec = rectPos.y + rectSize.y / 2.f;
+
+		if (maxXPix > minXRec&& minXPix < maxXRec && maxYPix > minYRec&& minYPix < maxYRec)
+		{
+
+			int minOverlapX = 0;
+			int maxOverlapX = pixelsSize.x;
+			int minOverlapY = 0;
+			int maxOverlapY = pixelsSize.y;
+
+			if (minXPix < minXRec)
+			{
+				minOverlapX = minXRec - minXPix;
+			}
+
+			if (maxXPix > maxXRec)
+			{
+				maxOverlapX = maxXRec - minXPix;
+			}
+
+			if (minYPix < minYRec)
+			{
+				minOverlapY = minYRec - minYPix;
+			}
+			if (maxYPix > maxYRec)
+			{
+				maxOverlapY = maxYRec - minYPix;
+			}
+
+			int iWidthOverlap = maxOverlapX - minOverlapX;
+			int iHeightOverlap = maxOverlapY - minOverlapY;
+
+
+			bool bResult = false;
+			for (int i = 0; i < iHeightOverlap; i++)
+			{
+				for (int j = 0; j < iWidthOverlap; j++)
+				{
+
+					if (
+						*(pixels + (((i + minOverlapY) * (int)pixelsSize.x + j + minOverlapX) * 4 + 3)) > 0 
+						)
+					{
+						bResult = true;
+					}
+				}
+
+			}
+
+			return bResult;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else
+	{
+		return false;
+	}
 }
