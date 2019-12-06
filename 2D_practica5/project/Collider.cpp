@@ -79,8 +79,6 @@ bool Collider::checkPixelsPixels(
 		float minY2 = pixelsPos2.y - pixelsSize2.y / 2.f;
 		float maxY2 = pixelsPos2.y + pixelsSize2.y / 2.f;
 
-		printf("%f > %f, %f < %f, %f > %f, %f < %f\n", maxX1, minX2, minX1, maxX2, maxY1, minY2, minY1, maxY2);
-
 		if (maxX1 > minX2&& minX1 < maxX2 && maxY1 > minY2&& minY1 < maxY2)
 		{
 
@@ -95,37 +93,38 @@ bool Collider::checkPixelsPixels(
 
 			if (minX1 < minX2)
 			{
-				minOverlapX1 = maxX1 - minX2;
+				minOverlapX1 = minX2 - minX1;
 			}
 			else
 			{
-				minOverlapX2 = maxX2 - minX1;
+				minOverlapX2 = minX1 - minX2;
 			}
 			if (maxX1 > maxX2)
 			{
-				maxOverlapX1 = maxX1 - maxX2;
+				maxOverlapX1 = maxX2 - minX1;
 			}
 			else
 			{
-				maxOverlapX2 = maxX2 - maxX1;
+				maxOverlapX2 = maxX1 - minX2;
 			}
 
 			if (minY1 < minY2)
 			{
-				minOverlapY1 = maxY1 - minY2;
+				minOverlapY1 = minY2 - minY1;
 			}
 			else
 			{
-				minOverlapY2 = maxY2 - minY1;
+				minOverlapY2 = minY1 - minY2;
 			}
 			if (maxY1 > maxY2)
 			{
-				maxOverlapY1 = maxY1 - maxY2;
+				maxOverlapY1 = maxY2 - minY1;
 			}
 			else
 			{
-				maxOverlapY2 = maxY2 - maxY1;
+				maxOverlapY2 = maxY1 - minY2;
 			}
+
 			int iWidthOverlap = maxOverlapX1 - minOverlapX1;
 			int iHeightOverlap = maxOverlapY1 - minOverlapY1;
 
@@ -156,7 +155,6 @@ bool Collider::checkPixelsPixels(
 	}
 	else
 	{
-		printf("pointers are null\n");
 		return false;
 	}
 }
