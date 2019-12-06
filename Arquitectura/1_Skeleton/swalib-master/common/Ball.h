@@ -1,7 +1,5 @@
 #pragma once
-#include "stdafx.h"
-#include "sys.h"
-#include "core.h"
+#include "Timer.h"
 
 class Ball
 {

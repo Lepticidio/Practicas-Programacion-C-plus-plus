@@ -1,5 +1,10 @@
 #include "Sprite.h"
 
+
+unsigned char* generateUCharArray(const int _size)
+{
+	return new unsigned char[_size];
+}
 Sprite::Sprite(const ltex_t* tex, int hframes, int vframes)
 	:texture(*tex), iHorizontalFrames(hframes), iVerticalFrames(vframes)
 {
@@ -184,9 +189,12 @@ void Sprite::setCollisionType(CollisionType type)
 		break;
 		case COLLISION_PIXELS:
 		{
-			uint8_t* sTextureChars = nullptr;
+			int iNumberChars = getSize().x * getSize().y * 4;
+			uint8_t* sTextureChars = generateUCharArray(iNumberChars);
 			ltex_getpixels(&texture, sTextureChars);
+
 			pCollider = new PixelsCollider(getSize(), vPosition, sTextureChars);
+
 		}
 		break;
 		default:

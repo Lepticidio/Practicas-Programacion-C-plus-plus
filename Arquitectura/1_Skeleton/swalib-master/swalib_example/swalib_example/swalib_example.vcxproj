@@ -129,16 +129,18 @@
     <ClCompile Include="..\..\common\Render.cpp" />
     <ClCompile Include="..\..\common\stdafx.cpp" />
     <ClCompile Include="..\..\common\sys_win.cpp" />
+    <ClCompile Include="..\..\common\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\common\Ball.h" />
     <ClInclude Include="..\..\common\core.h" />
     <ClInclude Include="..\..\common\font.h" />
     <ClInclude Include="..\..\common\lodepng.h" />
+    <ClInclude Include="..\..\common\Logic.h" />
+    <ClInclude Include="..\..\common\Render.h" />
     <ClInclude Include="..\..\common\stdafx.h" />
     <ClInclude Include="..\..\common\sys.h" />
-    <ClInclude Include="Ball.h" />
-    <ClInclude Include="Logic.h" />
-    <ClInclude Include="Render.h" />
+    <ClInclude Include="..\..\common\Timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

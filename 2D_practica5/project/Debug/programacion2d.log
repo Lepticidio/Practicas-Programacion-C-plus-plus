@@ -1,3 +1,15 @@
 ﻿  Collider.cpp
 D:\Microsoft Visual Studio\repos\2D_practica5\lib\Collider.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(88,21): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(90,21): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(92,21): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(94,21): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(98,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(102,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(106,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(110,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(115,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(119,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(123,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(127,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   programacion2d.vcxproj -> D:\Microsoft Visual Studio\repos\2D_practica5\project\Debug\programacion2d.exe

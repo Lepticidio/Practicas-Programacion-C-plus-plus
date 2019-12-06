@@ -1,4 +1,15 @@
 {
-  "ExpandedNodes": [],
+  "ExpandedNodes": [
+    "",
+    "\\Arquitectura",
+    "\\Arquitectura\\1_Skeleton",
+    "\\Arquitectura\\1_Skeleton\\swalib-master",
+    "\\Arquitectura\\1_Skeleton\\swalib-master\\common",
+    "\\Arquitectura\\1_Skeleton\\swalib-master\\swalib_example",
+    "\\Arquitectura\\1_Skeleton\\swalib-master\\swalib_example\\Release",
+    "\\Arquitectura\\1_Skeleton\\swalib-master\\swalib_example\\Release\\data",
+    "\\Arquitectura\\1_Skeleton\\swalib-master\\swalib_example\\swalib_example"
+  ],
+  "SelectedNode": "\\Arquitectura\\1_Skeleton\\swalib-master\\common\\Timer.cpp",
   "PreviewInSolutionExplorer": false
 }

@@ -65,72 +65,98 @@ bool Collider::checkPixelsPixels(
 	const Vec2& pixelsPos1, const Vec2& pixelsSize1, const uint8_t* pixels1,
 	const Vec2& pixelsPos2, const Vec2& pixelsSize2, const uint8_t* pixels2)
 {
-	float minX1 = pixelsPos1.x - pixelsSize1.x / 2.f;
-	float maxX1 = pixelsPos1.x + pixelsSize1.x / 2.f;
-	float minY1 = pixelsPos1.y - pixelsSize1.y / 2.f;
-	float maxY1 = pixelsPos1.y + pixelsSize1.y / 2.f;
-	float minX2 = pixelsPos2.x - pixelsSize2.x / 2.f;
-	float maxX2 = pixelsPos2.x + pixelsSize2.x / 2.f;
-	float minY2 = pixelsPos2.y - pixelsSize2.y / 2.f;
-	float maxY2 = pixelsPos2.y + pixelsSize2.y / 2.f;
-
-	printf("%f > %f, %f < %f, %f > %f, %f < %f\n",  maxX1, minX2, minX1, maxX2, maxY1, minY2, minY1, maxY2);
-
-	if (maxX1 > minX2&& minX1 < maxX2 && maxY1 > minY2&& minY1 < maxY2)
+	
+	
+	if (pixels1 != nullptr && pixels2 != nullptr)
 	{
 
-		float minOverlapX1 = 0;
-		float maxOverlapX1 = 1;
-		float minOverlapY1 = 0;
-		float maxOverlapY1 = 1;
-		float minOverlapX2 = 0;
-		float maxOverlapX2 = 1;
-		float minOverlapY2 = 0;
-		float maxOverlapY2 = 1;
+		float minX1 = pixelsPos1.x - pixelsSize1.x / 2.f;
+		float maxX1 = pixelsPos1.x + pixelsSize1.x / 2.f;
+		float minY1 = pixelsPos1.y - pixelsSize1.y / 2.f;
+		float maxY1 = pixelsPos1.y + pixelsSize1.y / 2.f;
+		float minX2 = pixelsPos2.x - pixelsSize2.x / 2.f;
+		float maxX2 = pixelsPos2.x + pixelsSize2.x / 2.f;
+		float minY2 = pixelsPos2.y - pixelsSize2.y / 2.f;
+		float maxY2 = pixelsPos2.y + pixelsSize2.y / 2.f;
 
-		if (minX1 < minX2)
+		printf("%f > %f, %f < %f, %f > %f, %f < %f\n", maxX1, minX2, minX1, maxX2, maxY1, minY2, minY1, maxY2);
+
+		if (maxX1 > minX2&& minX1 < maxX2 && maxY1 > minY2&& minY1 < maxY2)
 		{
-			minOverlapX1 = minX2 / maxX1;
+
+			int minOverlapX1 = 0;
+			int maxOverlapX1 = pixelsSize1.x;
+			int minOverlapY1 = 0;
+			int maxOverlapY1 = pixelsSize1.y;
+			int minOverlapX2 = 0;
+			int maxOverlapX2 = pixelsSize2.x;
+			int minOverlapY2 = 0;
+			int maxOverlapY2 = pixelsSize2.y;
+
+			if (minX1 < minX2)
+			{
+				minOverlapX1 = maxX1 - minX2;
+			}
+			else
+			{
+				minOverlapX2 = maxX2 - minX1;
+			}
+			if (maxX1 > maxX2)
+			{
+				maxOverlapX1 = maxX1 - maxX2;
+			}
+			else
+			{
+				maxOverlapX2 = maxX2 - maxX1;
+			}
+
+			if (minY1 < minY2)
+			{
+				minOverlapY1 = maxY1 - minY2;
+			}
+			else
+			{
+				minOverlapY2 = maxY2 - minY1;
+			}
+			if (maxY1 > maxY2)
+			{
+				maxOverlapY1 = maxY1 - maxY2;
+			}
+			else
+			{
+				maxOverlapY2 = maxY2 - maxY1;
+			}
+			int iWidthOverlap = maxOverlapX1 - minOverlapX1;
+			int iHeightOverlap = maxOverlapY1 - minOverlapY1;
+
+
+			bool bResult = false;
+			for (int i = 0; i < iHeightOverlap; i++)
+			{
+				for (int j = 0; j < iWidthOverlap; j++)
+				{
+
+					if (
+							*(pixels1 + (((i + minOverlapY1) * (int)pixelsSize1.x + j + minOverlapX1) * 4 + 3)) > 0 &&
+							*(pixels2 + (((i + minOverlapY2) * (int)pixelsSize2.x + j + minOverlapX2) * 4 + 3)) > 0
+						)
+					{
+						bResult = true;
+					}
+				}
+
+			}
+
+			return bResult;
 		}
 		else
 		{
-			minOverlapX2 = minX1 / maxX2;
+			return false;
 		}
-		if (maxX1 > maxX2)
-		{
-			maxOverlapX2 = maxX2 / maxX1;
-		}
-		else
-		{
-			maxOverlapX1 = maxX1 / maxX2;
-		}
-
-		if (minY1 < minY2)
-		{
-			minOverlapY1 = minY2 / maxY1;
-		}
-		else
-		{
-			minOverlapY2 = minY1 / maxY2;
-		}
-		if (maxY1 > maxY2)
-		{
-			maxOverlapY2 = maxY2 / maxY1;
-		}
-		else
-		{
-			maxOverlapY1 = maxY1 / maxY2;
-		}
-		int iWidthOverlap = (int)((maxOverlapX1 - minOverlapX1) * pixelsSize1.x);
-		int iHeightOverlap = (int)((maxOverlapY1 - minOverlapY1) * pixelsSize1.y);
-
-		for(int i = 0; i < i iWidthOver)
-		Vec2 vPositionInArray(iCurrentFrame % iHorizontalFrames, iCurrentFrame / iHorizontalFrames);
-
-		return true;
 	}
 	else
 	{
+		printf("pointers are null\n");
 		return false;
 	}
 }
