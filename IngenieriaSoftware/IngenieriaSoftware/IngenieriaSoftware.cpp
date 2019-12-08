@@ -1,8 +1,11 @@
 // IngenieriaSoftware.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-#include <iostream>
+
 #include "windows.h"
+#include "MovableObject.h"
+#include "Player.h"
+#include "Bullet.h"
 
 //This stores the layout, needed for getting async key input
 HKL kbl = GetKeyboardLayout(0);
@@ -19,29 +22,29 @@ int main()
 
 	bool bExit = false;;
 		
-	int WIDTH = 20;
-	int g_x = WIDTH / 2;
-	int g_blx = -1;
-	int g_brx = WIDTH + 1;
+	int iWidth = 20;
+	Player player (iWidth / 2);
+	Bullet bulletRight(iWidth + 1, true);
+	Bullet bulletLeft(-1, false);
 
 	while (!bExit)
 	{
 		system("cls");
 		//Render
 		printf("\r");
-		for (int i = 0; i < WIDTH; i++)
+		for (int i = 0; i < iWidth; i++)
 		{
-			if (i == g_x)
+			if (i == player.GetX())
 			{
-				printf("X");
+				player.Print();
 			}
-			else if (i == g_blx)
+			else if (i == bulletLeft.GetX())
 			{
-				printf("<");
+				bulletLeft.Print();
 			}
-			else if (i == g_brx)
+			else if (i == bulletRight.GetX())
 			{
-				printf(">");
+				bulletRight.Print();
 			}
 			else
 			{
@@ -49,36 +52,35 @@ int main()
 			}
 		}
 		//Process input
-		HKL kbl = GetKeyboardLayout(0);
 		if (GetKeyInput('h'))
 		{
-			if (g_x > 0)
+			if (player.GetX() > 0)
 			{
-				g_x--;
+				player.MoveLeft();
 			}
 		}
 
 		if (GetKeyInput('l'))
 		{
-			if (g_x < WIDTH - 1)
+			if (player.GetX() < iWidth - 1)
 			{
-				g_x++;
+				player.MoveRight();
 			}
 		}
 
 		if (GetKeyInput('j'))
 		{
-			if (g_blx < 0)
+			if (bulletLeft.GetX() < 0)
 			{
-				g_blx = g_x - 1;
+				bulletLeft.SetX(player.GetX() - 1);
 			}
 		}
 
 		if (GetKeyInput('k'))
 		{
-			if (g_brx > WIDTH)
+			if (bulletRight.GetX() > iWidth)
 			{
-				g_brx = g_x + 1;
+				bulletRight.SetX(player.GetX() + 1);
 			}
 		}
 
@@ -88,13 +90,13 @@ int main()
 		}
 		
 		//Move bullets
-		if (g_blx >= 0)
+		if (bulletLeft.GetX() >= 0)
 		{
-			g_blx--;
+			bulletLeft.Move();
 		}
-		if (g_brx <= WIDTH)
+		if (bulletRight.GetX() <= iWidth)
 		{
-			g_brx++;
+			bulletRight.Move();
 		}
 		Sleep(50);
 
