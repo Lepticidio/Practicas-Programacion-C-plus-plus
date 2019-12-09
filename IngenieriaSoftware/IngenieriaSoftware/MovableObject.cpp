@@ -1,6 +1,6 @@
 #include "MovableObject.h"
 
-MovableObject::MovableObject(int _iX, char _cSprite) : m_iX(_iX), m_cSprite(_cSprite)
+MovableObject::MovableObject(ObjectType _eType, int _iX, char _cSprite) : m_eType(_eType), m_iX(_iX), m_cSprite(_cSprite)
 {
 
 }
@@ -11,6 +11,10 @@ void MovableObject::SetX(int _iX)
 int MovableObject::GetX()
 {
 	return m_iX;
+}
+ObjectType MovableObject::GetType()
+{
+	return m_eType;
 }
 void MovableObject::Print()
 {
@@ -25,6 +29,10 @@ void MovableObject::MoveLeft()
 	m_iX--;
 }
 void MovableObject::Update()
+{
+
+}
+void MovableObject::CheckCollision(MovableObject* _pOtherObject)
 {
 
 }

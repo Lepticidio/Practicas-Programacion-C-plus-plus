@@ -20,11 +20,12 @@ int main()
 {
 	bool bExit = false;;
 	const int iMaxBulletsSide = 5;
-	const int iMaxEnemies = 0;
+	const int iMaxEnemies = 1;
 	int iWidth = 40;
 	std::vector<MovableObject*> tObjects;
 	std::vector<Bullet*> tRightBullets;
 	std::vector<Bullet*> tLeftBullets;
+	std::vector<Enemy*> tEnemies;
 	Player player(iWidth / 2);
 	tObjects.push_back(&player);
 	for (int i = 0; i < iMaxBulletsSide; i++)
@@ -39,7 +40,8 @@ int main()
 	}
 	for (int i = 0; i < iMaxEnemies; i++)
 	{
-		tObjects.push_back(&Enemy(-1, false));
+		Enemy* enemy = new Enemy(-1, &player);
+		tObjects.push_back(enemy);
 	}
 
 	printf("%d", tRightBullets.size());
@@ -126,6 +128,17 @@ int main()
 			printf("\n%d", tObjects[i]->GetX());
 			tObjects[i]->Update();
 		}
+
+		//Check for collisions
+		for (int i = 0; i < tObjects.size(); i++)
+		{
+			//Check and compute collisions
+			for (int j = i + 1; j < tObjects.size(); j++)
+			{
+				tObjects[i]->CheckCollision(tObjects[j]);
+			}
+		}
+		bExit = player.GetIsDead();
 
 		Sleep(50);
 

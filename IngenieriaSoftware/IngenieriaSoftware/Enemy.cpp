@@ -1,12 +1,36 @@
 #include "Enemy.h"
 
-Enemy::Enemy(int _iX, Player _player) : MovableObject(_iX, '*'), m_player(_player)
+Enemy::Enemy(int _iX, Player* _pPlayer) : MovableObject(ENEMY, _iX, '*'), m_pPlayer(_pPlayer)
 {
 
 }
+void Enemy::Update()
+{
+	MoveTowardsPlayer();
+}
+void Enemy::CheckCollision(MovableObject* _pOtherObject)
+{
+
+	if (_pOtherObject->GetX() > m_iX -2 && _pOtherObject->GetX() < m_iX + 2)
+	{
+		if (_pOtherObject->GetType() == BULLET)
+		{
+			Bullet* _pBullet = static_cast<Bullet*>(_pOtherObject);
+			if (!_pBullet->IsOutsideWorld())
+			{
+				SetX(-1);
+				_pBullet->ResetPosition();
+			}
+		}
+		else if (_pOtherObject->GetType() == PLAYER)
+		{
+			static_cast<Player*>(_pOtherObject)->SetIsDead(true);
+		}
+	}
+}
 void Enemy::MoveTowardsPlayer()
 {
-	if (m_player.GetX() < m_iX)
+	if (m_pPlayer->GetX() < m_iX)
 	{
 		MoveLeft();
 	}
@@ -17,7 +41,7 @@ void Enemy::MoveTowardsPlayer()
 }
 void Enemy::MoveAwayFromPlayer()
 {
-	if (m_player.GetX() > m_iX)
+	if (m_pPlayer->GetX() > m_iX)
 	{
 		MoveLeft();
 	}
@@ -26,8 +50,4 @@ void Enemy::MoveAwayFromPlayer()
 		MoveRight();
 	}
 
-}
-void Enemy::Update()
-{
-	MoveTowardsPlayer();
 }
