@@ -12,6 +12,7 @@ HKL kbl = GetKeyboardLayout(0);
 
 //This method makes key input more readeable
 //If key of char is pressed, returns true
+
 bool GetKeyInput(char _cInput)
 {
 	return (GetAsyncKeyState(VkKeyScanEx(_cInput, kbl)));
@@ -21,11 +22,11 @@ int main()
     std::cout << "Hello World!\n";
 
 	bool bExit = false;;
-		
-	int iWidth = 20;
+	const int iMaxBulletsSide = 5;
+	int iWidth = 40;
 	Player player (iWidth / 2);
-	Bullet bulletRight(iWidth + 1, true);
-	Bullet bulletLeft(-1, false);
+	Bullet bulletsRight[iMaxBulletsSide] = {Bullet(iWidth + 1, true), Bullet(iWidth + 1, true), Bullet(iWidth + 1, true), Bullet(iWidth + 1, true), Bullet(iWidth + 1, true) };
+	Bullet bulletsLeft[iMaxBulletsSide] = { Bullet(-1, false), Bullet(-1, false), Bullet(-1, false), Bullet(-1, false), Bullet(-1, false) };
 
 	while (!bExit)
 	{
@@ -34,19 +35,30 @@ int main()
 		printf("\r");
 		for (int i = 0; i < iWidth; i++)
 		{
-			if (i == player.GetX())
+			bool bEmptyPosition = true;
+			int iCounter = 0;
+			while (iCounter < iMaxBulletsSide && bEmptyPosition)
+			{
+
+				if (i == bulletsLeft[iCounter].GetX())
+				{
+					bulletsLeft[iCounter].Print();
+					bEmptyPosition = false;
+				}
+				else if (i == bulletsRight[iCounter].GetX())
+				{
+					bulletsRight[iCounter].Print();
+					bEmptyPosition = false;
+				}
+				iCounter++;
+			}
+				
+			if (i == player.GetX() && bEmptyPosition)
 			{
 				player.Print();
+				bEmptyPosition = false;
 			}
-			else if (i == bulletLeft.GetX())
-			{
-				bulletLeft.Print();
-			}
-			else if (i == bulletRight.GetX())
-			{
-				bulletRight.Print();
-			}
-			else
+			else if (bEmptyPosition)
 			{
 				printf("-");
 			}
@@ -70,17 +82,32 @@ int main()
 
 		if (GetKeyInput('j'))
 		{
-			if (bulletLeft.GetX() < 0)
+			bool bAvailableBulletFound = false;
+			int iCounter = 0;
+			while (iCounter < iMaxBulletsSide && !bAvailableBulletFound)
 			{
-				bulletLeft.SetX(player.GetX() - 1);
+				
+				if (bulletsLeft[iCounter].GetX() < 0)
+				{
+					bulletsLeft[iCounter].SetX(player.GetX() - 1);
+					bAvailableBulletFound = true;
+				}
+				iCounter++;
 			}
 		}
 
 		if (GetKeyInput('k'))
 		{
-			if (bulletRight.GetX() > iWidth)
+			bool bAvailableBulletFound = false;
+			int iCounter = 0;
+			while (iCounter < iMaxBulletsSide && !bAvailableBulletFound)
 			{
-				bulletRight.SetX(player.GetX() + 1);
+				if (bulletsRight[iCounter].GetX() > iWidth)
+				{
+					bulletsRight[iCounter].SetX(player.GetX() + 1);
+					bAvailableBulletFound = true;
+				}
+				iCounter++;
 			}
 		}
 
@@ -90,14 +117,12 @@ int main()
 		}
 		
 		//Move bullets
-		if (bulletLeft.GetX() >= 0)
+		for (int i = 0; i < iMaxBulletsSide; i++)
 		{
-			bulletLeft.Move();
+			bulletsLeft[i].Move();
+			bulletsRight[i].Move();
 		}
-		if (bulletRight.GetX() <= iWidth)
-		{
-			bulletRight.Move();
-		}
+
 		Sleep(50);
 
 	}
