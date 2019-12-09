@@ -1,2 +1,4 @@
 ﻿  IngenieriaSoftware.cpp
+D:\Microsoft Visual Studio\repos\IngenieriaSoftware\IngenieriaSoftware\IngenieriaSoftware.cpp(58,20): warning C4018: '<': signed/unsigned mismatch
+D:\Microsoft Visual Studio\repos\IngenieriaSoftware\IngenieriaSoftware\IngenieriaSoftware.cpp(128,21): warning C4018: '<': signed/unsigned mismatch
   IngenieriaSoftware.vcxproj -> D:\Microsoft Visual Studio\repos\IngenieriaSoftware\Debug\IngenieriaSoftware.exe

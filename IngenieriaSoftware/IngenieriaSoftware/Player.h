@@ -3,7 +3,10 @@
 
 class Player: public MovableObject
 {
-public:
-	Player(int _iX);
+	private:
+		void PlayerUpdate();
+	public:
+		Player(int _iX);
+		virtual void Update();
 };
 

@@ -1,6 +1,6 @@
-#include "Bullet.h"
+#include "Bullet.h"   
 
-Bullet::Bullet(int _iX, bool _bRightMovement) : MovableObject(_iX, '>'), m_bRightMovement(_bRightMovement)
+Bullet::Bullet(int _iX, bool _bRightMovement, int _iWidthWorld) : MovableObject(_iX, '>'), m_bRightMovement(_bRightMovement),  m_iWidthWorld(_iWidthWorld)
 {
 	if (m_bRightMovement)
 	{
@@ -11,14 +11,24 @@ Bullet::Bullet(int _iX, bool _bRightMovement) : MovableObject(_iX, '>'), m_bRigh
 		m_cSprite = '<';
 	}
 }
-void Bullet::Move()
+bool Bullet::IsOutsideWorld()
 {
-	if (m_bRightMovement)
+	return ((m_bRightMovement && m_iX > m_iWidthWorld) || (!m_bRightMovement && m_iX < 0));
+}
+void Bullet::Update()
+{
+
+	printf(" updating bullet");
+	if (!IsOutsideWorld())
 	{
-		MoveRight();
-	}
-	else
-	{
-		MoveLeft();
+		printf(" not outside");
+		if (m_bRightMovement)
+		{
+			MoveRight();
+		}
+		else
+		{
+			MoveLeft();
+		}
 	}
 }

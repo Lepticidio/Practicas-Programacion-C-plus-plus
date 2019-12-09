@@ -24,3 +24,7 @@ void MovableObject::MoveLeft()
 {
 	m_iX--;
 }
+void MovableObject::Update()
+{
+
+}

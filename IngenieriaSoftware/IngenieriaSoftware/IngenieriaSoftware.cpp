@@ -1,32 +1,48 @@
 // IngenieriaSoftware.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
-
-#include "windows.h"
-#include "MovableObject.h"
+#include <vector>	//needed to use dynamic tables of objects
+#include "windows.h" //needed for async key input and sleep
 #include "Player.h"
 #include "Bullet.h"
+#include "Enemy.h"
 
 //This stores the layout, needed for getting async key input
 HKL kbl = GetKeyboardLayout(0);
 
-//This method makes key input more readeable
+//This function makes key input more readeable
 //If key of char is pressed, returns true
-
 bool GetKeyInput(char _cInput)
 {
 	return (GetAsyncKeyState(VkKeyScanEx(_cInput, kbl)));
 }
 int main()
 {
-    std::cout << "Hello World!\n";
-
 	bool bExit = false;;
 	const int iMaxBulletsSide = 5;
+	const int iMaxEnemies = 0;
 	int iWidth = 40;
-	Player player (iWidth / 2);
-	Bullet bulletsRight[iMaxBulletsSide] = {Bullet(iWidth + 1, true), Bullet(iWidth + 1, true), Bullet(iWidth + 1, true), Bullet(iWidth + 1, true), Bullet(iWidth + 1, true) };
-	Bullet bulletsLeft[iMaxBulletsSide] = { Bullet(-1, false), Bullet(-1, false), Bullet(-1, false), Bullet(-1, false), Bullet(-1, false) };
+	std::vector<MovableObject*> tObjects;
+	std::vector<Bullet*> tRightBullets;
+	std::vector<Bullet*> tLeftBullets;
+	Player player(iWidth / 2);
+	tObjects.push_back(&player);
+	for (int i = 0; i < iMaxBulletsSide; i++)
+	{
+		Bullet* rightBullet = new Bullet(iWidth + 1, true, iWidth);
+		tObjects.push_back(rightBullet);
+		tRightBullets.push_back(rightBullet);
+
+		Bullet* leftBullet = new Bullet(-1, false, iWidth);
+		tObjects.push_back(leftBullet);
+		tLeftBullets.push_back(leftBullet);
+	}
+	for (int i = 0; i < iMaxEnemies; i++)
+	{
+		tObjects.push_back(&Enemy(-1, false));
+	}
+
+	printf("%d", tRightBullets.size());
 
 	while (!bExit)
 	{
@@ -37,28 +53,17 @@ int main()
 		{
 			bool bEmptyPosition = true;
 			int iCounter = 0;
-			while (iCounter < iMaxBulletsSide && bEmptyPosition)
+			while (iCounter < tObjects.size() && bEmptyPosition)
 			{
 
-				if (i == bulletsLeft[iCounter].GetX())
+				if (tObjects[iCounter]->GetX() == i)
 				{
-					bulletsLeft[iCounter].Print();
-					bEmptyPosition = false;
-				}
-				else if (i == bulletsRight[iCounter].GetX())
-				{
-					bulletsRight[iCounter].Print();
+					tObjects[iCounter]->Print();
 					bEmptyPosition = false;
 				}
 				iCounter++;
 			}
-				
-			if (i == player.GetX() && bEmptyPosition)
-			{
-				player.Print();
-				bEmptyPosition = false;
-			}
-			else if (bEmptyPosition)
+			if (bEmptyPosition)
 			{
 				printf("-");
 			}
@@ -85,11 +90,10 @@ int main()
 			bool bAvailableBulletFound = false;
 			int iCounter = 0;
 			while (iCounter < iMaxBulletsSide && !bAvailableBulletFound)
-			{
-				
-				if (bulletsLeft[iCounter].GetX() < 0)
+			{				
+				if (tLeftBullets[iCounter]->IsOutsideWorld())
 				{
-					bulletsLeft[iCounter].SetX(player.GetX() - 1);
+					tLeftBullets[iCounter]->SetX(player.GetX() - 1);
 					bAvailableBulletFound = true;
 				}
 				iCounter++;
@@ -102,9 +106,9 @@ int main()
 			int iCounter = 0;
 			while (iCounter < iMaxBulletsSide && !bAvailableBulletFound)
 			{
-				if (bulletsRight[iCounter].GetX() > iWidth)
+				if (tRightBullets[iCounter]->IsOutsideWorld())
 				{
-					bulletsRight[iCounter].SetX(player.GetX() + 1);
+					tRightBullets[iCounter]->SetX(player.GetX() + 1);
 					bAvailableBulletFound = true;
 				}
 				iCounter++;
@@ -116,11 +120,11 @@ int main()
 			bExit = true;
 		}
 		
-		//Move bullets
-		for (int i = 0; i < iMaxBulletsSide; i++)
+		//Update Objects
+		for (int i = 0; i < tObjects.size(); i++)
 		{
-			bulletsLeft[i].Move();
-			bulletsRight[i].Move();
+			printf("\n%d", tObjects[i]->GetX());
+			tObjects[i]->Update();
 		}
 
 		Sleep(50);
