@@ -1,0 +1,9 @@
+﻿  main.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+D:\Microsoft Visual Studio\repos\2D_practica6\lib\glfw3.h(98): message : see previous definition of 'APIENTRY'
+D:\Microsoft Visual Studio\repos\2D_practica6\lib\Collider.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Microsoft Visual Studio\repos\2D_practica6\src\main.cpp(99,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica6\src\main.cpp(99,20): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Microsoft Visual Studio\repos\2D_practica6\src\main.cpp(102,15): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  programacion2d.vcxproj -> D:\Microsoft Visual Studio\repos\2D_practica6\project\Debug\programacion2d.exe

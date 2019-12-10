@@ -123,7 +123,12 @@ int main()
 				printf("drawing text %d\n", i);
 				oMessages[i]->vPosition.x -= oMessages[i]->fSpeed * deltaTime;
 				printf("x del texto %d es %f", i, oMessages[i]->vPosition.x);
-				oMessages[i]->Draw();				
+				oMessages[i]->Draw();
+				if (oMessages[i]->vPosition.x < (-1) * iWidth)
+				{
+					delete oMessages[i];
+					bActivedMessages[i] = false;
+				}
 			}
 		}
 
