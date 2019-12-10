@@ -1,12 +1,15 @@
 #include "Enemy.h"
 
-Enemy::Enemy(int _iX, Player* _pPlayer) : MovableObject(ENEMY, _iX, '*'), m_pPlayer(_pPlayer)
+Enemy::Enemy(int _iX, int _iWidth, Player* _pPlayer) : MovableObject(ENEMY, _iX, '*'), m_iWidth(_iWidth), m_pPlayer(_pPlayer)
 {
 
 }
 void Enemy::Update()
 {
-	MoveTowardsPlayer();
+	if (m_bIsActive)
+	{
+		MoveTowardsPlayer();
+	}
 }
 void Enemy::CheckCollision(MovableObject* _pOtherObject)
 {
@@ -18,7 +21,9 @@ void Enemy::CheckCollision(MovableObject* _pOtherObject)
 			Bullet* _pBullet = static_cast<Bullet*>(_pOtherObject);
 			if (!_pBullet->IsOutsideWorld())
 			{
-				SetX(-1);
+				m_pPlayer->IncreaseScore();
+				Reset();
+				m_bIsActive = false;
 				_pBullet->ResetPosition();
 			}
 		}
@@ -49,5 +54,25 @@ void Enemy::MoveAwayFromPlayer()
 	{
 		MoveRight();
 	}
-
+}
+void Enemy::Reset()
+{
+	int iFlip = rand() % 2;
+	if (iFlip == 0)
+	{
+		SetX(-1);
+	}
+	else
+	{
+		SetX(m_iWidth);
+	}
+	m_bIsActive = false;
+}
+void Enemy::Activate()
+{
+	m_bIsActive = true;
+}
+bool Enemy::GetIsActive()
+{
+	return m_bIsActive;
 }

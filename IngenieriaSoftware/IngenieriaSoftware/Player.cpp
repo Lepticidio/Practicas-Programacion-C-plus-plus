@@ -20,9 +20,17 @@ void Player::CheckCollision(MovableObject* _pOtherObject)
 }
 void Player::SetIsDead(bool _bIsDead)
 {
-	bIsDead = _bIsDead;
+	m_bIsDead = _bIsDead;
+}
+void Player::IncreaseScore()
+{
+	m_iScore++;
 }
 bool Player::GetIsDead()
 {
-	return bIsDead;
+	return m_bIsDead;
+}
+int Player::GetScore()
+{
+	return m_iScore;
 }

@@ -20,8 +20,9 @@ int main()
 {
 	bool bExit = false;;
 	const int iMaxBulletsSide = 5;
-	const int iMaxEnemies = 1;
+	const int iMaxEnemies = 8;
 	int iWidth = 40;
+	float fPercentajePorbabilityEnemySpawn = 25.;
 	std::vector<MovableObject*> tObjects;
 	std::vector<Bullet*> tRightBullets;
 	std::vector<Bullet*> tLeftBullets;
@@ -40,15 +41,98 @@ int main()
 	}
 	for (int i = 0; i < iMaxEnemies; i++)
 	{
-		Enemy* enemy = new Enemy(-1, &player);
+		Enemy* enemy = new Enemy(-1, iWidth, &player);
 		tObjects.push_back(enemy);
+		tEnemies.push_back(enemy);
+		enemy->Reset();
 	}
-
-	printf("%d", tRightBullets.size());
 
 	while (!bExit)
 	{
 		system("cls");
+		//Process input
+		if (GetKeyInput('h'))
+		{
+			if (player.GetX() > 0)
+			{
+				player.MoveLeft();
+			}
+		}
+
+		if (GetKeyInput('l'))
+		{
+			if (player.GetX() < iWidth - 1)
+			{
+				player.MoveRight();
+			}
+		}
+
+		if (GetKeyInput('j'))
+		{
+			int iCounter = 0;
+			while (iCounter < iMaxBulletsSide)
+			{				
+				if (tLeftBullets[iCounter]->IsOutsideWorld())
+				{
+					tLeftBullets[iCounter]->SetX(player.GetX() - 1);
+					iCounter = iMaxBulletsSide;
+				}
+				iCounter++;
+			}
+		}
+
+		if (GetKeyInput('k'))
+		{			
+			int iCounter = 0;
+			while (iCounter < iMaxBulletsSide)
+			{
+				if (tRightBullets[iCounter]->IsOutsideWorld())
+				{
+					tRightBullets[iCounter]->SetX(player.GetX() + 1);
+					iCounter = iMaxBulletsSide;
+				}
+				iCounter++;
+			}
+		}
+
+		if (GetAsyncKeyState(VK_ESCAPE))
+		{
+			bExit = true;
+		}
+
+		//Spawn Enemies
+		float fProbability = (float)(rand() % 100);
+		if (fPercentajePorbabilityEnemySpawn > fProbability)
+		{
+			int iCounter = 0;
+			while (iCounter < tEnemies.size())			
+			{
+				if (!(tEnemies[iCounter]->GetIsActive()))
+				{
+					tEnemies[iCounter]->Activate();
+					iCounter = tEnemies.size();
+				}
+				iCounter++;
+			}
+		}
+		
+		//Update Objects
+		for (int i = 0; i < tObjects.size(); i++)
+		{
+			tObjects[i]->Update();
+		}
+
+		//Check for collisions
+		for (int i = 0; i < tObjects.size(); i++)
+		{
+			//Check and compute collisions
+			for (int j = i + 1; j < tObjects.size(); j++)
+			{
+				tObjects[i]->CheckCollision(tObjects[j]);
+			}
+		}
+		bExit = player.GetIsDead();
+
 		//Render
 		printf("\r");
 		for (int i = 0; i < iWidth; i++)
@@ -70,77 +154,8 @@ int main()
 				printf("-");
 			}
 		}
-		//Process input
-		if (GetKeyInput('h'))
-		{
-			if (player.GetX() > 0)
-			{
-				player.MoveLeft();
-			}
-		}
-
-		if (GetKeyInput('l'))
-		{
-			if (player.GetX() < iWidth - 1)
-			{
-				player.MoveRight();
-			}
-		}
-
-		if (GetKeyInput('j'))
-		{
-			bool bAvailableBulletFound = false;
-			int iCounter = 0;
-			while (iCounter < iMaxBulletsSide && !bAvailableBulletFound)
-			{				
-				if (tLeftBullets[iCounter]->IsOutsideWorld())
-				{
-					tLeftBullets[iCounter]->SetX(player.GetX() - 1);
-					bAvailableBulletFound = true;
-				}
-				iCounter++;
-			}
-		}
-
-		if (GetKeyInput('k'))
-		{
-			bool bAvailableBulletFound = false;
-			int iCounter = 0;
-			while (iCounter < iMaxBulletsSide && !bAvailableBulletFound)
-			{
-				if (tRightBullets[iCounter]->IsOutsideWorld())
-				{
-					tRightBullets[iCounter]->SetX(player.GetX() + 1);
-					bAvailableBulletFound = true;
-				}
-				iCounter++;
-			}
-		}
-
-		if (GetAsyncKeyState(VK_ESCAPE))
-		{
-			bExit = true;
-		}
-		
-		//Update Objects
-		for (int i = 0; i < tObjects.size(); i++)
-		{
-			printf("\n%d", tObjects[i]->GetX());
-			tObjects[i]->Update();
-		}
-
-		//Check for collisions
-		for (int i = 0; i < tObjects.size(); i++)
-		{
-			//Check and compute collisions
-			for (int j = i + 1; j < tObjects.size(); j++)
-			{
-				tObjects[i]->CheckCollision(tObjects[j]);
-			}
-		}
-		bExit = player.GetIsDead();
+		printf("%d", player.GetScore());
 
 		Sleep(50);
-
 	}
 }
