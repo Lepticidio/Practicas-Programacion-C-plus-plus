@@ -2,8 +2,8 @@
 #define LITE_GFX_IMPLEMENTATION
 #define STB_IMAGE_IMPLEMENTATION
 
-#include "Sprite.h"
 #include <stb_image.h>
+#include "World.h"
 
 using namespace std;
 
