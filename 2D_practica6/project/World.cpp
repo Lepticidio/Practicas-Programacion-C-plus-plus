@@ -4,7 +4,7 @@ World::World
 	float clearRed, float clearGreen, float clearBlue,
 	const ltex_t* back0, const ltex_t* back1,
 	const ltex_t* back2, const ltex_t* back3
-) : fClearRed(clearRed), fClearGreen(clearGreen), fClearBlue(clearBlue), pBackground0(back0), pBackground1(back1), pBackground2(back2), pBackground3(back3)
+) : fClearRed(clearRed), fClearGreen(clearGreen), fClearBlue(clearBlue), pBackgrounds{&Background(back0), &Background(back1), &Background(back2), &Background(back3) }
 {
 
 }
@@ -20,13 +20,15 @@ float World::getClearBlue() const
 {
 	return fClearBlue;
 }
-float World::getScrollRatio(size_t layer) const
+float World::getScrollRatio(size_t layer)
 {
-	return fScrollRatio;
+	Background background = *(pBackgrounds[layer]);
+	return background.GetScrollRatio();
 }
 const Vec2& World::getScrollSpeed(size_t layer) const
 {
-	return vScrollSpeed;
+	Background background = *(pBackgrounds[layer]);
+	return background.GetScrollSpeed();
 }
 const Vec2& World::getCameraPosition() const
 {
@@ -34,15 +36,17 @@ const Vec2& World::getCameraPosition() const
 }
 const ltex_t* World::getBackground(size_t layer) const
 {
-	return pBackground0;
+	return pBackgrounds[layer]->getTexture();
 }
 void World::setScrollRatio(size_t layer, float ratio)
 {
-	fScrollRatio = ratio;
+	Background background = *(pBackgrounds[layer]);
+	background.SetScrollRatio(ratio);
 }
 void World::setScrollSpeed(size_t layer, const Vec2& speed)
 {
-	vScrollSpeed = speed;
+	Background background = *(pBackgrounds[layer]);
+	background.SetScrollSpeed(speed);
 }
 void World::setCameraPosition(const Vec2& pos)
 {
@@ -50,17 +54,37 @@ void World::setCameraPosition(const Vec2& pos)
 }
 void World::addSprite(Sprite& sprite)
 {
-
+	tSprites.push_back(sprite);
 }
 void World::removeSprite(Sprite& sprite)
 {
-
+	int iCounter = 0;
+	while (iCounter < tSprites.size() && &(tSprites[iCounter]) != &sprite)
+	{
+		iCounter++;
+	}
+	if (iCounter < tSprites.size())
+	{
+		tSprites.erase(tSprites.begin() + iCounter);
+	}
 }
 void World::update(float deltaTime)
 {
-
+	for (int i = 0; i < tSprites.size(); i++)
+	{
+		tSprites[i].update(deltaTime);
+	}
 }
 void World::draw(const Vec2& screenSize)
 {
+	lgfx_clearcolorbuffer(fClearRed, fClearGreen, fClearBlue);
 
+	for each (const Background* background in pBackgrounds)
+	{
+		background->draw();
+	}
+	for (int i = 0; i < tSprites.size(); i++)
+	{
+		tSprites[i].draw();
+	}
 }

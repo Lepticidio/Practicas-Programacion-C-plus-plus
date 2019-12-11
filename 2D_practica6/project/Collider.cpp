@@ -6,25 +6,25 @@ float clamp(float n, float lower, float upper)
 	return (n < upper) * n + !(n < upper) * upper;
 }
 
-bool Collider::collides(Collider& other)
+bool Collider::collides(Collider& other) const
 {
 	return false;
 }
-bool Collider::collides(const Vec2& circlePos, float circleRadius)
+bool Collider::collides(const Vec2& circlePos, float circleRadius)const
 {
 	return false;
 }
-bool Collider::collides(const Vec2& rectPos, const Vec2& rectSize)
+bool Collider::collides(const Vec2& rectPos, const Vec2& rectSize)const
 {
 	return false;
 }
 bool Collider::collides(const Vec2& pixelsPos, const Vec2& pixelsSize,
-	const uint8_t* pixels)
+	const uint8_t* pixels)const
 {
 	return false;
 }
 bool Collider::checkCircleCircle(const Vec2& pos1, float radius1,
-	const Vec2& pos2, float radius2)
+	const Vec2& pos2, float radius2)const
 {
 	Vec2 vDifference(pos1.x - pos2.x, pos1.y - pos2.y);
 	if (vDifference.Length() > radius1 + radius2)
@@ -37,14 +37,14 @@ bool Collider::checkCircleCircle(const Vec2& pos1, float radius1,
 	}
 }
 bool Collider::checkCircleRect(const Vec2& circlePos, float circleRadius,
-	const Vec2& rectPos, const Vec2& rectSize)
+	const Vec2& rectPos, const Vec2& rectSize)const
 { 
 	float closestX = clamp(circlePos.x, rectPos.x - rectSize.x/2, rectPos.x + rectSize.x/2);
 	float closestY = clamp(circlePos.y, rectPos.y - rectSize.y/2, rectPos.y + rectSize.y/2);
 	return (Vec2(closestX, closestY) - circlePos).Length() < circleRadius;
 }
 bool Collider::checkRectRect(const Vec2& rectPos1, const Vec2& rectSize1,
-	const Vec2& rectPos2, const Vec2& rectSize2)
+	const Vec2& rectPos2, const Vec2& rectSize2)const
 {
 	if (rectPos1.x > rectPos2.x - rectSize2.x / 2.  - rectSize1.x/2. && rectPos1.x < rectPos2.x + rectSize2.x / 2. + rectSize1.x / 2. &&
 		rectPos1.y > rectPos2.y - rectSize2.y / 2. - rectSize1.y / 2. && rectPos1.y < rectPos2.y + rectSize2.y / 2. + rectSize1.y / 2.)
@@ -57,7 +57,7 @@ bool Collider::checkRectRect(const Vec2& rectPos1, const Vec2& rectSize1,
 	}
 }
 bool Collider::checkCirclePixels(const Vec2& circlePos, float circleRadius,
-	const Vec2& pixelsPos, const Vec2& pixelsSize, const uint8_t* pixels)
+	const Vec2& pixelsPos, const Vec2& pixelsSize, const uint8_t* pixels)const
 {
 	if (pixels != nullptr)
 	{
@@ -136,7 +136,7 @@ bool Collider::checkCirclePixels(const Vec2& circlePos, float circleRadius,
 }
 bool Collider::checkPixelsPixels(
 	const Vec2& pixelsPos1, const Vec2& pixelsSize1, const uint8_t* pixels1,
-	const Vec2& pixelsPos2, const Vec2& pixelsSize2, const uint8_t* pixels2)
+	const Vec2& pixelsPos2, const Vec2& pixelsSize2, const uint8_t* pixels2)const
 {	
 	if (pixels1 != nullptr && pixels2 != nullptr)
 	{
@@ -231,7 +231,7 @@ bool Collider::checkPixelsPixels(
 }
 bool Collider::checkPixelsRect(
 	const Vec2& pixelsPos, const Vec2& pixelsSize, const uint8_t* pixels,
-	const Vec2& rectPos, const Vec2& rectSize)
+	const Vec2& rectPos, const Vec2& rectSize)const
 {
 	if (pixels != nullptr)
 	{

@@ -1,27 +1,6 @@
-﻿  Collider.cpp
+﻿  CircleCollider.cpp
+  RectCollider.cpp
 D:\Microsoft Visual Studio\repos\2D_practica5\lib\Collider.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(78,20): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(80,20): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(84,27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(89,27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(94,27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(98,27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(157,21): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(159,21): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(161,21): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(163,21): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(167,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(171,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(175,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(179,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(184,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(188,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(192,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(196,26): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(252,20): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(254,20): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(258,27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(263,27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(268,27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica5\project\Collider.cpp(272,27): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+D:\Microsoft Visual Studio\repos\2D_practica5\lib\Collider.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   programacion2d.vcxproj -> D:\Microsoft Visual Studio\repos\2D_practica5\project\Debug\programacion2d.exe

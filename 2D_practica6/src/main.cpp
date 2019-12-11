@@ -58,14 +58,14 @@ int main()
 	bool bOpen = true;
 	int iWidthWasp = 0;
 	int iHeightWasp = 0;
-	int iWidthBall = 0;
-	int iHeightBall = 0;
-	int iWidthBox = 0;
-	int iHeightBox = 0;
-	int iWidthCircle = 0;
-	int iHeightCircle = 0;
-	int iWidthRect = 0;
-	int iHeightRect = 0;
+	int iWidthLevel = 0;
+	int iHeightLevel = 0;
+	int iWidthTrees1 = 0;
+	int iHeightTrees1 = 0;
+	int iWidthTrees2 = 0;
+	int iHeightTrees2 = 0;
+	int iWidthClouds = 0;
+	int iHeightClouds = 0;
 	double deltaTime = 0;
 	double previousTime = glfwGetTime();
 
@@ -84,6 +84,33 @@ int main()
 	wasp.setFps(8);
 	wasp.setCallback(SpriteCallback);
 
+	unsigned char* sLevelBytes = stbi_load("data//level.png", &iWidthLevel, &iHeightLevel, nullptr, 4);
+	ltex_t* pTextureLevel = nullptr;
+	pTextureLevel = ltex_alloc(iWidthLevel, iHeightLevel, 1);
+	ltex_setpixels(pTextureLevel, sLevelBytes);
+	stbi_image_free(sLevelBytes);
+
+	unsigned char* sTrees1 = stbi_load("data//trees1.png", &iWidthTrees1, &iHeightTrees1, nullptr, 4);
+	ltex_t* pTextureTrees1 = nullptr;
+	pTextureTrees1 = ltex_alloc(iWidthTrees1, iHeightTrees1, 1);
+	ltex_setpixels(pTextureTrees1, sTrees1);
+	stbi_image_free(sTrees1);
+
+	unsigned char* sTrees2 = stbi_load("data//trees2.png", &iWidthTrees2, &iHeightTrees2, nullptr, 4);
+	ltex_t* pTextureTrees2 = nullptr;
+	pTextureTrees2 = ltex_alloc(iWidthTrees2, iHeightTrees2, 1);
+	ltex_setpixels(pTextureTrees2, sTrees2);
+	stbi_image_free(sTrees2);
+
+	unsigned char* sCloudsBytes = stbi_load("data//clouds.png", &iWidthClouds, &iHeightClouds, nullptr, 4);
+	ltex_t* pTextureClouds = nullptr;
+	pTextureClouds = ltex_alloc(iWidthClouds, iHeightClouds, 1);
+	ltex_setpixels(pTextureClouds, sCloudsBytes);
+	stbi_image_free(sCloudsBytes);
+
+	World world(0.15f, 0.15f, 0.15f, pTextureLevel, pTextureTrees1, pTextureTrees2, pTextureClouds);
+	world.addSprite(wasp);
+
 	//5) Bucle principal
 	while (!glfwWindowShouldClose(pWindow) && bOpen)
 	{
@@ -99,13 +126,10 @@ int main()
 		vMousePos = Vec2(dXMouse, dYMouse);
 
 		//5.3) Actualizamos lógica de juego
-		wasp.update(deltaTime);
+		world.update(deltaTime);
 
-		//5.4) Limpiamos el backbuffer
-		lgfx_clearcolorbuffer(0, 0, 0);
-
-		//5.5) Renderizamos la escena.
-		wasp.draw();
+		//5.4-5) Limpiamos el backbuffer y renderizamos la escena.
+		world.draw(Vec2(iWidth, iHeight));
 
 		//5.6) Cambiamos el backbuffer por el frontbuffer
 		glfwSwapBuffers(pWindow);

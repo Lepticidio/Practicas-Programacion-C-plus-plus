@@ -1,3 +1,8 @@
 ﻿  World.cpp
 D:\Microsoft Visual Studio\repos\2D_practica6\lib\Collider.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+D:\Microsoft Visual Studio\repos\2D_practica6\project\World.cpp(62,18): warning C4018: '<': signed/unsigned mismatch
+D:\Microsoft Visual Studio\repos\2D_practica6\project\World.cpp(66,15): warning C4018: '<': signed/unsigned mismatch
+D:\Microsoft Visual Studio\repos\2D_practica6\project\World.cpp(73,20): warning C4018: '<': signed/unsigned mismatch
+D:\Microsoft Visual Studio\repos\2D_practica6\project\World.cpp(86,20): warning C4018: '<': signed/unsigned mismatch
+D:\Microsoft Visual Studio\repos\2D_practica6\project\World.cpp(31): warning C4172: returning address of local variable or temporary
   programacion2d.vcxproj -> D:\Microsoft Visual Studio\repos\2D_practica6\project\Debug\programacion2d.exe

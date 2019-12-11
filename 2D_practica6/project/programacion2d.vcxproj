@@ -20,8 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="Background.cpp" />
     <ClCompile Include="CircleCollider.cpp" />
     <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="PixelsCollider.cpp" />
     <ClCompile Include="RectCollider.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -29,8 +31,10 @@
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\lib\Background.h" />
     <ClInclude Include="..\lib\CircleCollider.h" />
     <ClInclude Include="..\lib\Collider.h" />
+    <ClInclude Include="..\lib\Drawable.h" />
     <ClInclude Include="..\lib\glfw3.h" />
     <ClInclude Include="..\lib\glfw3native.h" />
     <ClInclude Include="..\lib\litegfx.h" />

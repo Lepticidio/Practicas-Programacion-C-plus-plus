@@ -169,6 +169,7 @@ void Sprite::draw() const
 
 void Sprite::setCollisionType(CollisionType type)
 {
+	eType = type;
 	switch (type)
 	{
 		case COLLISION_CIRCLE:
@@ -211,7 +212,7 @@ CollisionType Sprite::getCollisionType() const
 	}
 	else
 	{
-		return pCollider->type;
+		return eType;
 	}
 }
 const Collider* Sprite::getCollider() const
@@ -221,38 +222,8 @@ const Collider* Sprite::getCollider() const
 bool Sprite::collides(Sprite& other)
 {
 	if (pCollider != nullptr)
-	{
-		bool bResult = false;
-		switch (other.getCollisionType())
-		{
-			case COLLISION_CIRCLE:
-			{
-				Collider* pCollider = const_cast<Collider*>( other.getCollider());
-				CircleCollider* pCircle = static_cast<CircleCollider*>(pCollider);
-				bResult = const_cast<Collider*>(getCollider())->collides(pCircle->vPosition, pCircle->fRadius);
-			}
-			break;
-			case COLLISION_RECT:
-			{
-				Collider* pCollider = const_cast<Collider*>(other.getCollider());
-				RectCollider* pRect = static_cast<RectCollider*>(pCollider);
-				bResult = const_cast<Collider*>(getCollider())->collides(pRect->vPosition, pRect->vSize);
-			}
-			break;
-			case COLLISION_PIXELS:
-			{
-				Collider* pCollider = const_cast<Collider*>(other.getCollider());
-				PixelsCollider* pPixels = static_cast<PixelsCollider*>(pCollider);
-				bResult = const_cast<Collider*>(getCollider())->collides(pPixels->vPosition, pPixels->vSize, pPixels->m_pixels);
-			}
-			break;
-			default:
-			{
-				bResult = false;
-			}
-		}
-		
-		pCollider->collides(*(other.pCollider));
+	{		
+		bool bResult = pCollider->collides(*(other.pCollider));
 		if (bResult)
 		{
 			setColor(1, 0, 0, 1);

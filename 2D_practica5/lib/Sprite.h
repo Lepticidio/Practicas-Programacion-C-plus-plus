@@ -6,6 +6,16 @@
 #include "RectCollider.h"
 #include "PixelsCollider.h"
 
+
+
+enum CollisionType
+{
+	COLLISION_NONE,
+	COLLISION_CIRCLE,
+	COLLISION_RECT,
+	COLLISION_PIXELS
+};
+
 class Sprite
 {
 public:
@@ -83,6 +93,7 @@ private:
 	Vec2 vScale = Vec2(1,1);
 	Vec2 vPivot = Vec2(0.5f, 0.5f);
 	CallbackFunc callbackFunc;
+	CollisionType eType;
 	Collider* pCollider;
 };
 

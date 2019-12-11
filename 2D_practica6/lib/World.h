@@ -1,5 +1,6 @@
 #pragma once
 #include "Sprite.h"
+#include <vector>
 
 class World
 {
@@ -7,13 +8,9 @@ private:
 	float fClearRed;
 	float fClearGreen;
 	float fClearBlue;
-	float fScrollRatio;
-	Vec2 vScrollSpeed;
 	Vec2 vCameraPosition;
-	const ltex_t* pBackground0;
-	const ltex_t* pBackground1;
-	const ltex_t* pBackground2;
-	const ltex_t* pBackground3;
+	const Background* pBackgrounds[4];
+	std::vector<Sprite> tSprites;
 
 public:
 	World
@@ -26,7 +23,7 @@ public:
 	float getClearGreen() const;
 	float getClearBlue() const;
 	const ltex_t* getBackground(size_t layer) const;
-	float getScrollRatio(size_t layer) const;
+	float getScrollRatio(size_t layer);
 	void setScrollRatio(size_t layer, float ratio);
 	const Vec2& getScrollSpeed(size_t layer) const;
 	void setScrollSpeed(size_t layer, const Vec2& speed);

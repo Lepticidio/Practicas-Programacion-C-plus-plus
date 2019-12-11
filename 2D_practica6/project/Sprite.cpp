@@ -6,90 +6,13 @@ unsigned char* generateUCharArray(const int _size)
 	return new unsigned char[_size];
 }
 Sprite::Sprite(const ltex_t* tex, int hframes, int vframes)
-	:texture(*tex), iHorizontalFrames(hframes), iVerticalFrames(vframes)
+	: Drawable(tex), iHorizontalFrames(hframes), iVerticalFrames(vframes)
 {
 
 }
 void Sprite::setCallback(CallbackFunc func)
 {
 	callbackFunc = func;
-}
-const ltex_t* Sprite::getTexture() const
-{
-	return &texture;
-}
-void Sprite::setTexture(const ltex_t* tex, int hframes, int vframes)
-{
-	texture = *tex;
-	iHorizontalFrames = hframes;
-	iVerticalFrames = vframes;
-}
-lblend_t Sprite::getBlend() const
-{
-	return blend;
-}
-void Sprite::setBlend(lblend_t mode)
-{
-	blend = mode;
-}
-float Sprite::getRed() const
-{
-	return fRed;
-}
-float Sprite::getGreen() const
-{
-	return fGreen;
-}
-float Sprite::getBlue() const
-{
-	return fBlue;
-}
-float Sprite::getAlpha() const
-{
-	return fAlpha;
-}
-void Sprite::setColor(float r, float g, float b, float a)
-{
-	fRed = r;
-	fGreen = g;
-	fBlue = b;
-	fAlpha = a;
-}
-const Vec2& Sprite::getPosition() const
-{
-	return vPosition;
-}
-void Sprite::setPosition(const Vec2& pos)
-{
-	vPosition = pos;
-}
-float Sprite::getAngle() const
-{
-	return fAngle;
-}
-void Sprite::setAngle(float angle)
-{
-	fAngle = angle;
-}
-const Vec2& Sprite::getScale() const
-{
-	return vScale;
-}
-void Sprite::setScale(const Vec2& scale)
-{
-	vScale = scale;
-}
-Vec2 Sprite::getSize() const
-{
-	return Vec2(vScale.x * texture.width / iHorizontalFrames, vScale.y * texture.height / iVerticalFrames);
-}
-const Vec2& Sprite::getPivot() const
-{
-	return vPivot;
-}
-void Sprite::setPivot(const Vec2& pivot)
-{
-	vPivot = pivot;
 }
 int Sprite::getHframes() const
 {
@@ -106,6 +29,10 @@ int Sprite::getFps() const
 void Sprite::setFps(int fps)
 {
 	iFps = fps;
+}
+Vec2 Sprite::getSize() const
+{
+	return Vec2(vScale.x * texture.width /iHorizontalFrames, vScale.y * texture.height/iVerticalFrames);
 }
 float Sprite::getCurrentFrame() const
 {
@@ -169,6 +96,7 @@ void Sprite::draw() const
 
 void Sprite::setCollisionType(CollisionType type)
 {
+	eType = type;
 	switch (type)
 	{
 		case COLLISION_CIRCLE:
@@ -211,7 +139,7 @@ CollisionType Sprite::getCollisionType() const
 	}
 	else
 	{
-		return pCollider->type;
+		return eType;
 	}
 }
 const Collider* Sprite::getCollider() const
@@ -221,43 +149,13 @@ const Collider* Sprite::getCollider() const
 bool Sprite::collides(Sprite& other)
 {
 	if (pCollider != nullptr)
-	{
-		bool bResult = false;
-		switch (other.getCollisionType())
-		{
-			case COLLISION_CIRCLE:
-			{
-				Collider* pCollider = const_cast<Collider*>( other.getCollider());
-				CircleCollider* pCircle = static_cast<CircleCollider*>(pCollider);
-				bResult = const_cast<Collider*>(getCollider())->collides(pCircle->vPosition, pCircle->fRadius);
-			}
-			break;
-			case COLLISION_RECT:
-			{
-				Collider* pCollider = const_cast<Collider*>(other.getCollider());
-				RectCollider* pRect = static_cast<RectCollider*>(pCollider);
-				bResult = const_cast<Collider*>(getCollider())->collides(pRect->vPosition, pRect->vSize);
-			}
-			break;
-			case COLLISION_PIXELS:
-			{
-				Collider* pCollider = const_cast<Collider*>(other.getCollider());
-				PixelsCollider* pPixels = static_cast<PixelsCollider*>(pCollider);
-				bResult = const_cast<Collider*>(getCollider())->collides(pPixels->vPosition, pPixels->vSize, pPixels->m_pixels);
-			}
-			break;
-			default:
-			{
-				bResult = false;
-			}
-		}
-		
-		pCollider->collides(*(other.pCollider));
-		if (bResult)
-		{
-			setColor(1, 0, 0, 1);
-			other.setColor(1, 0, 0, 1);
-		}
+	{		
+		bool bResult = pCollider->collides(*(other.pCollider));
+		//if (bResult)
+		//{
+		//	setColor(1, 0, 0, 1);
+		//	other.setColor(1, 0, 0, 1);
+		//}
 		return bResult;
 	}
 	else
