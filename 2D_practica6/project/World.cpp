@@ -4,9 +4,21 @@ World::World
 	float clearRed, float clearGreen, float clearBlue,
 	const ltex_t* back0, const ltex_t* back1,
 	const ltex_t* back2, const ltex_t* back3
-) : fClearRed(clearRed), fClearGreen(clearGreen), fClearBlue(clearBlue), pBackgrounds{&Background(back0), &Background(back1), &Background(back2), &Background(back3) }
+) : fClearRed(clearRed), fClearGreen(clearGreen), fClearBlue(clearBlue), pBackgrounds{new Background(back3), new Background(back2), new Background(back1), new Background(back0) }
 {
-
+	for (int i = 0; i < 4; i++)
+	{
+		Background* pBackground = const_cast<Background*>(pBackgrounds[i]);
+		if (vLevelSize.x < pBackground->getTexture()->width)
+		{
+			vLevelSize = Vec2(pBackground->getTexture()->width, pBackground->getTexture()->height);
+		}
+	}
+	for (int i = 0; i < 4; i++)
+	{
+		Background* pBackground = const_cast<Background*>(pBackgrounds[i]);
+		pBackground->setScale(vLevelSize / pBackground->getSize());
+	}
 }
 float World::getClearRed() const
 {

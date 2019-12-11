@@ -7,8 +7,8 @@
 
 using namespace std;
 
-int iWidth = 1000;
-int iHeight = 1000;
+int iWidth = 1200;
+int iHeight = 800;
 
 Vec2 vMousePos;
 
@@ -81,6 +81,7 @@ int main()
 	stbi_image_free(sWaspBytes);
 
 	Sprite wasp(pTextureWasp, 8, 1);
+	wasp.setPivot(Vec2(0.5f, 0.5f));
 	wasp.setFps(8);
 	wasp.setCallback(SpriteCallback);
 
@@ -136,7 +137,6 @@ int main()
 
 		//5.7) Procesamos eventos
 		glfwPollEvents();
-
 	}
 	//6) Liberamos los recursos.
 	glfwTerminate();

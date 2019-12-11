@@ -122,7 +122,6 @@ void Sprite::setCollisionType(CollisionType type)
 			ltex_getpixels(&texture, sTextureChars);
 
 			pCollider = new PixelsCollider(getSize(), vPosition, sTextureChars);
-
 		}
 		break;
 		default:

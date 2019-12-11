@@ -9,6 +9,7 @@ private:
 	float fClearGreen;
 	float fClearBlue;
 	Vec2 vCameraPosition;
+	Vec2 vLevelSize;
 	const Background* pBackgrounds[4];
 	std::vector<Sprite> tSprites;
 

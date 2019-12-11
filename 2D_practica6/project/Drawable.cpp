@@ -80,10 +80,10 @@ void Drawable::setPivot(const Vec2& pivot)
 	vPivot = pivot;
 }
 void Drawable::draw() const
-{
+{	
 	Vec2 vSize = getSize();
 	lgfx_setblend(blend);
 	lgfx_setcolor(fRed, fGreen, fBlue, fAlpha);
-	ltex_drawrotsized(&texture, vPosition.x, vPosition.y, fAngle, vPivot.x, vPivot.y, vSize.x, vSize.y,	0, 0, 1, 1);
+	ltex_drawrotsized(&texture, vPosition.x, vPosition.y, fAngle, vPivot.x, vPivot.y, vSize.x, vSize.y,	0, 0, vScale.x, vScale.y);
 	lgfx_setcolor(1, 1, 1, 1);
 }
