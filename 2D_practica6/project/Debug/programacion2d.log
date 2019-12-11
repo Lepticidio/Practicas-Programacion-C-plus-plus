@@ -2,9 +2,9 @@
 D:\Microsoft Visual Studio\repos\2D_practica6\lib\Collider.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 D:\Microsoft Visual Studio\repos\2D_practica6\project\World.cpp(21,81): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
 D:\Microsoft Visual Studio\repos\2D_practica6\project\World.cpp(21,47): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
-D:\Microsoft Visual Studio\repos\2D_practica6\project\World.cpp(81,18): warning C4018: '<': signed/unsigned mismatch
-D:\Microsoft Visual Studio\repos\2D_practica6\project\World.cpp(85,15): warning C4018: '<': signed/unsigned mismatch
-D:\Microsoft Visual Studio\repos\2D_practica6\project\World.cpp(93,20): warning C4018: '<': signed/unsigned mismatch
-D:\Microsoft Visual Studio\repos\2D_practica6\project\World.cpp(109,20): warning C4018: '<': signed/unsigned mismatch
-D:\Microsoft Visual Studio\repos\2D_practica6\project\World.cpp(50): warning C4172: returning address of local variable or temporary
+D:\Microsoft Visual Studio\repos\2D_practica6\project\World.cpp(86,18): warning C4018: '<': signed/unsigned mismatch
+D:\Microsoft Visual Studio\repos\2D_practica6\project\World.cpp(90,15): warning C4018: '<': signed/unsigned mismatch
+D:\Microsoft Visual Studio\repos\2D_practica6\project\World.cpp(98,20): warning C4018: '<': signed/unsigned mismatch
+D:\Microsoft Visual Studio\repos\2D_practica6\project\World.cpp(120,20): warning C4018: '<': signed/unsigned mismatch
+D:\Microsoft Visual Studio\repos\2D_practica6\project\World.cpp(55): warning C4172: returning address of local variable or temporary
   programacion2d.vcxproj -> D:\Microsoft Visual Studio\repos\2D_practica6\project\Debug\programacion2d.exe

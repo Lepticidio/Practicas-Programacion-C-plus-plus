@@ -26,6 +26,10 @@ World::World
 		Background* pBackground = const_cast<Background*>(pBackgrounds[i]);
 		pBackground->setScale(vLevelSize / pBackground->getSize());
 	}
+	const_cast<Background*>(pBackgrounds[0])->SetScrollRatio(0.4f);
+	const_cast<Background*>(pBackgrounds[1])->SetScrollRatio(0.6f);
+	const_cast<Background*>(pBackgrounds[2])->SetScrollRatio(0.8f);
+	const_cast<Background*>(pBackgrounds[3])->SetScrollRatio(1.f);
 }
 float World::getClearRed() const
 {
@@ -97,6 +101,12 @@ void World::update(float deltaTime)
 	vCameraPosition = Vec2(tSprites[0].getPosition().x - 600, tSprites[0].getPosition().y - 400);
 	vCameraPosition = Vec2(Clamp(vCameraPosition.x, 0, vLevelSize.x - 1200), Clamp(vCameraPosition.y, 0, vLevelSize.y - 800));
 	lgfx_setorigin(vCameraPosition.x, vCameraPosition.y);
+	//for each (const Background * background in pBackgrounds)
+	//{
+	//	Background* pBackground = const_cast<Background*>(background);
+	//	Vec2 vPreviousPosition = pBackground->getPosition();
+	//	pBackground->setPosition(vPreviousPosition - vCameraPosition*pBackground->GetScrollRatio());
+	//}	
 }
 void World::draw(const Vec2& screenSize)
 {
@@ -104,7 +114,7 @@ void World::draw(const Vec2& screenSize)
 
 	for each (const Background* background in pBackgrounds)
 	{
-		background->draw();
+		background->draw(vLevelSize, vCameraPosition);
 	}
 	for (int i = 0; i < tSprites.size(); i++)
 	{

@@ -45,7 +45,7 @@ public:
 	void setCurrentFrame(int frame); 
 
 	void update(float deltaTime);
-	void draw() const;
+	virtual void draw() const;
 
 	void setCollisionType(CollisionType type);
 	CollisionType getCollisionType() const;

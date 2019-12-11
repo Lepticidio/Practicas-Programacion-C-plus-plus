@@ -19,3 +19,13 @@ Vec2 Background::GetScrollSpeed()
 {
 	return vScrollSpeed;
 }
+void Background::draw(Vec2 _vLevelSize, Vec2 _vCameraPosition) const
+{
+	Vec2 vSize = getSize();
+	Vec2 vOffset = Vec2(- vScale.x*(_vCameraPosition.x / _vLevelSize.x - fScrollRatio * _vCameraPosition.x/  (_vLevelSize.x)), -vScale.y*(_vCameraPosition.y/_vLevelSize.y - fScrollRatio * _vCameraPosition.y / (_vLevelSize.y)));
+	lgfx_setblend(blend);
+	lgfx_setcolor(fRed, fGreen, fBlue, fAlpha);
+	ltex_drawrotsized(&texture, vPosition.x, vPosition.y, fAngle, vPivot.x, vPivot.y, vSize.x, vSize.y, 
+		vOffset.x, vOffset.y, vScale.x + vOffset.x, vScale.y + vOffset.y);
+	lgfx_setcolor(1, 1, 1, 1);
+}

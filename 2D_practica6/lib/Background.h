@@ -13,5 +13,6 @@ public:
 	void SetScrollSpeed(Vec2 _vScrollSpeed);
 	float GetScrollRatio();
 	Vec2 GetScrollSpeed();
+	virtual void draw(Vec2 _vLevelSize, Vec2 _vCameraPosition) const;
 };
 
