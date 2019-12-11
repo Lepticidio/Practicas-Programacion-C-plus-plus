@@ -30,6 +30,7 @@ World::World
 	const_cast<Background*>(pBackgrounds[1])->SetScrollRatio(0.6f);
 	const_cast<Background*>(pBackgrounds[2])->SetScrollRatio(0.8f);
 	const_cast<Background*>(pBackgrounds[3])->SetScrollRatio(1.f);
+	const_cast<Background*>(pBackgrounds[0])->SetScrollSpeed(Vec2(-16.f, -8.f));
 }
 float World::getClearRed() const
 {
@@ -97,21 +98,24 @@ void World::update(float deltaTime)
 	for (int i = 0; i < tSprites.size(); i++)
 	{
 		tSprites[i].update(deltaTime);
+	}
+	for each (const Background * background in pBackgrounds)
+	{
+		Background* pBackground = const_cast<Background*>(background);
+		pBackground->update(deltaTime);
 	}	
-	vCameraPosition = Vec2(tSprites[0].getPosition().x - 600, tSprites[0].getPosition().y - 400);
-	vCameraPosition = Vec2(Clamp(vCameraPosition.x, 0, vLevelSize.x - 1200), Clamp(vCameraPosition.y, 0, vLevelSize.y - 800));
-	lgfx_setorigin(vCameraPosition.x, vCameraPosition.y);
-	//for each (const Background * background in pBackgrounds)
-	//{
-	//	Background* pBackground = const_cast<Background*>(background);
-	//	Vec2 vPreviousPosition = pBackground->getPosition();
-	//	pBackground->setPosition(vPreviousPosition - vCameraPosition*pBackground->GetScrollRatio());
-	//}	
 }
 void World::draw(const Vec2& screenSize)
 {
+	//Clear screen with color
 	lgfx_clearcolorbuffer(fClearRed, fClearGreen, fClearBlue);
 
+	//Center camera on first sprite
+	vCameraPosition = Vec2(tSprites[0].getPosition().x - screenSize.x/2, tSprites[0].getPosition().y - screenSize.y/2);
+	vCameraPosition = Vec2(Clamp(vCameraPosition.x, 0, vLevelSize.x - screenSize.x), Clamp(vCameraPosition.y, 0, vLevelSize.y - screenSize.y));
+	lgfx_setorigin(vCameraPosition.x, vCameraPosition.y);
+
+	//Draw backgrounds and sprites
 	for each (const Background* background in pBackgrounds)
 	{
 		background->draw(vLevelSize, vCameraPosition);

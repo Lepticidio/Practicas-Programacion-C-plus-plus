@@ -79,6 +79,9 @@ void Drawable::setPivot(const Vec2& pivot)
 {
 	vPivot = pivot;
 }
+void Drawable::update(float _deltaTime)
+{
+}
 void Drawable::draw() const
 {	
 }

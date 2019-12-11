@@ -23,6 +23,7 @@ public:
 	void setAngle(float angle);
 	const Vec2& getScale() const;
 	void setScale(const Vec2& scale);
+	virtual void update(float _deltaTime);
 	virtual void draw() const;
 
 	// Tamaño de la textura multiplicado por la escala 

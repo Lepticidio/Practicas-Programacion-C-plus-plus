@@ -8,7 +8,7 @@
 using namespace std;
 
 int iWidth = 1200;
-int iHeight = 800;
+int iHeight = 600;
 
 Vec2 vMousePos;
 
@@ -109,7 +109,7 @@ int main()
 	ltex_setpixels(pTextureClouds, sCloudsBytes);
 	stbi_image_free(sCloudsBytes);
 
-	World world(0.15f, 0.15f, 0.15f, pTextureLevel, pTextureTrees1, pTextureTrees2, pTextureClouds);
+	World world(0.8f, 0.8f, 0.8f, pTextureLevel, pTextureTrees1, pTextureTrees2, pTextureClouds);
 	world.addSprite(wasp);
 
 	//5) Bucle principal
