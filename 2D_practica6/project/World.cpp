@@ -1,4 +1,11 @@
 #include "World.h"
+
+float Clamp(float n, float lower, float upper)
+{
+	n = (n > lower)* n + !(n > lower)* lower;
+	return (n < upper) * n + !(n < upper) * upper;
+}
+
 World::World
 (
 	float clearRed, float clearGreen, float clearBlue,
@@ -82,10 +89,14 @@ void World::removeSprite(Sprite& sprite)
 }
 void World::update(float deltaTime)
 {
+	
 	for (int i = 0; i < tSprites.size(); i++)
 	{
 		tSprites[i].update(deltaTime);
-	}
+	}	
+	vCameraPosition = Vec2(tSprites[0].getPosition().x - 600, tSprites[0].getPosition().y - 400);
+	vCameraPosition = Vec2(Clamp(vCameraPosition.x, 0, vLevelSize.x - 1200), Clamp(vCameraPosition.y, 0, vLevelSize.y - 800));
+	lgfx_setorigin(vCameraPosition.x, vCameraPosition.y);
 }
 void World::draw(const Vec2& screenSize)
 {

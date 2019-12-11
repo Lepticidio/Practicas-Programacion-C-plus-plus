@@ -125,6 +125,7 @@ int main()
 		}
 		glfwGetCursorPos(pWindow, pXMouse, pYMouse);
 		vMousePos = Vec2(dXMouse, dYMouse);
+		vMousePos = vMousePos + world.getCameraPosition();
 
 		//5.3) Actualizamos lógica de juego
 		world.update(deltaTime);
