@@ -1,9 +1,0 @@
-﻿  Timer.cpp
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Timer.h(19,35): warning C4305: 'initializing': truncation from 'double' to 'const float'
-D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\common\Timer.cpp(35,24): warning C4305: '=': truncation from 'double' to 'float'
-  Generating code
-  2 of 343 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    3 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  swalib_example.vcxproj -> D:\Microsoft Visual Studio\repos\Arquitectura\1_Skeleton\swalib-master\swalib_example\Release\swalib_example.exe

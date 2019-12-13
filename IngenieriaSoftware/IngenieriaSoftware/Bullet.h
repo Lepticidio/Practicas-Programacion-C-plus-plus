@@ -12,5 +12,6 @@ class Bullet : public MovableObject
 		virtual void CheckCollision(MovableObject* _pOtherObject);
 		void ResetPosition();
 		bool IsOutsideWorld();
+		bool IsMovingRight();
 };
 

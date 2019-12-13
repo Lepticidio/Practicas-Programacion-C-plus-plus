@@ -1,0 +1,22 @@
+﻿  core.cpp
+  example.cpp
+  font.cpp
+  lodepng.cpp
+D:\Microsoft Visual Studio\repos\Arquitectura\common\lodepng.cpp(798,34): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+  stdafx.cpp
+  sys_win.cpp
+  collision_comp.cpp
+  linear_vel_comp.cpp
+  render_comp.cpp
+  entity.cpp
+  timer.cpp
+  background.cpp
+  sprite.cpp
+  graphics_engine.cpp
+  world.cpp
+D:\Microsoft Visual Studio\repos\Arquitectura\common\lodepng.cpp(3478,46): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 654 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  swalib_example.vcxproj -> D:\Microsoft Visual Studio\repos\Arquitectura\swalib_example\x64\Release\swalib_example.exe

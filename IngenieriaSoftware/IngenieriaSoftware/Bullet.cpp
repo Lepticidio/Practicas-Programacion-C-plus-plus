@@ -51,3 +51,7 @@ bool Bullet::IsOutsideWorld()
 {
 	return ((m_bRightMovement && m_iX > m_iWidthWorld) || (!m_bRightMovement && m_iX < 0));
 }
+bool Bullet::IsMovingRight()
+{
+	return m_bRightMovement;
+}

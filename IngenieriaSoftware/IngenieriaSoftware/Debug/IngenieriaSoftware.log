@@ -1,7 +1,5 @@
-﻿  IngenieriaSoftware.cpp
-D:\Microsoft Visual Studio\repos\IngenieriaSoftware\IngenieriaSoftware\IngenieriaSoftware.cpp(108,20): warning C4018: '<': signed/unsigned mismatch
-D:\Microsoft Visual Studio\repos\IngenieriaSoftware\IngenieriaSoftware\IngenieriaSoftware.cpp(120,21): warning C4018: '<': signed/unsigned mismatch
-D:\Microsoft Visual Studio\repos\IngenieriaSoftware\IngenieriaSoftware\IngenieriaSoftware.cpp(126,21): warning C4018: '<': signed/unsigned mismatch
-D:\Microsoft Visual Studio\repos\IngenieriaSoftware\IngenieriaSoftware\IngenieriaSoftware.cpp(129,26): warning C4018: '<': signed/unsigned mismatch
-D:\Microsoft Visual Studio\repos\IngenieriaSoftware\IngenieriaSoftware\IngenieriaSoftware.cpp(142,20): warning C4018: '<': signed/unsigned mismatch
+﻿  InputManager.cpp
+D:\Microsoft Visual Studio\repos\IngenieriaSoftware\IngenieriaSoftware\InputManager.cpp(12,20): warning C4018: '<': signed/unsigned mismatch
+D:\Microsoft Visual Studio\repos\IngenieriaSoftware\IngenieriaSoftware\InputManager.cpp(55,19): warning C4018: '<': signed/unsigned mismatch
+D:\Microsoft Visual Studio\repos\IngenieriaSoftware\IngenieriaSoftware\InputManager.cpp(69,19): warning C4018: '<': signed/unsigned mismatch
   IngenieriaSoftware.vcxproj -> D:\Microsoft Visual Studio\repos\IngenieriaSoftware\Debug\IngenieriaSoftware.exe
