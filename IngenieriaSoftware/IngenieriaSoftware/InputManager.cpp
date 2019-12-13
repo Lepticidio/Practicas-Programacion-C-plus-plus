@@ -76,10 +76,4 @@ void InputManager::CheckInput()
 			iCounter++;
 		}
 	}
-
-	if (GetAsyncKeyState(VK_ESCAPE))
-	{
-		*m_pExit = true;
-	}
-
 }

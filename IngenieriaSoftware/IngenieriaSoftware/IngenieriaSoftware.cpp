@@ -2,7 +2,7 @@
 //
 
 #include "Enemy.h"
-#include "InputManager.h"
+#include "RenderManager.h"
 
 int main()
 {
@@ -33,12 +33,11 @@ int main()
 	}
 
 	InputManager inputManager(tObjects, bExit, iWidth);
+	RenderManager renderManager(tObjects, iWidth);
 
 	while (!bExit)
 	{
-
 		inputManager.CheckInput();
-
 		//Spawn Enemies
 		float fProbability = (float)(rand() % 100);
 		if (fPercentajePorbabilityEnemySpawn > fProbability)
@@ -72,29 +71,8 @@ int main()
 		}
 		bExit = player.GetIsDead();
 
-		//Render
-		system("cls");
-		printf("\r");
-		for (int i = 0; i < iWidth; i++)
-		{
-			bool bEmptyPosition = true;
-			int iCounter = 0;
-			while (iCounter < tObjects.size() && bEmptyPosition)
-			{
+		renderManager.Render();
 
-				if (tObjects[iCounter]->GetX() == i)
-				{
-					tObjects[iCounter]->Print();
-					bEmptyPosition = false;
-				}
-				iCounter++;
-			}
-			if (bEmptyPosition)
-			{
-				printf("-");
-			}
-		}
-		printf("%d", player.GetScore());
 
 		Sleep(50);
 	}
