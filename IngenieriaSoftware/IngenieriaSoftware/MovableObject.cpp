@@ -16,7 +16,7 @@ ObjectType MovableObject::GetType()
 {
 	return m_eType;
 }
-void MovableObject::Print()
+void MovableObject::Render()
 {
 	printf("%c", m_cSprite);
 }

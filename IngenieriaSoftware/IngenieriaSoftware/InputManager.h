@@ -1,8 +1,6 @@
 #pragma once
-#include <vector>	//needed to use dynamic tables of objects
 #include "windows.h" //needed for async key input and sleep
-#include "Player.h"
-#include "Bullet.h"
+#include "LogicManager.h"
 
 class InputManager
 {

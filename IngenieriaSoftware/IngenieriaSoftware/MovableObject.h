@@ -17,7 +17,7 @@ class MovableObject abstract
 		MovableObject(ObjectType _eType, int _iX, char _cSprite);
 
 	public:
-		void Print();
+		void Render();
 		void SetX(int _iX);
 		void MoveRight();
 		void MoveLeft();

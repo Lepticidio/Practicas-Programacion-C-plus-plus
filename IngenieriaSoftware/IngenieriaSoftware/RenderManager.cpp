@@ -26,7 +26,7 @@ void RenderManager::Render()
 
 			if (m_tObjects[iCounter]->GetX() == i)
 			{
-				m_tObjects[iCounter]->Print();
+				m_tObjects[iCounter]->Render();
 				bEmptyPosition = false;
 			}
 			iCounter++;
