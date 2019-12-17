@@ -1,5 +1,7 @@
 #include "Enemy.h"
 
+
+
 Enemy::Enemy(int _iX, int _iWidth, Player* _pPlayer) : MovableObject(ENEMY, _iX, '*'), m_iWidth(_iWidth), m_pPlayer(_pPlayer)
 {
 
@@ -13,7 +15,6 @@ void Enemy::Update()
 }
 void Enemy::CheckCollision(MovableObject* _pOtherObject)
 {
-
 	if (_pOtherObject->GetX() > m_iX -2 && _pOtherObject->GetX() < m_iX + 2)
 	{
 		if (_pOtherObject->GetType() == BULLET)
@@ -21,7 +22,7 @@ void Enemy::CheckCollision(MovableObject* _pOtherObject)
 			Bullet* _pBullet = static_cast<Bullet*>(_pOtherObject);
 			if (!_pBullet->IsOutsideWorld())
 			{
-				m_pPlayer->IncreaseScore();
+				m_pPlayer->GetScore();
 				Reset();
 				m_bIsActive = false;
 				_pBullet->ResetPosition();

@@ -7,57 +7,41 @@ bool InputManager::GetKeyInput(char _cInput)
 	return (GetAsyncKeyState(VkKeyScanEx(_cInput, m_kbl)));
 }
 
-InputManager::InputManager(std::vector<MovableObject*> _tObjects, bool _bExit, int _iWidth): m_pExit(&_bExit), m_pWidth(&_iWidth)
+InputManager::InputManager()
 {
-	for (int i = 0; i < _tObjects.size(); i++)
-	{
-		if (_tObjects[i]->GetType() == PLAYER)
-		{
-			m_pPlayer = static_cast<Player*>(_tObjects[i]);
-		}
-		else if (_tObjects[i]->GetType() == BULLET)
-		{
-			Bullet* pBullet = static_cast<Bullet*>(_tObjects[i]);
-			if (pBullet->IsMovingRight())
-			{
-				m_tRightBullets.push_back(pBullet);
-			}
-			else
-			{
-				m_tLeftBullets.push_back(pBullet);
-			}
-		}
-	}
 }
 
 void InputManager::CheckInput()
 {
+	int iMaxNumberBulletsSide = World::GetInstance().GetMaxBulletsSide();
+	Player* pPlayer = World::GetInstance().GetPlayer();
 	//Process input
 	if (GetKeyInput('h'))
 	{
-		if (m_pPlayer->GetX() > 0)
+		if (pPlayer->GetX() > 0)
 		{
-			m_pPlayer->MoveLeft();
+			pPlayer->MoveLeft();
 		}
 	}
 
 	if (GetKeyInput('l'))
 	{
-		if (m_pPlayer->GetX() < *m_pWidth - 1)
+		if (pPlayer->GetX() < World::GetInstance().GetWidth() - 1)
 		{
-			m_pPlayer->MoveRight();
+			pPlayer->MoveRight();
 		}
 	}
 
 	if (GetKeyInput('j'))
 	{
 		int iCounter = 0;
-		while (iCounter < m_tLeftBullets.size())
+		while (iCounter < iMaxNumberBulletsSide)
 		{
-			if (m_tLeftBullets[iCounter]->IsOutsideWorld())
+			Bullet* pBullet = World::GetInstance().GetBulletAtIndex(iCounter, false);
+			if (pBullet->IsOutsideWorld())
 			{
-				m_tLeftBullets[iCounter]->SetX(m_pPlayer->GetX() - 1);
-				iCounter = m_tLeftBullets.size();
+				pBullet->SetX(pPlayer->GetX() - 1);
+				iCounter = iMaxNumberBulletsSide;
 			}
 			iCounter++;
 		}
@@ -66,14 +50,24 @@ void InputManager::CheckInput()
 	if (GetKeyInput('k'))
 	{
 		int iCounter = 0;
-		while (iCounter < m_tRightBullets.size())
+		while (iCounter < iMaxNumberBulletsSide)
 		{
-			if (m_tRightBullets[iCounter]->IsOutsideWorld())
+			Bullet* pBullet = World::GetInstance().GetBulletAtIndex(iCounter, true);
+			if (pBullet->IsOutsideWorld())
 			{
-				m_tRightBullets[iCounter]->SetX(m_pPlayer->GetX() + 1);
-				iCounter = m_tRightBullets.size();
+				pBullet->SetX(pPlayer->GetX() + 1);
+				iCounter = iMaxNumberBulletsSide;
 			}
 			iCounter++;
 		}
 	}
 }
+InputManager InputManager::GetInstance()
+{
+	if (m_pInstance == nullptr)
+	{
+		m_pInstance = new InputManager();
+	}
+	return *m_pInstance;
+}
+InputManager* InputManager::m_pInstance = &InputManager::GetInstance();

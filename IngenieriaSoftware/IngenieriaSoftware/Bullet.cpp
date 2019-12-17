@@ -2,6 +2,8 @@
 
 Bullet::Bullet(int _iX, bool _bRightMovement, int _iWidthWorld) : MovableObject(BULLET,_iX, '>'), m_bRightMovement(_bRightMovement),  m_iWidthWorld(_iWidthWorld)
 {
+
+	//printf("\n bullet created");
 	if (m_bRightMovement)
 	{
 		m_cSprite = '>';

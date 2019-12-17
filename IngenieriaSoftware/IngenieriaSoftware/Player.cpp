@@ -2,7 +2,6 @@
 
 Player::Player(int _iX) : MovableObject(PLAYER, _iX, 'X')
 {
-
 }
 void Player::Update()
 {
@@ -18,13 +17,13 @@ void Player::CheckCollision(MovableObject* _pOtherObject)
 		}
 	}
 }
-void Player::SetIsDead(bool _bIsDead)
-{
-	m_bIsDead = _bIsDead;
-}
 void Player::IncreaseScore()
 {
 	m_iScore++;
+}
+void Player::SetIsDead(bool _bIsDead)
+{
+	m_bIsDead = _bIsDead;
 }
 bool Player::GetIsDead()
 {

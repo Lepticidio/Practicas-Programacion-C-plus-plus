@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Bullet.h"
 
+
 class Enemy : public MovableObject	
 {
 	private:

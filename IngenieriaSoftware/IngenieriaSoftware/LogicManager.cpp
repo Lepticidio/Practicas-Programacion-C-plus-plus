@@ -2,22 +2,56 @@
 
 LogicManager::LogicManager()
 {
-	Player player(iWidth / 2);
-	m_tObjects.push_back(&player);
+}
 
-	for (int i = 0; i < iMaxBulletsSide; i++)
+void LogicManager::UpdateLogic()
+{
+	int iNumberObjects = World::GetInstance().GetNumberObjects();
+	int iNumberEnemies = World::GetInstance().GetMaxEnemies();
+	//Spawn Enemies
+	float fProbability = (float)(rand() % 100);
+	if (fPercentajePorbabilityEnemySpawn > fProbability)
 	{
-		Bullet* rightBullet = new Bullet(iWidth + 1, true, iWidth);
-		m_tObjects.push_back(rightBullet);
-
-		Bullet* leftBullet = new Bullet(-1, false, iWidth);
-		m_tObjects.push_back(leftBullet);
+		int iCounter = 0;
+		while (iCounter <iNumberEnemies)
+		{
+			Enemy* pEnemy = World::GetInstance().GetEnemyAtIndex(iCounter);
+			if (pEnemy != nullptr)
+			{
+				if (!(pEnemy->GetIsActive()))
+				{
+					pEnemy->Activate();
+					iCounter = iNumberEnemies;
+				}
+			}
+			iCounter++;
+		}
 	}
-	for (int i = 0; i < iMaxEnemies; i++)
+
+	//Update Objects
+	for (int i = 0; i < iNumberObjects; i++)
 	{
-		Enemy* enemy = new Enemy(-1, iWidth, &player);
-		m_tObjects.push_back(enemy);
-		m_tEnemies.push_back(enemy);
-		enemy->Reset();
+		World::GetInstance().GetObjectAtIndex(i)->Update();
+	}
+
+	//Check for collisions
+	for ( int i = 0; i < iNumberObjects; i++)
+	{
+		//Check and compute collisions
+		for (int j = i + 1; j < iNumberObjects; j++)
+		{
+			MovableObject* pObject = World::GetInstance().GetObjectAtIndex(i);
+			MovableObject* pOtherObject = World::GetInstance().GetObjectAtIndex(j);
+			pObject->CheckCollision(pOtherObject);
+		}
 	}
 }
+LogicManager LogicManager::GetInstance()
+{
+	if (m_pInstance == nullptr)
+	{
+		m_pInstance = new LogicManager();
+	}
+	return *m_pInstance;
+}
+LogicManager* LogicManager::m_pInstance = &LogicManager::GetInstance();

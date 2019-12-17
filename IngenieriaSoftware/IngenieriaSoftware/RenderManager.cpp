@@ -1,15 +1,7 @@
 #include "RenderManager.h"
 
-RenderManager::RenderManager(std::vector<MovableObject*> _tObjects, int _iWidth) : m_tObjects(_tObjects),  m_iWidth(_iWidth)
+RenderManager::RenderManager() 
 {
-
-	for (int i = 0; i < _tObjects.size(); i++)
-	{
-		if (_tObjects[i]->GetType() == PLAYER)
-		{
-			m_pPlayer = static_cast<Player*>(_tObjects[i]);
-		}
-	}
 
 }
 void RenderManager::Render()
@@ -17,16 +9,18 @@ void RenderManager::Render()
 	//Render
 	system("cls");
 	printf("\r");
-	for (int i = 0; i < m_iWidth; i++)
+	printf("\n ancho: %d", World::GetInstance().GetWidth());
+	for (int i = 0; i < World::GetInstance().GetWidth(); i++)
 	{
 		bool bEmptyPosition = true;
 		int iCounter = 0;
-		while (iCounter < m_tObjects.size() && bEmptyPosition)
+		while (iCounter < World::GetInstance().GetNumberObjects() && bEmptyPosition)
 		{
+			MovableObject* pObject = World::GetInstance().GetObjectAtIndex(iCounter);
 
-			if (m_tObjects[iCounter]->GetX() == i)
+			if (pObject->GetX() == i)
 			{
-				m_tObjects[iCounter]->Render();
+				pObject->Render();
 				bEmptyPosition = false;
 			}
 			iCounter++;
@@ -36,6 +30,18 @@ void RenderManager::Render()
 			printf("-");
 		}
 	}
-	printf("%d", m_pPlayer->GetScore());
+	Player* pPlayer = World::GetInstance().GetPlayer();
+	printf("%d", pPlayer->GetScore());
 
 }
+
+RenderManager RenderManager::GetInstance()
+{
+	if (m_pInstance == nullptr)
+	{
+		m_pInstance = new RenderManager();
+	}
+	return *m_pInstance;
+}
+
+RenderManager* RenderManager::m_pInstance = &RenderManager::GetInstance();
