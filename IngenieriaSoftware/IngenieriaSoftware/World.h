@@ -18,6 +18,8 @@ public:
 	World(World const&) = delete;
 	void operator = (World const&) = delete;
 
+	void Initialize();
+
 	int GetMaxBulletsSide();
 	int GetMaxEnemies();
 	int GetWidth();

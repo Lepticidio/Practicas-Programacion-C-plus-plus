@@ -7,6 +7,10 @@ World& World::GetInstance()
 }
 World::World() : m_iWidth(40), m_iMaxEnemies(8), m_iMaxBulletsSide(5), m_player(m_iWidth/2)
 {
+}
+
+void World::Initialize()
+{
 	m_tObjects.push_back(&m_player);
 
 	for (int i = 0; i < m_iMaxBulletsSide; i++)
@@ -55,17 +59,21 @@ Enemy* World::GetEnemyAtIndex(int _iIndex)
 	for (int i = 0; i < GetNumberObjects(); i++)
 	{
 		MovableObject* pObject = m_tObjects[i];
-		if (pObject->GetType() == ENEMY && iCounter == _iIndex)
+		if (pObject->GetType() == ENEMY)
 		{
-			pResult = static_cast<Enemy*>(pObject);
+			if (iCounter == _iIndex)
+			{
+				pResult = static_cast<Enemy*>(pObject);
+			}
+			iCounter++;
 		}
-		iCounter++;
 	}
 	return pResult;
 }
 Bullet* World::GetBulletAtIndex(int _iIndex, bool _bRight)
 {
 	Bullet* pResult = nullptr;
+	int iCounter = 0;
 	for (int i = 0; i < GetNumberObjects(); i++)
 	{
 		MovableObject* pObject = m_tObjects[i];
@@ -74,7 +82,11 @@ Bullet* World::GetBulletAtIndex(int _iIndex, bool _bRight)
 			Bullet* pBullet = static_cast<Bullet*>(pObject);
 			if (pBullet->IsMovingRight() == _bRight)
 			{
-				pResult = pBullet;
+				if (iCounter == _iIndex)
+				{
+					pResult = pBullet;
+				}
+				iCounter++;
 			}
 		}
 	}

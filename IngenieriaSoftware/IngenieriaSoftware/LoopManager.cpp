@@ -5,7 +5,8 @@
 int main()
 {
 	bool bExit = false;
-	   
+	  
+	World::GetInstance().Initialize();
 	while (!bExit)
 	{
 		InputManager::GetInstance().CheckInput();
@@ -13,6 +14,6 @@ int main()
 		RenderManager::GetInstance().Render();
 
 		bExit = World::GetInstance().GetPlayer()->GetIsDead();
-
+		Sleep(50);
 	}
 }

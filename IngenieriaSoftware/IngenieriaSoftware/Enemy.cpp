@@ -22,7 +22,7 @@ void Enemy::CheckCollision(MovableObject* _pOtherObject)
 			Bullet* _pBullet = static_cast<Bullet*>(_pOtherObject);
 			if (!_pBullet->IsOutsideWorld())
 			{
-				m_pPlayer->GetScore();
+				m_pPlayer->IncreaseScore();
 				Reset();
 				m_bIsActive = false;
 				_pBullet->ResetPosition();
