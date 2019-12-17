@@ -1,16 +1,19 @@
 #include "InputManager.h"
 
+InputManager& InputManager::GetInstance()
+{
+	static InputManager input;
+	return input;
+}
+InputManager::InputManager()
+{
+}
 //This function makes key input more readeable
 //If key of char is pressed, returns true
 bool InputManager::GetKeyInput(char _cInput)
 {
 	return (GetAsyncKeyState(VkKeyScanEx(_cInput, m_kbl)));
 }
-
-InputManager::InputManager()
-{
-}
-
 void InputManager::CheckInput()
 {
 	int iMaxNumberBulletsSide = World::GetInstance().GetMaxBulletsSide();
@@ -62,12 +65,3 @@ void InputManager::CheckInput()
 		}
 	}
 }
-InputManager InputManager::GetInstance()
-{
-	if (m_pInstance == nullptr)
-	{
-		m_pInstance = new InputManager();
-	}
-	return *m_pInstance;
-}
-InputManager* InputManager::m_pInstance = &InputManager::GetInstance();

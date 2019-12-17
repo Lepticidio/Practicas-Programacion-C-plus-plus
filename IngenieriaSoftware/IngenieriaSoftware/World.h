@@ -7,14 +7,17 @@ class World
 {
 private:
 	World();
-	const int m_iMaxBulletsSide;
-	const int m_iMaxEnemies;
-	const int m_iWidth;
+	const int m_iMaxBulletsSide = 5;
+	const int m_iMaxEnemies = 8;
+	const int m_iWidth = 40;
 	Player m_player;
 	std::vector<MovableObject*> m_tObjects;
-	static World* m_pInstance;
 public:
-	static World GetInstance();
+	// Singleton.
+	static World& GetInstance();
+	World(World const&) = delete;
+	void operator = (World const&) = delete;
+
 	int GetMaxBulletsSide();
 	int GetMaxEnemies();
 	int GetWidth();

@@ -14,6 +14,5 @@ int main()
 
 		bExit = World::GetInstance().GetPlayer()->GetIsDead();
 
-		Sleep(50);
 	}
 }

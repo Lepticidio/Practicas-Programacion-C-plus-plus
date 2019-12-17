@@ -1,7 +1,2 @@
-﻿  InputManager.cpp
-  LogicManager.cpp
-  LoopManager.cpp
-  RenderManager.cpp
-  World.cpp
-  Generating Code...
+﻿  RenderManager.cpp
   IngenieriaSoftware.vcxproj -> D:\Microsoft Visual Studio\repos\IngenieriaSoftware\Debug\IngenieriaSoftware.exe

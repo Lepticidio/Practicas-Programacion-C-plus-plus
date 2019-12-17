@@ -1,5 +1,10 @@
 #include "World.h"
 
+World& World::GetInstance()
+{
+	static World world;
+	return world;
+}
 World::World() : m_iWidth(40), m_iMaxEnemies(8), m_iMaxBulletsSide(5), m_player(m_iWidth/2)
 {
 	m_tObjects.push_back(&m_player);
@@ -75,12 +80,3 @@ Bullet* World::GetBulletAtIndex(int _iIndex, bool _bRight)
 	}
 	return pResult;
 }
-World World::GetInstance()
-{
-	if (m_pInstance == nullptr)
-	{
-		m_pInstance = new World();
-	}
-	return *m_pInstance;
-}
-World* World::m_pInstance = &World::GetInstance();

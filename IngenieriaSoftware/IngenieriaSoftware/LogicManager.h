@@ -4,12 +4,14 @@ class LogicManager
 {
 private:	
 	float fPercentajePorbabilityEnemySpawn = 10.;
-	static LogicManager* m_pInstance;
+	LogicManager();
 
 public:
-	LogicManager();
-	void UpdateLogic();
-	static LogicManager GetInstance();
-	
+	// Singleton.
+	static LogicManager& GetInstance();
+	LogicManager(LogicManager const&) = delete;
+	void operator = (LogicManager const&) = delete;
+
+	void UpdateLogic();	
 };
 

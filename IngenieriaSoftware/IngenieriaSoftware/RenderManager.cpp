@@ -1,6 +1,11 @@
 #include "RenderManager.h"
 
-RenderManager::RenderManager() 
+RenderManager& RenderManager::GetInstance()
+{
+	static RenderManager render;
+	return render;
+}
+RenderManager::RenderManager()
 {
 
 }
@@ -9,7 +14,6 @@ void RenderManager::Render()
 	//Render
 	system("cls");
 	printf("\r");
-	printf("\n ancho: %d", World::GetInstance().GetWidth());
 	for (int i = 0; i < World::GetInstance().GetWidth(); i++)
 	{
 		bool bEmptyPosition = true;
@@ -34,14 +38,3 @@ void RenderManager::Render()
 	printf("%d", pPlayer->GetScore());
 
 }
-
-RenderManager RenderManager::GetInstance()
-{
-	if (m_pInstance == nullptr)
-	{
-		m_pInstance = new RenderManager();
-	}
-	return *m_pInstance;
-}
-
-RenderManager* RenderManager::m_pInstance = &RenderManager::GetInstance();

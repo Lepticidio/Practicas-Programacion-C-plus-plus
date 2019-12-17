@@ -4,10 +4,13 @@
 class RenderManager
 {
 private:
-	static RenderManager* m_pInstance;
-public:
 	RenderManager();
+public:
+	// Singleton.
+	static RenderManager& GetInstance();
+	RenderManager(RenderManager const&) = delete;
+	void operator = (RenderManager const&) = delete;
+
 	void Render();
-	static RenderManager GetInstance();
 };
 

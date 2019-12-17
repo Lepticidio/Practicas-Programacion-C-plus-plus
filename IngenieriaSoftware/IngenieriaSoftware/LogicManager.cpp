@@ -4,6 +4,11 @@ LogicManager::LogicManager()
 {
 }
 
+LogicManager& LogicManager::GetInstance()
+{
+	static LogicManager logic;
+	return logic;
+}
 void LogicManager::UpdateLogic()
 {
 	int iNumberObjects = World::GetInstance().GetNumberObjects();
@@ -46,12 +51,3 @@ void LogicManager::UpdateLogic()
 		}
 	}
 }
-LogicManager LogicManager::GetInstance()
-{
-	if (m_pInstance == nullptr)
-	{
-		m_pInstance = new LogicManager();
-	}
-	return *m_pInstance;
-}
-LogicManager* LogicManager::m_pInstance = &LogicManager::GetInstance();
