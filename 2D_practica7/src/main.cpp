@@ -88,6 +88,7 @@ int main()
 
 	World world(0.8f, 0.8f, 0.8f, pTextureClouds);
 	world.addSprite(player);
+	world.loadMap("data//map.tmx", 1);
 
 	//5) Bucle principal
 	while (!glfwWindowShouldClose(pWindow) && bOpen)

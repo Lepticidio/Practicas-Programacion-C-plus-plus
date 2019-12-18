@@ -2,7 +2,11 @@
 #include "MovableObject.h"
 class StateMachine
 {
-	typedef void (*State)(MovableObject*&);
-	State currentState;
+public:
+	typedef void (*State)(MovableObject*);
+private:
+	State m_currentState;
+public:
+	StateMachine();
+	void CheckState(MovableObject* _object);
 };
-

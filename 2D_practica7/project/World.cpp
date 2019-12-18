@@ -1,4 +1,6 @@
 #include "World.h"
+#include "pugixml.hpp"
+#include "pugiconfig.hpp"
 
 float Clamp(float n, float lower, float upper)
 {
@@ -121,4 +123,21 @@ void World::draw(const Vec2& screenSize)
 	{
 		tSprites[i].draw();
 	}
+}
+bool World::loadMap(const char* filename, uint16_t firstColId)
+{
+	bool bResult = false;
+	pugi::xml_document doc;
+	pugi::xml_parse_result result = doc.load_file(filename);
+	if (result) 
+	{
+		// Cargado correctamente, podemos analizar su contenido ...
+		bResult = true;
+	}
+	else 
+	{
+		// No se ha podido cargar
+		std::cout << result.description() << std::endl;
+	}
+	return bResult;
 }

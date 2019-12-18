@@ -1,16 +1,17 @@
 #include "Enemy.h"
+#include "World.h"
 
 
 
 Enemy::Enemy(int _iX, int _iWidth, Player* _pPlayer) : MovableObject(ENEMY, _iX, '*'), m_iWidth(_iWidth), m_pPlayer(_pPlayer)
 {
-
+	m_stateMachine = StateMachine();
 }
 void Enemy::Update()
 {
 	if (m_bIsActive)
 	{
-		MoveTowardsPlayer();
+		m_stateMachine.CheckState(this);
 	}
 }
 void Enemy::CheckCollision(MovableObject* _pOtherObject)
@@ -47,11 +48,11 @@ void Enemy::MoveTowardsPlayer()
 }
 void Enemy::MoveAwayFromPlayer()
 {
-	if (m_pPlayer->GetX() > m_iX)
+	if (m_pPlayer->GetX() > m_iX && m_iX > 0)
 	{
 		MoveLeft();
 	}
-	else
+	else if(m_pPlayer->GetX() < m_iX&& m_iX < World::GetInstance().GetWidth() - 1)
 	{
 		MoveRight();
 	}
@@ -76,4 +77,26 @@ void Enemy::Activate()
 bool Enemy::GetIsActive()
 {
 	return m_bIsActive;
+}
+bool Enemy::IsNearBullet()
+{
+	int iMinX = GetX() - m_iBulletFleeDistance;
+	int iMaxX = GetX() + m_iBulletFleeDistance;
+	int iWidthWorld = World::GetInstance().GetWidth();
+	if (iMinX < 0)
+	{
+		iMinX = 0;
+	}
+	if (iMaxX >= iWidthWorld)
+	{
+		iMaxX = iWidthWorld - 1;
+	}
+	for (int i = iMinX; i < iMaxX + 1; i++)
+	{
+		if (World::GetInstance().CheckPositionForObjectType(i, BULLET))
+		{
+			return true;
+		}
+	}
+	return false;
 }

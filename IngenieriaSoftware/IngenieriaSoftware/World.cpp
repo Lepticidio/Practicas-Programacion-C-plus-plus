@@ -28,6 +28,19 @@ void World::Initialize()
 		enemy->Reset();
 	}
 }
+bool World::CheckPositionForObjectType(int _iPosition, ObjectType _type)
+{
+	for (int i = 0; i < GetNumberObjects(); i++)
+	{
+		MovableObject* pObject = m_tObjects[i];
+		if (pObject->GetType() == _type && pObject->GetX() == _iPosition)
+		{
+			return true;
+		}
+	}
+	return false;
+
+}
 int World::GetMaxBulletsSide()
 {
 	return m_iMaxBulletsSide;

@@ -28,6 +28,7 @@
     <ClCompile Include="pugixml.cpp" />
     <ClCompile Include="RectCollider.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="Vec2.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
@@ -47,6 +48,7 @@
     <ClInclude Include="..\lib\stb_image.h" />
     <ClInclude Include="..\lib\Vec2.h" />
     <ClInclude Include="..\lib\World.h" />
+    <ClInclude Include="TileMap.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

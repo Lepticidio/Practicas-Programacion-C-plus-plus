@@ -20,6 +20,7 @@ public:
 
 	void Initialize();
 
+	bool CheckPositionForObjectType(int _iPosition, ObjectType _type);
 	int GetMaxBulletsSide();
 	int GetMaxEnemies();
 	int GetWidth();

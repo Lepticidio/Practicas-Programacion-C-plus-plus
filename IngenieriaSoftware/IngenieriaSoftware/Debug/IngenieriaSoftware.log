@@ -1,5 +1,2 @@
-﻿  Enemy.cpp
-  Player.cpp
-  RenderManager.cpp
-  Generating Code...
+﻿  StateMachine.cpp
   IngenieriaSoftware.vcxproj -> D:\Microsoft Visual Studio\repos\IngenieriaSoftware\Debug\IngenieriaSoftware.exe
