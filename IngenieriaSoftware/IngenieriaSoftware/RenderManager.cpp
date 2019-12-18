@@ -10,10 +10,13 @@ RenderManager::RenderManager()
 
 }
 void RenderManager::Render()
-{
-	//Render
+{	
+	//Clears the console, so it can be updated
 	system("cls");
 	printf("\r");
+
+	//For each position of world, checks if there is an object and draws it
+	//If none is found, it just draws a '_'
 	for (int i = 0; i < World::GetInstance().GetWidth(); i++)
 	{
 		bool bEmptyPosition = true;
@@ -34,6 +37,7 @@ void RenderManager::Render()
 			printf("-");
 		}
 	}
+	//Prints current score
 	Player* pPlayer = World::GetInstance().GetPlayer();
 	printf("%d", pPlayer->GetScore());
 

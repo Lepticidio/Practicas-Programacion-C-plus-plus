@@ -14,11 +14,13 @@ void LogicManager::UpdateLogic()
 	int iNumberObjects = World::GetInstance().GetNumberObjects();
 	int iNumberEnemies = World::GetInstance().GetMaxEnemies();
 	//Spawn Enemies
+	//For each frame, there is a probability of an enemy being spawned
+	//If max not reached, we get a deactivated enemy (outside the world) and activate it
 	float fProbability = (float)(rand() % 100);
 	if (fPercentajePorbabilityEnemySpawn > fProbability)
 	{
 		int iCounter = 0;
-		while (iCounter <iNumberEnemies)
+		while (iCounter < iNumberEnemies)
 		{
 			Enemy* pEnemy = World::GetInstance().GetEnemyAtIndex(iCounter);
 			if (pEnemy != nullptr)

@@ -14,12 +14,14 @@ bool InputManager::GetKeyInput(char _cInput)
 {
 	return (GetAsyncKeyState(VkKeyScanEx(_cInput, m_kbl)));
 }
+//Process input
 void InputManager::CheckInput()
 {
 	m_bEscape = false;
 	int iMaxNumberBulletsSide = World::GetInstance().GetMaxBulletsSide();
 	Player* pPlayer = World::GetInstance().GetPlayer();
-	//Process input
+
+	//Player control
 	if (GetKeyInput('h'))
 	{
 		if (pPlayer->GetX() > 0)
@@ -36,6 +38,9 @@ void InputManager::CheckInput()
 		}
 	}
 
+	//Bullet spawning
+	//With 'j' and 'k' Gets a currently deactivated bullet and, if limit has not been reached, spawns a new bullet
+	//This is made considering bullets outside world as deactivated, and bringing them near the player
 	if (GetKeyInput('j'))
 	{
 		int iCounter = 0;
@@ -50,7 +55,6 @@ void InputManager::CheckInput()
 			iCounter++;
 		}
 	}
-
 	if (GetKeyInput('k'))
 	{
 		int iCounter = 0;
@@ -65,7 +69,7 @@ void InputManager::CheckInput()
 			iCounter++;
 		}
 	}
-
+	//Exit the game with esc key
 	m_bEscape = GetAsyncKeyState(VK_ESCAPE);
 }
 bool InputManager::GetEscape()

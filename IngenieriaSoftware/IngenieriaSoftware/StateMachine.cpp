@@ -15,6 +15,10 @@ StateMachine::StateMachine()
 {
 	m_currentState = Attack;
 }
+
+//This is called in every frame for every enemy
+//Checks if current state must be changed
+//Also, calls current state, providing enemy's update behaviour
 void StateMachine::CheckState(MovableObject* _object)
 {
 	Enemy* enemy = static_cast<Enemy*>(_object);

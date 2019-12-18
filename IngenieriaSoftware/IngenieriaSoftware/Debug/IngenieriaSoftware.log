@@ -1,5 +1,11 @@
-﻿  InputManager.cpp
+﻿  Bullet.cpp
+  Enemy.cpp
+  InputManager.cpp
+  LogicManager.cpp
   LoopManager.cpp
+  Player.cpp
   RenderManager.cpp
+  StateMachine.cpp
+  World.cpp
   Generating Code...
   IngenieriaSoftware.vcxproj -> D:\Microsoft Visual Studio\repos\IngenieriaSoftware\Debug\IngenieriaSoftware.exe

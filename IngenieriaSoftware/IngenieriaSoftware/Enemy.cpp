@@ -3,7 +3,7 @@
 
 
 
-Enemy::Enemy(int _iX, int _iWidth, Player* _pPlayer) : MovableObject(ENEMY, _iX, '*'), m_iWidth(_iWidth), m_pPlayer(_pPlayer)
+Enemy::Enemy(int _iX, Player* _pPlayer) : MovableObject(ENEMY, _iX, '*'), m_pPlayer(_pPlayer)
 {
 	m_stateMachine = StateMachine();
 }
@@ -14,10 +14,13 @@ void Enemy::Update()
 		m_stateMachine.CheckState(this);
 	}
 }
+//As other objects other react to collisions with enemies, enemy controls all the consequences 
+//This avoids code duplications
 void Enemy::CheckCollision(MovableObject* _pOtherObject)
 {
-	if (_pOtherObject->GetX() > m_iX -2 && _pOtherObject->GetX() < m_iX + 2)
+	if (_pOtherObject->GetX() > m_iX -1 && _pOtherObject->GetX() < m_iX + 1)
 	{
+		//Collision with bullet : Resets enemy and bullet, and increases score
 		if (_pOtherObject->GetType() == BULLET)
 		{
 			Bullet* _pBullet = static_cast<Bullet*>(_pOtherObject);
@@ -29,6 +32,7 @@ void Enemy::CheckCollision(MovableObject* _pOtherObject)
 				_pBullet->ResetPosition();
 			}
 		}
+		//Collision with player : Player is dead, and game will end
 		else if (_pOtherObject->GetType() == PLAYER)
 		{
 			static_cast<Player*>(_pOtherObject)->SetIsDead(true);
@@ -57,6 +61,7 @@ void Enemy::MoveAwayFromPlayer()
 		MoveRight();
 	}
 }
+//Puts it outside the world, so it isn't rendered, and deactivates it
 void Enemy::Reset()
 {
 	int iFlip = rand() % 2;
@@ -66,7 +71,7 @@ void Enemy::Reset()
 	}
 	else
 	{
-		SetX(m_iWidth);
+		SetX(World::GetInstance().GetWidth());
 	}
 	m_bIsActive = false;
 }
@@ -78,6 +83,7 @@ bool Enemy::GetIsActive()
 {
 	return m_bIsActive;
 }
+//Used by the State Machine to know if it has to flee
 bool Enemy::IsNearBullet()
 {
 	int iMinX = GetX() - m_iBulletFleeDistance;

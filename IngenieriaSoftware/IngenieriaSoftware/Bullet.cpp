@@ -1,9 +1,8 @@
 #include "Bullet.h"   
+#include "World.h"
 
-Bullet::Bullet(int _iX, bool _bRightMovement, int _iWidthWorld) : MovableObject(BULLET,_iX, '>'), m_bRightMovement(_bRightMovement),  m_iWidthWorld(_iWidthWorld)
+Bullet::Bullet(int _iX, bool _bRightMovement) : MovableObject(BULLET,_iX, '>'), m_bRightMovement(_bRightMovement)
 {
-
-	//printf("\n bullet created");
 	if (m_bRightMovement)
 	{
 		m_cSprite = '>';
@@ -27,10 +26,11 @@ void Bullet::Update()
 		}
 	}
 }
+//Only reacts to collision with enemy, if that happens calls enemy's collision method
+//This avoids code duplication
 void Bullet::CheckCollision(MovableObject* _pOtherObject)
 {
-	//printf("\nbullet checking");
-	if (_pOtherObject->GetX() > m_iX - 2 && _pOtherObject->GetX() < m_iX + 2)
+	if (_pOtherObject->GetX() > m_iX - 1 && _pOtherObject->GetX() < m_iX + 1)
 	{
 		if (_pOtherObject->GetType() == ENEMY)
 		{
@@ -42,7 +42,7 @@ void Bullet::ResetPosition()
 {
 	if (m_bRightMovement)
 	{
-		m_iX = m_iWidthWorld;
+		m_iX = World::GetInstance().GetWidth();
 	}
 	else
 	{
@@ -51,7 +51,7 @@ void Bullet::ResetPosition()
 }
 bool Bullet::IsOutsideWorld()
 {
-	return ((m_bRightMovement && m_iX > m_iWidthWorld) || (!m_bRightMovement && m_iX < 0));
+	return ((m_bRightMovement && m_iX > World::GetInstance().GetWidth()) || (!m_bRightMovement && m_iX < 0));
 }
 bool Bullet::IsMovingRight()
 {

@@ -3,6 +3,8 @@
 #include "Player.h"
 #include "Bullet.h"
 #include "Enemy.h"
+
+//This class stores the world, including all objects of it
 class World
 {
 private:
@@ -18,8 +20,9 @@ public:
 	World(World const&) = delete;
 	void operator = (World const&) = delete;
 
-	void Initialize();
+	void Init();
 
+	//The methods below avoid other classes accesing directly to World's variables,
 	bool CheckPositionForObjectType(int _iPosition, ObjectType _type);
 	int GetMaxBulletsSide();
 	int GetMaxEnemies();

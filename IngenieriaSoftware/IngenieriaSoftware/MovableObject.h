@@ -8,6 +8,7 @@ enum ObjectType
 	ENEMY,
 	PLAYER
 };
+//This class stores values and methods common to Bullet, Enemy and Player
 class MovableObject abstract
 {
 	protected:

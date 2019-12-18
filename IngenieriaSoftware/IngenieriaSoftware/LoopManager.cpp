@@ -4,16 +4,20 @@
 
 int main()
 {
+	//This will be checked to know if we must stay in the loop
 	bool bExit = false;
 	  
-	World::GetInstance().Initialize();
+	World::GetInstance().Init();
 	while (!bExit)
 	{
 		InputManager::GetInstance().CheckInput();
 		LogicManager::GetInstance().UpdateLogic();
 		RenderManager::GetInstance().Render();
 
+		//If player is dead or escaped was pressed, loop ends
 		bExit = (World::GetInstance().GetPlayer()->GetIsDead() || InputManager::GetInstance().GetEscape());
+
+		//To have reasonable FPS
 		Sleep(50);
 	}
 }

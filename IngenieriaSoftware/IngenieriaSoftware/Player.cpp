@@ -7,6 +7,8 @@ void Player::Update()
 {
 
 }
+//As player just interacts with enemy, and I want to avoid code duplications,
+//Checks if collides with enemy, and if it does it calls enemy's collision
 void Player::CheckCollision(MovableObject* _pOtherObject)
 {
 	if (_pOtherObject->GetX() > m_iX - 2 && _pOtherObject->GetX() < m_iX + 2)
