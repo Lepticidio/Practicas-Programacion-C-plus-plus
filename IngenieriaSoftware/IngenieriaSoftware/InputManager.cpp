@@ -16,6 +16,7 @@ bool InputManager::GetKeyInput(char _cInput)
 }
 void InputManager::CheckInput()
 {
+	m_bEscape = false;
 	int iMaxNumberBulletsSide = World::GetInstance().GetMaxBulletsSide();
 	Player* pPlayer = World::GetInstance().GetPlayer();
 	//Process input
@@ -64,4 +65,10 @@ void InputManager::CheckInput()
 			iCounter++;
 		}
 	}
+
+	m_bEscape = GetAsyncKeyState(VK_ESCAPE);
+}
+bool InputManager::GetEscape()
+{
+	return m_bEscape;
 }

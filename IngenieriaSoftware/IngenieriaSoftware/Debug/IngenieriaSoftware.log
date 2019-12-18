@@ -1,2 +1,5 @@
-﻿  StateMachine.cpp
+﻿  InputManager.cpp
+  LoopManager.cpp
+  RenderManager.cpp
+  Generating Code...
   IngenieriaSoftware.vcxproj -> D:\Microsoft Visual Studio\repos\IngenieriaSoftware\Debug\IngenieriaSoftware.exe

@@ -13,7 +13,7 @@ int main()
 		LogicManager::GetInstance().UpdateLogic();
 		RenderManager::GetInstance().Render();
 
-		bExit = World::GetInstance().GetPlayer()->GetIsDead();
+		bExit = (World::GetInstance().GetPlayer()->GetIsDead() || InputManager::GetInstance().GetEscape());
 		Sleep(50);
 	}
 }
